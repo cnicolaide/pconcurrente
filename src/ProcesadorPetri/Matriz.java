@@ -16,10 +16,6 @@ public class Matriz {
         dato = new int[size][size];
     }
 
-    public Matriz() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public int[][] getDato() {
         return dato;
     }
