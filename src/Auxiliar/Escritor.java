@@ -22,14 +22,15 @@ import javax.swing.JOptionPane;
  * proporcionados serán escritos en el tiempo en que fueron enviados tanto en la
  * consola como en el .txt
  */
-public class Ficheros {
+public class Escritor {
 
     private String sNombre;
     private String sArchivo;
-    private static Ficheros oFicheros = null;
-    private SimpleDateFormat sd = new SimpleDateFormat("yyyy/MM/dd HH:ss SSS");
+    private static Escritor oFicheros = null;
+    private SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+    private int contador = 0;
 
-    private Ficheros() {
+    private Escritor() {
         this.sNombre = "Redes de Petri Temporales";
         this.sArchivo = "LogPetriNet.txt";
         File fichero = new File(System.getProperty("user.dir") + "\\" + sArchivo);
@@ -38,17 +39,18 @@ public class Ficheros {
         }
     }
 
-    public static Ficheros Instance() {
+    public static Escritor Instance() {
         if (oFicheros == null) {
-            oFicheros = new Ficheros();
+            oFicheros = new Escritor();
         }
         return oFicheros;
     }
 
     public void Escribir(String sTitulo, String sTexto) {
 //        JOptionPane.showMessageDialog(null, sTexto,sTitulo, JOptionPane.ERROR_MESSAGE);
+        contador++;
         sTitulo = sTitulo + ": " + sTexto;
-        String sTextoFinal = "\r\n" + sd.format(new Date()) + " - " + sTitulo;
+        String sTextoFinal = "\r\n" + contador + " > " + sd.format(new Date()) + " - " + sTitulo;
         System.out.println(sTextoFinal);
         File fichero = new File(System.getProperty("user.dir") + "\\" + sArchivo);
         PrintWriter pw = null;

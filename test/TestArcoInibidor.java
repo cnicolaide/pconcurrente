@@ -1,7 +1,7 @@
 
 import ProcesadorPetri.Matriz;
 import Auxiliar.Lector;
-import ProcesadorPetri.Redes;
+import ProcesadorPetri.Red;
 import java.util.HashMap;
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
@@ -23,7 +23,7 @@ public class TestArcoInibidor {
         Matriz Disparo = new Matriz(iDisparo);
         Matriz Esperada = new Matriz(iEsperada);
 
-        Redes oRed = new Redes(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), null);
+        Red oRed = new Red(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), null);
         oRed.ejecutar(iDisparo, true);
 
         Matriz oEsperada = new Matriz(iEsperada);
@@ -36,8 +36,8 @@ public class TestArcoInibidor {
         }
 
     }
-    
-        @Test
+
+    @Test
     public void testDisparaSensibilizada() {
 
         int[][] iDisparo = {{0, 1, 0, 0}};
@@ -46,7 +46,7 @@ public class TestArcoInibidor {
         Matriz Disparo = new Matriz(iDisparo);
         Matriz Esperada = new Matriz(iEsperada);
 
-        Redes oRed = new Redes(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), null);
+        Red oRed = new Red(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), null);
         oRed.ejecutar(iDisparo, true);
 
         Matriz oEsperada = new Matriz(iEsperada);
@@ -59,6 +59,5 @@ public class TestArcoInibidor {
         }
 
     }
-    
 
 }

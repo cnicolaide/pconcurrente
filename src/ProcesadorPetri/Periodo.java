@@ -12,13 +12,13 @@ import java.util.Date;
  * En el constructor se entrega un booleano que indica si la transicion ya está
  * activa, y dos enteros con los tiempos de inicio y final de la transición.
  */
-public class Tiempos {
+public class Periodo {
 
     private Date oInicio;
     private int iInicio;
     private int iFinal;
 
-    public Tiempos(boolean bActivate, int iInicio, int iFinal) {
+    public Periodo(boolean bActivate, int iInicio, int iFinal) {
         this.iFinal = iFinal;
         this.iInicio = iInicio;
         if (bActivate) {

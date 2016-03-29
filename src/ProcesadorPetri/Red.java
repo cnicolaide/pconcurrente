@@ -6,7 +6,7 @@
 package ProcesadorPetri;
 
 import ProcesadorPetri.Matriz;
-import Auxiliar.Ficheros;
+import Auxiliar.Escritor;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * independientemente de si puede ejecutarse o no, se muestran en pantalla todos
  * los vectores de estado de la red.
  */
-public class Redes {
+public class Red {
 
     private int[][] iMarcadoInicial;
     private int[][] iIncidencia;
@@ -29,9 +29,9 @@ public class Redes {
     private int[][] iAutomaticas;
     private boolean print = true;
     private boolean isTimetable = false;
-    private ArrayList<Tiempos> lTiempos;
+    private ArrayList<Periodo> lTiempos;
 
-    public Redes(int[][] iMarcado, int[][] iIncidencia, int[][] iH, int[][] iTiempo, int[][] iAutomaticas) {
+    public Red(int[][] iMarcado, int[][] iIncidencia, int[][] iH, int[][] iTiempo, int[][] iAutomaticas) {
         this.iMarcadoActual = iMarcado;
         this.iMarcadoInicial = iMarcado;
         this.iIncidencia = iIncidencia;
@@ -45,7 +45,7 @@ public class Redes {
         printEstados();
     }
 
-    public Redes(int[][] iMarcado, int[][] iIncidencia, int[][] iH, int[][] iAutomaticas) {
+    public Red(int[][] iMarcado, int[][] iIncidencia, int[][] iH, int[][] iAutomaticas) {
         this.iMarcadoActual = iMarcado;
         this.iMarcadoInicial = iMarcado;
         this.iIncidencia = iIncidencia;
@@ -71,7 +71,7 @@ public class Redes {
         }
         if (aux == 0) {
             if (print) {
-                Ficheros.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, NO se puede ejecutar\n");
+                Escritor.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, NO se puede ejecutar\n");
             }
             return false;
         }
@@ -82,7 +82,7 @@ public class Redes {
             for (int j = 0; j < oNuevoMarcado.getColCount(); j++) {
                 if ((oNuevoMarcado.getVal(i, j)) < 0) {
                     if (print) {
-                        Ficheros.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, NO se puede ejecutar\n");
+                        Escritor.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, NO se puede ejecutar\n");
                     }
                     return false;
                 }
@@ -95,7 +95,7 @@ public class Redes {
                 }
             }
             if (print) {
-                Ficheros.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, se ejecuto\n");
+                Escritor.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, se ejecuto\n");
             }
             printEstados();
         }
@@ -127,7 +127,7 @@ public class Redes {
         }
         if (aux == 0) {
             if (print) {
-                Ficheros.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, NO se puede ejecutar\n");
+                Escritor.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, NO se puede ejecutar\n");
             }
             ArrayList<Integer> Vectores = new ArrayList<>();
             for (int k = 0; k < iDisparo[0].length; k++) {
@@ -145,7 +145,7 @@ public class Redes {
             for (int j = 0; j < oNuevoMarcado.getColCount(); j++) {
                 if ((oNuevoMarcado.getVal(i, j)) < 0) {
                     if (print) {
-                        Ficheros.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, NO se puede ejecutar\n");
+                        Escritor.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, NO se puede ejecutar\n");
                     }
                     ArrayList<Integer> Vectores = new ArrayList<>();
                     for (int k = 0; k < iDisparo[0].length; k++) {
@@ -163,7 +163,7 @@ public class Redes {
             }
         }
         if (print) {
-            Ficheros.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, SI se puede ejecutar\n");
+            Escritor.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, SI se puede ejecutar\n");
         }
         if (isTimetable) {/*Verifico si alguna transicion que estaba sensibilizada por tiempo se
            ejecutó para resetear el contador de tiempo.*/
@@ -293,7 +293,7 @@ public class Redes {
             }
         }
         for (int i = 0; i < iTiempo[0].length; i++) {
-            Tiempos oTiempos = new Tiempos(false, iTiempoIntervalo[i][0], iTiempoIntervalo[i][1]);
+            Periodo oTiempos = new Periodo(false, iTiempoIntervalo[i][0], iTiempoIntervalo[i][1]);
             lTiempos.add(oTiempos);
         }
         verificarTiempos();
@@ -303,7 +303,7 @@ public class Redes {
         //verificar si una transicion deberia estar en un estado y no lo esta. En ese caso resetear el contador.
         ArrayList<Integer> lTransiciones = obtenerTransActiva(getSensibilizadas().getDato());
         for (int i = 0; i < lTransiciones.size(); i++) {
-            Tiempos oTiempos = lTiempos.get(lTransiciones.get(i));
+            Periodo oTiempos = lTiempos.get(lTransiciones.get(i));
             if (!oTiempos.isActive()) {
                 oTiempos.starts();
             } else if (oTiempos.isInTime()) {
@@ -356,8 +356,8 @@ public class Redes {
                             }
                         }
                         if (print) {
-                            Ficheros.Instance().Escribir("RED", "Disparo Automatico:  " + new Matriz(iDisparo).toString());
-                            Ficheros.Instance().Escribir("RED", "Marcado Actual:  " + new Matriz(iMarcadoActual).toString());
+                            Escritor.Instance().Escribir("RED", "Disparo Automatico:  " + new Matriz(iDisparo).toString());
+                            Escritor.Instance().Escribir("RED", "Marcado Actual:  " + new Matriz(iMarcadoActual).toString());
                         }
                         ejecutar(iDisparo, true);
                     }
@@ -369,17 +369,17 @@ public class Redes {
 
     private void printEstados() {
         if (print) {
-            Ficheros.Instance().Escribir("RED", "PRINT ESTADOS");
+            Escritor.Instance().Escribir("RED", "PRINT ESTADOS");
             if (isTimetable) {
                 verificarTiempos();
-                Ficheros.Instance().Escribir("RED", "Vector Temporal es " + new Matriz(this.iTiempo).toString());
-                Ficheros.Instance().Escribir("RED", "Transiciones Sensibilizadas Temporales: " + getSensibilizadasTemporales().toString());
+                Escritor.Instance().Escribir("RED", "Vector Temporal es " + new Matriz(this.iTiempo).toString());
+                Escritor.Instance().Escribir("RED", "Transiciones Sensibilizadas Temporales: " + getSensibilizadasTemporales().toString());
             }
             if (iAutomaticas != null) {
-                Ficheros.Instance().Escribir("RED", "Vector Automatico es " + new Matriz(iAutomaticas).toString());
+                Escritor.Instance().Escribir("RED", "Vector Automatico es " + new Matriz(iAutomaticas).toString());
             }
-            Ficheros.Instance().Escribir("RED", "Marcado Actual es " + new Matriz(iMarcadoActual).toString());
-            Ficheros.Instance().Escribir("RED", "Transiciones Sensibilizadas: " + getSensibilizadas().toString());
+            Escritor.Instance().Escribir("RED", "Marcado Actual es " + new Matriz(iMarcadoActual).toString());
+            Escritor.Instance().Escribir("RED", "Transiciones Sensibilizadas: " + getSensibilizadas().toString());
         }
     }
 }
