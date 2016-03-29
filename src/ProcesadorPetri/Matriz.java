@@ -83,9 +83,9 @@ public class Matriz {
         String texto = "";
         for (int i = 0; i < this.getFilCount(); i++) {
             for (int j = 0; j < this.getColCount(); j++) {
-                texto += " " + this.dato[i][j];
+                texto += " " + this.dato[i][j] + " ";
             }
-            texto += " ";
+            texto += " \n";
         }
         texto += "";
         return texto;
