@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Auxiliar;
 
 import java.io.BufferedWriter;
@@ -14,14 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
-/**
- * Con esta clase uno puede excribir en un archivo .txt cualquier tipo de
- * información que necesita ser almacenada. Para usarla, simplemente se
- * instancia y se utiliza el método Escribir al cual se le entra un título
- * (escrito por delante) y el texto que lo acompaña. Los títulos y los textos
- * proporcionados serán escritos en el tiempo en que fueron enviados tanto en la
- * consola como en el .txt
- */
 public class Escritor {
 
     private String sNombre;

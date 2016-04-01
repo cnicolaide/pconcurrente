@@ -1,17 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ProcesadorPetri;
 
 import java.util.Date;
 
-/**
- * Esta clase se utiliza para tomar los tiempos de las transiones temporizadas.
- * En el constructor se entrega un booleano que indica si la transicion ya está
- * activa, y dos enteros con los tiempos de inicio y final de la transición.
- */
 public class Periodo {
 
     private Date oInicio;

@@ -24,7 +24,7 @@ public class Matriz {
         return dato[fil][col];
     }
 
-    public void setMatrix(int[][] dato) {
+    public void setMatriz(int[][] dato) {
         this.dato = dato;
     }
 

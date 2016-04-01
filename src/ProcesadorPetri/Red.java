@@ -1,23 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ProcesadorPetri;
 
-import ProcesadorPetri.Matriz;
 import Auxiliar.Escritor;
 import java.util.ArrayList;
 
-/**
- * Esta clase se utiliza para ejecutar todas las acciones que involucran a la
- * red de Petri. Posee dos constructores: uno para cuando se usan redes sin
- * tiempo y otro para cuando se usan redes con tiempo. Si la red no posee
- * transiciones automáticas, solo hay qe enviarle el objeto nulo en el
- * constructor. Cada vez que se utiliza el método ejectar un disparo,
- * independientemente de si puede ejecutarse o no, se muestran en pantalla todos
- * los vectores de estado de la red.
- */
 public class Red {
 
     private int[][] iMarcadoInicial;
@@ -71,7 +56,7 @@ public class Red {
         }
         if (aux == 0) {
             if (print) {
-                Escritor.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, NO se puede ejecutar\n");
+                Escritor.Instance().Escribir("RED", "NO se puede ejecutar el disparo: " + oDisparo.toString());
             }
             return false;
         }
@@ -82,7 +67,7 @@ public class Red {
             for (int j = 0; j < oNuevoMarcado.getColCount(); j++) {
                 if ((oNuevoMarcado.getVal(i, j)) < 0) {
                     if (print) {
-                        Escritor.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, NO se puede ejecutar\n");
+                        Escritor.Instance().Escribir("RED", "NO se puede ejecutar el disparo: " + oDisparo.toString());
                     }
                     return false;
                 }
@@ -95,7 +80,7 @@ public class Red {
                 }
             }
             if (print) {
-                Escritor.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, se ejecuto\n");
+                Escritor.Instance().Escribir("RED", "Se ejecuto el disparo: " + oDisparo.toString());
             }
             printEstados();
         }
@@ -127,7 +112,7 @@ public class Red {
         }
         if (aux == 0) {
             if (print) {
-                Escritor.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, NO se puede ejecutar\n");
+                Escritor.Instance().Escribir("RED", "NO se puede ejecutar el disparo: " + oDisparo.toString());
             }
             ArrayList<Integer> Vectores = new ArrayList<>();
             for (int k = 0; k < iDisparo[0].length; k++) {
@@ -145,7 +130,7 @@ public class Red {
             for (int j = 0; j < oNuevoMarcado.getColCount(); j++) {
                 if ((oNuevoMarcado.getVal(i, j)) < 0) {
                     if (print) {
-                        Escritor.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, NO se puede ejecutar\n");
+                        Escritor.Instance().Escribir("RED", "NO se puede ejecutar el disparo: " + oDisparo.toString());
                     }
                     ArrayList<Integer> Vectores = new ArrayList<>();
                     for (int k = 0; k < iDisparo[0].length; k++) {
@@ -163,10 +148,9 @@ public class Red {
             }
         }
         if (print) {
-            Escritor.Instance().Escribir("RED", "El disparo: {" + oDisparo.toString() + "}, SI se puede ejecutar\n");
+            Escritor.Instance().Escribir("RED", "SI se puede ejecutar el disparo: " + oDisparo.toString());
         }
-        if (isTimetable) {/*Verifico si alguna transicion que estaba sensibilizada por tiempo se
-           ejecutó para resetear el contador de tiempo.*/
+        if (isTimetable) {/*Verifico si alguna transicion que estaba sensibilizada por tiempo se ejecutó para resetear el contador de tiempo.*/
             int t = 0;
             for (int i = 0; i < iDisparo.length; i++) {
                 for (int j = 0; j < iDisparo[i].length; j++) {

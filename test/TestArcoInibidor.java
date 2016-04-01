@@ -3,9 +3,7 @@ import ProcesadorPetri.Matriz;
 import Auxiliar.Lector;
 import ProcesadorPetri.Red;
 import java.util.HashMap;
-import org.junit.After;
 import static org.junit.Assert.assertEquals;
-import org.junit.Before;
 import org.junit.Test;
 
 public class TestArcoInibidor {
