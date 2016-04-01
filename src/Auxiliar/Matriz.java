@@ -1,4 +1,4 @@
-package ProcesadorPetri;
+package Auxiliar;
 
 public class Matriz {
 

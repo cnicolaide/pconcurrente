@@ -1,6 +1,5 @@
 package Auxiliar;
 
-import ProcesadorPetri.Matriz;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;

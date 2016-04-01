@@ -1,7 +1,7 @@
 package MinaCarbon;
 
-import ProcesadorPetri.Matriz;
 import Auxiliar.Lector;
+import Auxiliar.Matriz;
 import ProcesadorPetri.Red;
 import java.util.HashMap;
 

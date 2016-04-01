@@ -1,6 +1,8 @@
 package ProcesadorPetri;
 
 import Auxiliar.Escritor;
+import Auxiliar.Matriz;
+
 import java.util.ArrayList;
 
 public class Red {

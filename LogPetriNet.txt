@@ -1,2 +1,2 @@
 
-1 > 01/04/16 05:59:19 - RED: NO se puede ejecutar el disparo:  1  0  0  0  
+1 > 01/04/16 16:32:13 - RED: NO se puede ejecutar el disparo:  1  0  0  0  
