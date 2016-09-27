@@ -51,7 +51,7 @@ public class Lector {
                 oFile = fileChooser.getSelectedFile();
             }
         } else {
-            oFile = new File(System.getProperty("user.dir") + "\\Redes\\" + sRed);
+            oFile = new File(System.getProperty("user.dir") + "\\redes\\" + sRed);
         }
         try {
             html = Jsoup.parse(oFile, "UTF-8", "http://example.com/");
@@ -251,7 +251,7 @@ public class Lector {
             // Ficheros.Instance().Escribir("LEER_ARCHIVO", "Incidencia");
             // Ficheros.Instance().Escribir("LEER_ARCHIVO", oMatriz.toString());
         }
-        ldatos.put("incidencia", mat);
+		ldatos.put("incidencia", mat);
     }
 
     private void obtenerInhibicion() {
