@@ -8,7 +8,7 @@ import Auxiliar.Lector;
 import Auxiliar.Matriz;
 import ProcesadorPetri.Red;
 
-public class TestRed {
+public class TestProcesador {
 
 	Lector miLector = new Lector("PrioridadSensores.xls", "AutomaticasSensores.xls", "arcosInibidores.html",
 			"TiemposSensores.xls");
