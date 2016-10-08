@@ -5,13 +5,11 @@ import MinaCarbon.Hilo;
 public class Monitor {
 
 	private Mutex Mutex;
-	private Red RDP;
-	private Cola Cola;
+	private RdP RDP;
 
 	public Monitor() {
 		Mutex = new Mutex();
 		// RDP = new Red ();
-		Cola = new Cola();
 
 	}
 

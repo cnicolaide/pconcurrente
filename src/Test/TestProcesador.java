@@ -6,7 +6,7 @@ import java.util.HashMap;
 import org.junit.Test;
 import Auxiliar.Lector;
 import Auxiliar.Matriz;
-import ProcesadorPetri.Red;
+import ProcesadorPetri.RdP;
 
 public class TestProcesador {
 
@@ -23,8 +23,8 @@ public class TestProcesador {
 		Matriz Disparo = new Matriz(iDisparo);
 		Matriz Esperada = new Matriz(iEsperada);
 
-		Red oRed = new Red(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), null);
-		oRed.ejecutar(iDisparo, true);
+		RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), null);
+		oRed.ejecutar(iDisparo, false);
 
 		Matriz oEsperada = new Matriz(iEsperada);
 		Matriz oReal = new Matriz(oRed.getNuevoMarcado());
@@ -45,7 +45,7 @@ public class TestProcesador {
 		Matriz Disparo = new Matriz(iDisparo);
 		Matriz Esperada = new Matriz(iEsperada);
 
-		Red oRed = new Red(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), null);
+		RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), null);
 		oRed.ejecutar(iDisparo, true);
 
 		Matriz oEsperada = new Matriz(iEsperada);

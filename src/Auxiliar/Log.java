@@ -9,15 +9,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
-public class Escritor {
+public class Log {
 
 	private String sNombre;
 	private String sArchivo;
-	private static Escritor oFicheros = null;
+	private static Log oFicheros = null;
 	private SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 	private int contador = 0;
 
-	private Escritor() {
+	private Log() {
 		this.sNombre = "Redes de Petri Temporales";
 		this.sArchivo = "System.txt";
 		File fichero = new File(System.getProperty("user.dir") + "\\log\\" + sArchivo);
@@ -26,9 +26,9 @@ public class Escritor {
 		}
 	}
 
-	public static Escritor Instance() {
+	public static Log Instance() {
 		if (oFicheros == null) {
-			oFicheros = new Escritor();
+			oFicheros = new Log();
 		}
 		return oFicheros;
 	}
