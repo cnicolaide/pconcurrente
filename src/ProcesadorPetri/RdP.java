@@ -6,128 +6,117 @@ import Auxiliar.Matriz;
 public class RdP {
 
 	private Matriz mMarcadoInicial;
-	private Matriz mIncidencia;
-	private Matriz mInhibidor;
 	private Matriz mMarcadoActual;
+	private Matriz mIncidencia;
+	private Matriz mInhibicion;
 	private Matriz mFdeH;
-	private boolean print = true;
 
 	// CONSTRUCTOR DE LA RED DE PETRI
-	public RdP(int[][] iMarcado, int[][] iIncidencia, int[][] iInhibidor, int[][] iAutomaticas) {
-		mMarcadoActual = new Matriz(iMarcado);
-		mMarcadoInicial = new Matriz(iMarcado);
-		mIncidencia = new Matriz(iIncidencia);
-		mInhibidor = new Matriz(iInhibidor);
+	public RdP(Matriz mMarcado, Matriz mIncidencia, Matriz mInhibicion) {
+		this.mMarcadoActual = mMarcado;
+		this.mMarcadoInicial = mMarcado;
+		this.mIncidencia = mIncidencia;
+		this.mInhibicion = mInhibicion;
 	}
 
-	// DISPARA UNA TRANSICION DE LA RED DE PETRI
-	public boolean ejecutar(int[][] iDisparo, boolean memoria) {
-		Matriz mDisparo = new Matriz(iDisparo);
-		mFdeH = crearFporH();
-		Matriz mNuevoMarcado = mMarcadoInicial;
-		Matriz mMand = mDisparo.AND(mFdeH);
+	// DISPARA UNA TRANSICION DE LA RED DE PETRI UTILIZANDO LA FORMULA: Mi+1 =
+	// Mi+I*d.AND*(!(F*H))
+	public boolean ejecutar(Matriz mDisparo, boolean memoria) {
 
-		// Verfica que que la operacion d.AND*(!(F*H)) no sea cero. Si aux es 0
-		// significa que no hay transicion sensibilizada.
-		if (mMand.ANDporCERO()) {
-			if (print) {
-				Log.Instance().Escribir("RED", "NO se puede ejecutar el disparo: " + mDisparo.toString());
-			}
+		// Crea la matriz (!(F*H))
+		mFdeH = crearFporH().Negacion();
+
+		Matriz mNuevoMarcado = mMarcadoInicial;
+
+		// Crea la matriz d.AND*(!(F*H))
+		Matriz mDandFporHNegado = mDisparo.AND(mFdeH);
+
+		// Verfica que que la operacion d.AND*(!(F*H)) no sea cero
+		if (mDandFporHNegado.ANDporCERO()) {
+			Log.Instance().Escribir("RED", "NO se puede ejecutar el disparo: " + mDisparo.toString());
 			return false;
 		}
 
-		// Continuo operando
-		Matriz mIncidenciaxDisparo = (mIncidencia.mult(mMand.transpose())).transpose();
+		// Crea la matriz I*d.AND*(!(F*H))
+		Matriz mIncidenciaxDisparo = (mIncidencia.mult(mDandFporHNegado.transpose())).transpose();
+
+		// Almacena en la matriz nuevo marcado el resultado de
+		// Mi+I*d.AND*(!(F*H))
 		mNuevoMarcado = mNuevoMarcado.plus(mIncidenciaxDisparo);
 
-		// Me fijo si es posible el disparo
+		// Se fija si fue valido el disparo, en caso de que no imprimi mensaje
 		if (!mNuevoMarcado.isPos()) {
-			if (print) {
-				Log.Instance().Escribir("RED", "NO se puede ejecutar el disparo: " + mDisparo.toString());
-			}
+			Log.Instance().Escribir("RED", "NO se puede ejecutar el disparo: " + mDisparo.toString());
 			return false;
 		}
 
-		if (memoria) {
-			mMarcadoActual = mNuevoMarcado;
-
-			if (print) {
-				Log.Instance().Escribir("RED", "Se ejecuto el disparo: " + mDisparo.toString());
-			}
-			printEstados();
-		}
+		// Guarda el nuevo estado de la red e imprime los estados
+		// if (memoria) {
+		mMarcadoActual = mNuevoMarcado;
+		Log.Instance().Escribir("RED", "Se ejecuto el disparo: " + mDisparo.toString());
+		printEstados();
+		// }
 		return true;
 	}
 
-	public Matriz getMarcadoInicial() {
-		return mMarcadoInicial;
+	// CREA EL VECTOR F(Mi)
+	public Matriz crearVectorFdeMi() {
+		Matriz mVectorVi = new Matriz(mMarcadoInicial.getFilCount(), mMarcadoInicial.getColCount());
+		return mVectorVi.FdeMi(mMarcadoInicial);
 	}
 
-	public int[][] getNuevoMarcado() {
-		return mMarcadoActual.getDato();
-	}
-
-	public Matriz crearVectorVi() {
-		Matriz mMarcado = mMarcadoInicial;
-		Matriz mVectorVi = new Matriz(mMarcado.getFilCount(), mMarcado.getColCount());
-		for (int i = 0; i < mMarcado.getFilCount(); i++) {
-			for (int j = 0; j < mMarcado.getColCount(); j++) {
-				if (mMarcado.getVal(i, j) == 0) {
-					mVectorVi.setDato(i, j, 0);
-				} else {
-					mVectorVi.setDato(i, j, 1);
-				}
-			}
-		}
-		return mVectorVi;
-	}
-
+	// CREA F POR H
 	public Matriz crearFporH() {
-		Matriz oVectorVi = crearVectorVi();// es igual a la de Marcado Inicial
-		Matriz oH = mInhibidor;
-		Matriz oFdeH = oVectorVi.mult(oH);
-		Matriz aux = new Matriz(oFdeH.getFilCount(), oFdeH.getColCount());
-
-		// Niego la matriz oFdeH
-		for (int i = 0; i < aux.getFilCount(); i++) {
-			for (int j = 0; j < aux.getColCount(); j++) {
-				if (oFdeH.getVal(i, j) == 1) {
-					aux.setDato(i, j, 0);
-				} else {
-					aux.setDato(i, j, 1);
-				}
-			}
-		}
-		return aux;// devuelvo la negacion de oFdeH
+		Matriz mVectorVi = crearVectorFdeMi();
+		Matriz mFdeH = mVectorVi.mult(mInhibicion);
+		return mFdeH;
 	}
 
+	// DEVUELVE CUALES SON LAS TRANSICIONES SENSIBILIZADAS
 	public Matriz getSensibilizadas() {
+//		Matriz bup = mMarcadoActual;
 		Matriz mDisparoAux = new Matriz(1, mIncidencia.getColCount());
 		Matriz mSensibilizadas = new Matriz(1, mIncidencia.getColCount());
-		for (int i = 0; i < mSensibilizadas.getColCount(); i++) {
-			mSensibilizadas.setDato(0, i, 0);
-			mDisparoAux.setDato(0, i, 0);
-		}
+
+		mSensibilizadas.Clear();
+		mDisparoAux.Clear();
+
 		for (int i = 0; i < mDisparoAux.getColCount(); i++) {
 			mDisparoAux.setDato(0, i, 1);
-			if (ejecutar(mDisparoAux.getDato(), false)) {
+//			mMarcadoActual = bup;
+
+			if (ejecutar(mDisparoAux, true)) {
 				mSensibilizadas.setDato(0, i, 1);
 			}
-			mDisparoAux.setDato(0, i, 0);
+//			bup = mMarcadoActual;
+			mDisparoAux.Clear();
 		}
+
+		Log.Instance().Escribir("RED", "Transiciones Sensibilizadas: " + mSensibilizadas.toString());
 
 		return mSensibilizadas;
 	}
 
+	// DEVUELVE EL MARCADO INICIAL
+	public Matriz getMarcadoInicial() {
+		return mMarcadoInicial;
+	}
+
+	// DEVUELVE EL NUEVO MARCADO
+	public int[][] getNuevoMarcado() {
+		return mMarcadoActual.getDato();
+	}
+
+	// DEVUELVE LA CANTIDAD DE TRANSCICIONES QUE TIENE LA RED
 	public int getCantidadTransiciones() {
 		return mIncidencia.getColCount();
 	}
 
+	// IMPRIME LOS ESTADOS DE LA RED EN CIERTO MOMENTO
 	private void printEstados() {
-		if (print) {
-			Log.Instance().Escribir("RED", "PRINT ESTADOS");
-			Log.Instance().Escribir("RED", "Marcado Actual es " + mMarcadoActual.toString());
-			Log.Instance().Escribir("RED", "Transiciones Sensibilizadas: " + getSensibilizadas().toString());
-		}
+		// Log.Instance().Escribir("RED", "PRINT ESTADOS");
+		Log.Instance().Escribir("RED", "Marcado Actual es " + mMarcadoActual.toString());
+		// Log.Instance().Escribir("RED", "Transiciones Sensibilizadas: " +
+		// getSensibilizadas().toString());
 	}
 }

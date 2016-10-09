@@ -12,7 +12,7 @@ public class TestProcesador {
 
 	Lector miLector = new Lector("PrioridadSensores.xls", "AutomaticasSensores.xls", "arcosInibidores.html",
 			"TiemposSensores.xls");
-	HashMap<String, int[][]> datos = miLector.LeerHTML();
+	HashMap<String, Matriz> datos = miLector.LeerHTML();
 
 	@Test
 	public void testDispararNOSensibilizada() {
@@ -23,15 +23,14 @@ public class TestProcesador {
 		Matriz Disparo = new Matriz(iDisparo);
 		Matriz Esperada = new Matriz(iEsperada);
 
-		RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), null);
-		oRed.ejecutar(iDisparo, false);
+		RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"));
+		oRed.ejecutar(Disparo, true);
 
-		Matriz oEsperada = new Matriz(iEsperada);
 		Matriz oReal = new Matriz(oRed.getNuevoMarcado());
 
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < oReal.getColCount(); j++) {
-				assertEquals(oEsperada.getVal(i, j), oReal.getVal(i, j));
+				assertEquals(Esperada.getVal(i, j), oReal.getVal(i, j));
 			}
 		}
 	}
@@ -45,17 +44,17 @@ public class TestProcesador {
 		Matriz Disparo = new Matriz(iDisparo);
 		Matriz Esperada = new Matriz(iEsperada);
 
-		RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), null);
-		oRed.ejecutar(iDisparo, true);
+		RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"));
+		oRed.ejecutar(Disparo, true);
 
-		Matriz oEsperada = new Matriz(iEsperada);
-		Matriz oReal = new Matriz(oRed.getNuevoMarcado());
+		Matriz mReal = new Matriz(oRed.getNuevoMarcado());
 
 		for (int i = 0; i < 1; i++) {
-			for (int j = 0; j < oReal.getColCount(); j++) {
-				assertEquals(oEsperada.getVal(i, j), oReal.getVal(i, j));
+			for (int j = 0; j < mReal.getColCount(); j++) {
+				assertEquals(Esperada.getVal(i, j), mReal.getVal(i, j));
 			}
 		}
 	}
+
 
 }

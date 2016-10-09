@@ -1,6 +1,11 @@
 package MinaCarbon;
 
+import java.util.HashMap;
+
+import Auxiliar.Lector;
+import Auxiliar.Matriz;
 import ProcesadorPetri.Monitor;
+import ProcesadorPetri.RdP;
 
 public class Main {
 
@@ -16,7 +21,6 @@ public class Main {
 
 		hiloA.start();
 		hiloB.start();
-
 	}
 
 }

@@ -189,7 +189,33 @@ public class Matriz {
 			}
 		}
 		return (aux == 0);
-
 	}
 
+	public Matriz FdeMi(Matriz A) {
+		Matriz mVectorVi = new Matriz(A.getFilCount(), A.getColCount());
+		for (int i = 0; i < A.getFilCount(); i++) {
+			for (int j = 0; j < A.getColCount(); j++) {
+				if (A.getVal(i, j) == 0) {
+					mVectorVi.setDato(i, j, 0);
+				} else {
+					mVectorVi.setDato(i, j, 1);
+				}
+			}
+		}
+		return mVectorVi;
+	}
+
+	public Matriz Negacion() {
+		Matriz Negacion = new Matriz(this.getFilCount(), this.getColCount());
+		for (int i = 0; i < this.getFilCount(); i++) {
+			for (int j = 0; j < this.getColCount(); j++) {
+				if (this.getVal(i, j) == 1) {
+					Negacion.setDato(i, j, 0);
+				} else {
+					Negacion.setDato(i, j, 1);
+				}
+			}
+		}
+		return Negacion;// devuelvo la negacion de la matriz original
+	}
 }
