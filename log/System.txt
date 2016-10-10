@@ -1,8 +1,13 @@
-1 > 10/10/16 19:27:13 - RED: NO se puede ejecutar el disparo:  1  0  0  0  
-2 > 10/10/16 19:27:13 - RED: Transiciones Sensibilizadas:  0  1  0  0  
-3 > 10/10/16 19:27:13 - RED: Se ejecuto el disparo:  0  1  0  0  
-4 > 10/10/16 19:27:13 - RED: Marcado Actual es  1  0  0  0  1  
-5 > 10/10/16 19:27:13 - RED: Transiciones Sensibilizadas:  1  0  0  1  
-6 > 10/10/16 19:27:13 - RED: Se ejecuto el disparo:  0  0  0  1  
-7 > 10/10/16 19:27:13 - RED: Marcado Actual es  1  0  1  1  0  
-8 > 10/10/16 19:27:13 - RED: Transiciones Sensibilizadas:  0  1  0  0  
+1 > 10/10/16 20:43:44 - RED: Transiciones Sensibilizadas:  0  0  1  0  0  1  
+2 > 10/10/16 20:43:44 - RED: Se ejecuto el disparo:  0  0  1  0  0  0  
+3 > 10/10/16 20:43:44 - RED: Marcado Actual es  0  0  0  1  0  1  1  0  
+4 > 10/10/16 20:43:44 - RED: Se ejecuto el disparo:  0  0  0  0  0  1  
+5 > 10/10/16 20:43:44 - RED: Marcado Actual es  1  0  0  1  0  0  1  1  
+6 > 10/10/16 20:43:44 - RED: Se ejecuto el disparo:  1  0  0  0  0  0  
+7 > 10/10/16 20:43:44 - RED: Marcado Actual es  0  1  0  1  0  0  0  1  
+8 > 10/10/16 20:43:44 - RED: NO se puede ejecutar el disparo:  0  0  0  1  0  0  
+9 > 10/10/16 20:43:44 - RED: Se ejecuto el disparo:  0  0  0  0  0  1  
+10 > 10/10/16 20:43:44 - RED: Marcado Actual es  1  0  1  0  0  0  0  1  
+11 > 10/10/16 20:43:44 - RED: NO se puede ejecutar el disparo:  1  0  0  0  0  0  
+12 > 10/10/16 20:43:44 - RED: Se ejecuto el disparo:  0  0  1  0  0  0  
+13 > 10/10/16 20:43:44 - RED: Marcado Actual es  0  0  0  1  0  1  1  0  

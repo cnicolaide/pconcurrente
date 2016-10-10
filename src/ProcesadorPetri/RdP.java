@@ -110,8 +110,8 @@ public class RdP {
 	}
 
 	// DEVUELVE EL NUEVO MARCADO
-	public int[][] getNuevoMarcado() {
-		return mMarcadoActual.getDato();
+	public Matriz getNuevoMarcado() {
+		return mMarcadoActual;
 	}
 
 	// DEVUELVE LA CANTIDAD DE TRANSCICIONES QUE TIENE LA RED
