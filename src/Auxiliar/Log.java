@@ -34,11 +34,9 @@ public class Log {
 	}
 
 	public void Escribir(String sTitulo, String sTexto) {
-		// JOptionPane.showMessageDialog(null, sTexto,sTitulo,
-		// JOptionPane.ERROR_MESSAGE);
 		contador++;
 		sTitulo = sTitulo + ": " + sTexto;
-		String sTextoFinal = "\r\n" + contador + " > " + sd.format(new Date()) + " - " + sTitulo;
+		String sTextoFinal = "" + contador + " > " + sd.format(new Date()) + " - " + sTitulo;
 		System.out.println(sTextoFinal);
 		File fichero = new File(System.getProperty("user.dir") + "\\log\\" + sArchivo);
 		PrintWriter pw = null;

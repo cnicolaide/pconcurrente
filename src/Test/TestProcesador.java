@@ -33,6 +33,7 @@ public class TestProcesador {
 				assertEquals(Esperada.getVal(i, j), oReal.getVal(i, j));
 			}
 		}
+
 	}
 
 	@Test
@@ -45,7 +46,10 @@ public class TestProcesador {
 		Matriz Esperada = new Matriz(iEsperada);
 
 		RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"));
+		
+		oRed.getSensibilizadas();
 		oRed.ejecutar(Disparo, true);
+		oRed.getSensibilizadas();
 
 		Matriz mReal = new Matriz(oRed.getNuevoMarcado());
 
@@ -54,7 +58,12 @@ public class TestProcesador {
 				assertEquals(Esperada.getVal(i, j), mReal.getVal(i, j));
 			}
 		}
-	}
 
+		int[][] iDisparo2 = { { 0, 0, 0, 1 } };
+		Matriz Disparo2 = new Matriz(iDisparo2);
+		oRed.ejecutar(Disparo2, true);
+		
+		oRed.getSensibilizadas();
+	}
 
 }
