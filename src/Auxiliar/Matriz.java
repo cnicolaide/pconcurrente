@@ -48,6 +48,7 @@ public class Matriz {
 		return columna;
 	}
 
+	// COLOCA CEROS EN TODOS LOS ELEMENTOS DE LA PATRIZ
 	public void Clear() {
 		for (int i = 0; i < this.getFilCount(); i++) {
 			for (int j = 0; j < this.getColCount(); j++) {
@@ -56,6 +57,7 @@ public class Matriz {
 		}
 	}
 
+	// VERIFICA SI ES POSIBLE
 	public boolean isPos() {
 		for (int i = 0; i < this.getFilCount(); i++) {
 			for (int j = 0; j < this.getColCount(); j++) {
@@ -67,7 +69,7 @@ public class Matriz {
 		return true;
 	}
 
-	// create and return the transpose of the invoking matrix
+	// CREA Y DEVUELVE LA MATRIZ TRANSPUESTA DE LA MATRIZ QUE LO INVOCA
 	public Matriz transpose() {
 		Matriz A = new Matriz(this.getColCount(), this.getFilCount());
 		for (int i = 0; i < this.getFilCount(); i++) {
@@ -79,6 +81,7 @@ public class Matriz {
 	}
 
 	@Override
+	// IMPRIME LA MATRIZ EN FILAS Y COLUMNAS
 	public String toString() {
 		String texto = "";
 		for (int i = 0; i < this.getFilCount(); i++) {
@@ -91,7 +94,7 @@ public class Matriz {
 		return texto;
 	}
 
-	// return C = A + B
+	// SUMA DOS MATRICES C = A + B
 	public Matriz plus(Matriz B) {
 		Matriz A = this;
 		if (B.getFilCount() != A.getFilCount() || B.getColCount() != A.getColCount()) {
@@ -106,7 +109,7 @@ public class Matriz {
 		return C;
 	}
 
-	// return C = A - B
+	// RESTA DOS MATRICES C = A - B
 	public Matriz minus(Matriz B) {
 		Matriz A = this;
 		if (B.getFilCount() != A.getFilCount() || B.getColCount() != A.getColCount()) {
@@ -121,7 +124,7 @@ public class Matriz {
 		return C;
 	}
 
-	// return C = A * B
+	// MULTIPLICA DOS MATRICES C = A * B
 	public Matriz mult(Matriz B) {
 		Matriz A = this;
 		if (A.getColCount() != B.getFilCount()) {
@@ -138,6 +141,7 @@ public class Matriz {
 		return C;
 	}
 
+	// SETEA LA IDENTIDAD DE UNA MATRIZ
 	public void setIdentity() {
 		for (int i = 0; i < dato.length; i++) {
 			dato[i][i] = 1;

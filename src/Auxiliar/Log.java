@@ -10,21 +10,21 @@ import javax.swing.JOptionPane;
 
 public class Log {
 
-	private String sNombre;
 	private String sArchivo;
 	private static Log oFicheros = null;
 	private SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 	private int contador = 0;
 
 	private Log() {
-		this.sNombre = "Redes de Petri Temporales";
 		this.sArchivo = "System.txt";
 		File fichero = new File(System.getProperty("user.dir") + "\\log\\" + sArchivo);
+		// Asegura escribir un log nuevo por cada corrida
 		if (fichero.exists()) {
 			fichero.delete();
 		}
 	}
 
+	// ASEGURA CON EL PATRON SINGLETON, QUE SOLO EXISTA UNA INSTANCIA DE LOG
 	public static Log Instance() {
 		if (oFicheros == null) {
 			oFicheros = new Log();
@@ -32,35 +32,26 @@ public class Log {
 		return oFicheros;
 	}
 
+	// IMPRIME EL LOG POR CONSOLA Y TAMBIEN LO GUARDA EN UN ARCHIVO DE TEXTO
+	// PLANO
 	public void Escribir(String sTitulo, String sTexto) {
 		contador++;
-		sTitulo = sTitulo + ": " + sTexto;
-		String sTextoFinal = "" + contador + " > " + sd.format(new Date()) + " - " + sTitulo;
+		String sTextoFinal = contador + " > " + sd.format(new Date()) + " - " + sTitulo + ": " + sTexto;
 		System.out.println(sTextoFinal);
 		File fichero = new File(System.getProperty("user.dir") + "\\log\\" + sArchivo);
 		BufferedWriter bw = null;
 		try {
 			if (fichero.exists()) {
 				bw = new BufferedWriter(new FileWriter(fichero, true));
-				// pw = new PrintWriter(fichero,true);
 			} else {
 				bw = new BufferedWriter(new FileWriter(fichero, true));
-				// pw = new PrintWriter(fichero);
 			}
 			bw.write(sTextoFinal);
 			bw.close();
-			// pw.close();
 		} catch (IOException ex) {
 			System.out.println(ex);
 			JOptionPane.showMessageDialog(null, ex, "Escribir", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
-	public String getsNombre() {
-		return sNombre;
-	}
-
-	public String getsArchivo() {
-		return sArchivo;
-	}
 }

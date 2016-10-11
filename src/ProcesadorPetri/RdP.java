@@ -23,6 +23,7 @@ public class RdP {
 	// Mi+I*d.AND*(!(F*H))
 	public boolean ejecutar(int posicion, boolean memoria) {
 
+		// Transforma la posicion que recibe en un vector de disparo
 		Matriz mDisparo = crearVectorDisparo(posicion);
 
 		// Carga en el marcado actual, los valores iniciales para operar
@@ -37,7 +38,7 @@ public class RdP {
 		// Verfica que que la operacion d.AND*(!(F*H)) no sea cero
 		if (mDandFporHNegado.ANDporCERO()) {
 			if (memoria)
-				Log.Instance().Escribir("RED", "NO se puede ejecutar el disparo: " + mDisparo.toString());
+				Log.Instance().Escribir("RdP", "No se puede ejecutar el disparo: " + mDisparo.toString());
 			return false;
 		}
 
@@ -51,7 +52,7 @@ public class RdP {
 		// Se fija si fue valido el disparo, en caso de que no imprimi mensaje
 		if (!mMarcadoActual.isPos()) {
 			if (memoria)
-				Log.Instance().Escribir("RED", "NO se puede ejecutar el disparo: " + mDisparo.toString());
+				Log.Instance().Escribir("RdP", "No se puede ejecutar el disparo: " + mDisparo.toString());
 			return false;
 		}
 
@@ -60,7 +61,7 @@ public class RdP {
 		// para obtener las transiciones sensibilizadas
 		if (memoria) {
 			mMarcadoInicial = mMarcadoActual;
-			Log.Instance().Escribir("RED", "Se ejecuto el disparo: " + mDisparo.toString());
+			Log.Instance().Escribir("RdP", "Se ejecuto el disparo: " + mDisparo.toString());
 			printEstados();
 		} else {
 			mMarcadoActual = mMarcadoInicial;
@@ -105,7 +106,7 @@ public class RdP {
 			}
 		}
 
-		Log.Instance().Escribir("RED", "Transiciones Sensibilizadas: " + mSensibilizadas.toString());
+		Log.Instance().Escribir("RdP", "Transiciones Sensibilizadas: " + mSensibilizadas.toString());
 
 		return mSensibilizadas;
 	}
@@ -127,6 +128,6 @@ public class RdP {
 
 	// IMPRIME LOS ESTADOS DE LA RED EN CIERTO MOMENTO
 	private void printEstados() {
-		Log.Instance().Escribir("RED", "Marcado Actual es " + mMarcadoActual.toString());
+		Log.Instance().Escribir("RdP", "Marcado Actual: " + mMarcadoActual.toString());
 	}
 }

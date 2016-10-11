@@ -68,6 +68,7 @@ public class Lector {
 		return ldatos;
 	}
 
+	// PARSEA LA MATRIZ DE INICDENCIA
 	private void obtenerIncidencia() {
 		Element row = tableRowElements.get(iIncidencia + 1);
 		String[] datos = row.text().split(" ");
@@ -101,6 +102,7 @@ public class Lector {
 		ldatos.put("incidencia", mat);
 	}
 
+	// PARSEA LA MATRIZ DE INHIBICION 
 	private void obtenerInhibicion() {
 		Element row = tableRowElements.get(iInhibicion + 1);
 		String[] datos = row.text().split(" ");
@@ -134,6 +136,7 @@ public class Lector {
 		ldatos.put("inhibicion", mat);
 	}
 
+	// PARSEA EL MARCADO DE LA RED
 	private void obtenerMarcado() {
 		Element row = tableRowElements.get(iMarcado[0]);
 		Elements rowItems = row.select("td");
