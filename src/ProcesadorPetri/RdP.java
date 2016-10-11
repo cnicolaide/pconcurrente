@@ -21,7 +21,9 @@ public class RdP {
 
 	// DISPARA UNA TRANSICION DE LA RED DE PETRI UTILIZANDO LA FORMULA: Mi+1 =
 	// Mi+I*d.AND*(!(F*H))
-	public boolean ejecutar(Matriz mDisparo, boolean memoria) {
+	public boolean ejecutar(int posicion, boolean memoria) {
+
+		Matriz mDisparo = crearVectorDisparo(posicion);
 
 		// Carga en el marcado actual, los valores iniciales para operar
 		mMarcadoActual = mMarcadoInicial;
@@ -72,6 +74,14 @@ public class RdP {
 		return mVectorVi.FdeMi(mMarcadoActual);
 	}
 
+	// CREA EL VECTOR DE DISPARO
+	public Matriz crearVectorDisparo(int pos) {
+		Matriz mDisparo = new Matriz(1, mIncidencia.getColCount());
+		mDisparo.Clear();
+		mDisparo.setDato(0, pos, 1);
+		return mDisparo;
+	}
+
 	// CREA F POR H
 	public Matriz crearFporH() {
 		Matriz mVectorVi = crearVectorFdeMi();
@@ -81,22 +91,18 @@ public class RdP {
 
 	// DEVUELVE CUALES SON LAS TRANSICIONES SENSIBILIZADAS
 	public Matriz getSensibilizadas() {
-		Matriz mDisparoAux = new Matriz(1, mIncidencia.getColCount());
 		Matriz mSensibilizadas = new Matriz(1, mIncidencia.getColCount());
 
 		// Crea los vectores de prueba en cero
 		mSensibilizadas.Clear();
-		mDisparoAux.Clear();
 
 		// Prueba cada una de las transiciones, llamando al metodo ejecutar con
 		// el flag de memoria en false asi este no guarda el nuevo estado en
 		// caso de estar sensibilizada
-		for (int i = 0; i < mDisparoAux.getColCount(); i++) {
-			mDisparoAux.setDato(0, i, 1);
-			if (ejecutar(mDisparoAux, false)) {
+		for (int i = 0; i < mIncidencia.getColCount(); i++) {
+			if (ejecutar(i, false)) {
 				mSensibilizadas.setDato(0, i, 1);
 			}
-			mDisparoAux.Clear();
 		}
 
 		Log.Instance().Escribir("RED", "Transiciones Sensibilizadas: " + mSensibilizadas.toString());

@@ -12,11 +12,11 @@ public class Hilo implements Runnable {
 	}
 
 	public void Disparar() {
-		try {
-			miMonitor.hacerAlgo();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		try {
+//////			miMonitor.hacerAlgo();
+//////		} catch (InterruptedException e) {
+////			e.printStackTrace();
+////		}
 	}
 
 	@Override

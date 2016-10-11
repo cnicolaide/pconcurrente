@@ -17,13 +17,11 @@ public class TestProcesador {
 	@Test
 	public void testDispararNOSensibilizada() {
 
-		int[][] iDisparo = { { 0, 0, 0, 1, 0, 0 } };
 		int[][] iEsperada = { { 0, 0, 1, 0, 0, 1, 0, 0 } };
 
-		Matriz mDisparo = new Matriz(iDisparo);
 		Matriz mEsperada = new Matriz(iEsperada);
 
-		oRed.ejecutar(mDisparo, true);
+		oRed.ejecutar(3, true);
 
 		Matriz mReal = oRed.getMarcadoInicial();
 
@@ -34,13 +32,11 @@ public class TestProcesador {
 	@Test
 	public void testDispararSensibilizada() {
 
-		int[][] iDisparo = { { 0, 0, 1, 0, 0, 0 } };
 		int[][] iEsperada = { { 0, 0, 0, 1, 0, 1, 1, 0 } };
 
-		Matriz mDisparo = new Matriz(iDisparo);
 		Matriz mEsperada = new Matriz(iEsperada);
 
-		oRed.ejecutar(mDisparo, true);
+		oRed.ejecutar(2, true);
 
 		Matriz mReal = oRed.getNuevoMarcado();
 
@@ -50,20 +46,13 @@ public class TestProcesador {
 	@Test
 	public void testDispararSecuenciaCorrecta() {
 
-		int[][] iDisparo = { { 0, 0, 1, 0, 0, 0 } };
-		int[][] iDisparo2 = { { 0, 0, 0, 0, 0, 1 } };
-		int[][] iDisparo3 = { { 1, 0, 0, 0, 0, 0 } };
 		int[][] iEsperada = { { 0, 1, 0, 1, 0, 0, 0, 1 } };
-
-		Matriz mDisparo = new Matriz(iDisparo);
-		Matriz mDisparo2 = new Matriz(iDisparo2);
-		Matriz mDisparo3 = new Matriz(iDisparo3);
 
 		Matriz mEsperada = new Matriz(iEsperada);
 
-		oRed.ejecutar(mDisparo, true);
-		oRed.ejecutar(mDisparo2, true);
-		oRed.ejecutar(mDisparo3, true);
+		oRed.ejecutar(2, true);
+		oRed.ejecutar(5, true);
+		oRed.ejecutar(0, true);
 
 		Matriz mReal = oRed.getNuevoMarcado();
 
@@ -74,20 +63,15 @@ public class TestProcesador {
 	@Test
 	public void testDispararSecuenciaIncorrecta() {
 
-		int[][] iDisparo = { { 0, 0, 0, 0, 0, 1 } };
-		int[][] iDisparo2 = { { 1, 0, 0, 0, 0, 0 } };
 		int[][] iEsperada = { { 1, 0, 1, 0, 0, 0, 0, 1 } };
-
-		Matriz mDisparo = new Matriz(iDisparo);
-		Matriz mDisparo2 = new Matriz(iDisparo2);
 
 		Matriz mEsperada = new Matriz(iEsperada);
 
-		oRed.ejecutar(mDisparo, true);
+		oRed.ejecutar(5, true);
 
 		Matriz mReal = oRed.getNuevoMarcado();
 
-		oRed.ejecutar(mDisparo2, true);
+		oRed.ejecutar(0, true);
 
 		comparar(mEsperada, mReal);
 

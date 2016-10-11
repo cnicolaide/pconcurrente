@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -39,7 +38,6 @@ public class Log {
 		String sTextoFinal = "" + contador + " > " + sd.format(new Date()) + " - " + sTitulo;
 		System.out.println(sTextoFinal);
 		File fichero = new File(System.getProperty("user.dir") + "\\log\\" + sArchivo);
-		PrintWriter pw = null;
 		BufferedWriter bw = null;
 		try {
 			if (fichero.exists()) {

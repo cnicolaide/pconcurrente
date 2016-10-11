@@ -1,41 +1,30 @@
 package ProcesadorPetri;
 
-import MinaCarbon.Hilo;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.Semaphore;
 
 public class Monitor {
+	RdP rdp;
+	Semaphore mutex;
 
-	private Mutex Mutex;
-	private RdP RDP;
-
-	public Monitor() {
-		Mutex = new Mutex();
-		// RDP = new Red ();
-
+	public Monitor(RdP rdp) {
+		this.rdp = rdp;
+		mutex = new Semaphore(1);
 	}
 
-	public void hacerAlgo() throws InterruptedException {
-		if (Mutex.acquire() == 0)
-			hacerAlgo2();
-		else
-			dormir();
-	}
+	public void ejecutar(int transicion) throws InterruptedException {
+		mutex.acquire();
 
-	synchronized public void dormir() throws InterruptedException {
-		System.out.println("Me mandaron a dormir 10 seg");
-		wait();
-	}
+//		while (!rdp.ejecutar(transicion)) {
+//			mutex.release();
+//			mutex.wait();
+//		}
 
-	public void hacerAlgo2() {
-		Mutex.setKey();
-		System.out.println("Estoy haciendo algo");
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Mutex.release();
-		System.out.println("Libere la exclusion");
+		rdp.getSensibilizadas();
+
+		mutex.release();
 	}
 
 }
