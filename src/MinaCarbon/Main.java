@@ -27,6 +27,6 @@ public class Main {
 
 		hiloA.start();
 		hiloB.start();
+		System.err.println("ASDAD");
 	}
-
 }
