@@ -1,32 +1,31 @@
 package ProcesadorPetri;
 
-import java.util.concurrent.Semaphore;
-
 public class Monitor {
 	RdP oRed;
 	Colas oCola;
-	Semaphore mutex, semaforo;
+	Semaforo mutex, semaforo;
 
 	public Monitor(RdP oRed, Colas oCola) {
 		this.oRed = oRed;
 		this.oCola = oCola;
-		mutex = new Semaphore(1);
-		semaforo = new Semaphore(0);
+		mutex = new Semaforo(1);
+		semaforo = new Semaforo(0);
 	}
 
 	public void ejecutar(int transicion) throws InterruptedException {
-		mutex.acquire();
+		mutex.WAIT();
 
 		while (!oRed.ejecutar(transicion, true)) {
-			mutex.release();
-			semaforo.acquire();
+			mutex.SIGNAL();
+			semaforo.WAIT();
 			// oCola.encolar(transicion);
-			mutex.acquire();
+			mutex.WAIT();
+
 		}
 
-		mutex.release();
-		semaforo.release();
-		
+		mutex.SIGNAL();
+		semaforo.SIGNAL();
+
 		// int i = 0;
 		//
 		// while (!oCola.desencolar(i) && i < oCola.getColas().length) {

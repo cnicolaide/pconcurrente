@@ -5,7 +5,8 @@ import ProcesadorPetri.Monitor;
 public class Hilo implements Runnable {
 
 	private Monitor oMonitor;
-	int id = 0;
+	int id;
+	int secuencias[][] = { { 5, 0, 1, 2, 3, 4 }, { 2, 3, 4, 5, 0, 1 } };
 
 	public Hilo(Monitor oMonitor, int id) {
 		this.oMonitor = oMonitor;
@@ -15,47 +16,16 @@ public class Hilo implements Runnable {
 	@Override
 	public void run() {
 		try {
-
 			while (true) {
-				
-				if (id == 1) {
-					System.out.println("SOY EL HILO: " + id);
-					oMonitor.ejecutar(5);
-					System.out.println("SOY EL HILO: " + id);
-					oMonitor.ejecutar(0);
-					System.out.println("SOY EL HILO: " + id);
-					oMonitor.ejecutar(1);
-					System.out.println("SOY EL HILO: " + id);
-					oMonitor.ejecutar(2);
-					System.out.println("SOY EL HILO: " + id);
-					oMonitor.ejecutar(3);
-					System.out.println("SOY EL HILO: " + id);
-					oMonitor.ejecutar(4);
-					Thread.sleep(5000);
-				} else {
-					System.out.println("SOY EL HILO: " + id);
-					oMonitor.ejecutar(2);
-					System.out.println("SOY EL HILO: " + id);
-					oMonitor.ejecutar(3);
-					System.out.println("SOY EL HILO: " + id);
-					oMonitor.ejecutar(4);
-					System.out.println("SOY EL HILO: " + id);
-					oMonitor.ejecutar(5);
-					System.out.println("SOY EL HILO: " + id);
-					oMonitor.ejecutar(0);
-					System.out.println("SOY EL HILO: " + id);
-					oMonitor.ejecutar(1);
-					Thread.sleep(5000);
+				for (int j = 0; j < 6; j++) {
+					System.out.println("\nSOY EL CARRO: " + id);
+					oMonitor.ejecutar(secuencias[id][j]);
+					Thread.sleep(1000);
 				}
-				
 			}
 
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Me pusieron a correr");
-
 	}
-
 }

@@ -19,14 +19,13 @@ public class Main {
 		RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"));
 		Monitor miMonitor = new Monitor(miRed, miCola);
 
-		Hilo A = new Hilo(miMonitor, 1);
-		Hilo B = new Hilo(miMonitor, 2);
+		Hilo A = new Hilo(miMonitor, 0);
+		Hilo B = new Hilo(miMonitor, 1);
 
 		Thread hiloA = new Thread(A);
 		Thread hiloB = new Thread(B);
 
 		hiloA.start();
 		hiloB.start();
-		System.err.println("ASDAD");
 	}
 }
