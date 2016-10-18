@@ -1,5 +1,7 @@
 package ProcesadorPetri;
 
+import Auxiliar.Matriz;
+
 public class Monitor {
 	RdP oRed;
 	Colas oCola;
@@ -18,20 +20,24 @@ public class Monitor {
 		while (!oRed.ejecutar(transicion, true)) {
 			mutex.SIGNAL();
 			semaforo.WAIT();
-			// oCola.encolar(transicion);
 			mutex.WAIT();
 
 		}
-
+		
+		Matriz vs = oRed.getSensibilizadas();
+		Matriz vc = oCola.quienesEstan();
+		
+		Matriz m = vs.AND(vc);
+		
+		System.err.println("VS: ------------------------------ \n" + vs.toString());
+		System.err.println("VC: ------------------------------ \n" + vc.toString());
+		System.err.println("M: ------------------------------ \n" + m.toString());
+		
 		mutex.SIGNAL();
-		semaforo.SIGNAL();
-
-		// int i = 0;
-		//
-		// while (!oCola.desencolar(i) && i < oCola.getColas().length) {
-		// i++;
-		// }
-
+		
+		if (semaforo.getBloqueados() > 0) {
+			semaforo.SIGNAL();
+		}
 	}
 
 }

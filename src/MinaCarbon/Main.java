@@ -19,8 +19,8 @@ public class Main {
 		RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"));
 		Monitor miMonitor = new Monitor(miRed, miCola);
 
-		Hilo A = new Hilo(miMonitor, 0);
-		Hilo B = new Hilo(miMonitor, 1);
+		Carro A = new Carro(miMonitor, 0);
+		Carro B = new Carro(miMonitor, 1);
 
 		Thread hiloA = new Thread(A);
 		Thread hiloB = new Thread(B);

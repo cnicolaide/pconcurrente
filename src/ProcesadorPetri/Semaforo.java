@@ -1,7 +1,7 @@
 package ProcesadorPetri;
 
 public class Semaforo {
-	int contador = 0;
+	private int contador = 0, bloqueados = 0;
 
 	Semaforo(int v) {
 		contador = v;
@@ -10,13 +10,14 @@ public class Semaforo {
 	synchronized public void WAIT() {
 		while (contador == 0) {
 			try {
+				bloqueados = 1;
 				wait();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		contador--;
+		contador = 0;
+		bloqueados = 0;
 	}
 
 	synchronized public void SIGNAL() {
@@ -24,8 +25,12 @@ public class Semaforo {
 		notify();
 	}
 
-	synchronized public int getEstado() {
+	synchronized public int getContador() {
 		return contador;
+	}
+
+	synchronized public int getBloqueados() {
+		return bloqueados;
 	}
 
 }

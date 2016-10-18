@@ -2,13 +2,13 @@ package MinaCarbon;
 
 import ProcesadorPetri.Monitor;
 
-public class Hilo implements Runnable {
+public class Carro implements Runnable {
 
 	private Monitor oMonitor;
 	int id;
 	int secuencias[][] = { { 5, 0, 1, 2, 3, 4 }, { 2, 3, 4, 5, 0, 1 } };
 
-	public Hilo(Monitor oMonitor, int id) {
+	public Carro(Monitor oMonitor, int id) {
 		this.oMonitor = oMonitor;
 		this.id = id;
 	}
@@ -18,9 +18,10 @@ public class Hilo implements Runnable {
 		try {
 			while (true) {
 				for (int j = 0; j < 6; j++) {
+					Thread.sleep(100 * (id+1));
 					System.out.println("\nSOY EL CARRO: " + id);
 					oMonitor.ejecutar(secuencias[id][j]);
-					Thread.sleep(1000);
+					Thread.sleep(1000 * (id+1));
 				}
 			}
 

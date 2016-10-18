@@ -1,43 +1,42 @@
 package ProcesadorPetri;
 
-import java.util.concurrent.Semaphore;
+import Auxiliar.Matriz;
 
 public class Colas {
-	Semaphore[] arreglosemaforos;
+	Semaforo[] arreglosemaforos;
 
 	public Colas(int tamaño) {
-		arreglosemaforos = new Semaphore[tamaño];
+		arreglosemaforos = new Semaforo[tamaño];
 
 		for (int i = 0; i < tamaño; i++) {
-			arreglosemaforos[i] = new Semaphore(1);
+			arreglosemaforos[i] = new Semaforo(1);
 		}
 	}
 
 	public boolean desencolar(int i) throws InterruptedException {
 		if (arreglosemaforos[i] != null) {
-			arreglosemaforos[i].release();
+			arreglosemaforos[i].SIGNAL();
 			return true;
 		}
 		return false;
 	}
 
-	public int[] getColas() {
-		int[] arreglo = new int[arreglosemaforos.length];
+	public Matriz quienesEstan() {
+		Matriz vc = new Matriz(1, arreglosemaforos.length);
+		vc.Clear();
 
 		for (int i = 0; i < arreglosemaforos.length; i++) {
-			if (arreglosemaforos[i] == null) {
-				arreglo[i] = 1;
-			} else if (arreglosemaforos[i].availablePermits() == 0) {
-				arreglo[i] = 1;
+			if (arreglosemaforos[i].getContador() == 0) {
+				vc.setDato(0, i, 1);
 			}
 		}
 
-		return arreglo;
+		return vc;
 	}
 
 	public void encolar(int transicion) throws InterruptedException {
 		if (arreglosemaforos[transicion] != null) {
-			arreglosemaforos[transicion].acquire();
+			arreglosemaforos[transicion].WAIT();
 		}
 	}
 
