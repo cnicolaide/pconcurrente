@@ -3,7 +3,7 @@ package ProcesadorPetri;
 import Auxiliar.Matriz;
 
 public class Colas {
-	Semaforo[] arreglosemaforos;
+	private Semaforo[] arreglosemaforos;
 
 	public Colas(int tamaño) {
 		arreglosemaforos = new Semaforo[tamaño];

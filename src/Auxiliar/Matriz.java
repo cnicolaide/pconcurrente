@@ -2,7 +2,7 @@ package Auxiliar;
 
 public class Matriz {
 
-	int[][] dato;
+	private int[][] dato;
 
 	public Matriz(int fil, int col) {
 		dato = new int[fil][col];

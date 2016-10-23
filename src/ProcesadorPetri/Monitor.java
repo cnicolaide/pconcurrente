@@ -3,9 +3,9 @@ package ProcesadorPetri;
 import Auxiliar.Matriz;
 
 public class Monitor {
-	RdP oRed;
-	Colas oCola;
-	Semaforo mutex, semaforo;
+	private RdP oRed;
+	private Colas oCola;
+	private Semaforo mutex, semaforo;
 
 	public Monitor(RdP oRed, Colas oCola) {
 		this.oRed = oRed;
@@ -29,9 +29,9 @@ public class Monitor {
 		
 		Matriz m = vs.AND(vc);
 		
-		System.err.println("VS: ------------------------------ \n" + vs.toString());
-		System.err.println("VC: ------------------------------ \n" + vc.toString());
-		System.err.println("M: ------------------------------ \n" + m.toString());
+//		System.err.println("VS: ------------------------------ \n" + vs.toString());
+//		System.err.println("VC: ------------------------------ \n" + vc.toString());
+//		System.err.println("M: ------------------------------ \n" + m.toString());
 		
 		mutex.SIGNAL();
 		
