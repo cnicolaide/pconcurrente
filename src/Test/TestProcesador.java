@@ -12,9 +12,9 @@ public class TestProcesador {
 
 	// Lee las matrices de marcado, inicidencia e inhibicion desde el archivo
 	// HTML exportado en PIPE
-	Lector miLector = new Lector("carros.html");
-	HashMap<String, Matriz> datos = miLector.LeerHTML();
-	RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"));
+	private Lector miLector = new Lector("carros.html");
+	private HashMap<String, Matriz> datos = miLector.LeerHTML();
+	private RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"));
 
 	// PRUEBA DISPARO DE TRANSICION NO SENSIBILIZADA
 	@Test

@@ -20,7 +20,7 @@ public class Main {
 
 		// Crea la cola y el monitor
 		Colas miCola = new Colas(6);
-		Monitor miMonitor = new Monitor(miRed, miCola);
+		Monitor miMonitor = Monitor.getInstance(miRed, miCola);
 
 		int secuenciaA[] = { 5, 0, 1, 2, 3, 4 };
 		int secuenciaB[] = { 2, 3, 4, 5, 0, 1 };
