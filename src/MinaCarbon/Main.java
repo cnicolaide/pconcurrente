@@ -12,7 +12,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// Lee las matrices de marcado, inicidencia e inhibicion desde el
-		// archivo
+		// archivo 
 		// HTML exportado en PIPE
 		Lector miLector = new Lector("carros.html");
 		HashMap<String, Matriz> datos = miLector.LeerHTML();

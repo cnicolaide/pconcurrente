@@ -7,7 +7,7 @@ public class Monitor {
 	private Colas oCola;
 	private Semaforo mutex, semaforo;
 	private static Monitor instance = null;
-
+ 
 	// CONSTRUCTOR DE LA CLASE MONITOR
 	protected Monitor(RdP oRed, Colas oCola) {
 		this.oRed = oRed;
@@ -27,14 +27,14 @@ public class Monitor {
 	public void ejecutar(int transicion) throws InterruptedException {
 		mutex.WAIT();
 
-		while (!oRed.ejecutar(transicion, true)) {
+		while (!oRed.ejecutar(transicion)) {
 			mutex.SIGNAL();
 			semaforo.WAIT();
 			mutex.WAIT();
 
 		}
 
-		Matriz vs = oRed.getSensibilizadas();
+		Matriz vs = oRed.getSesibilizadas();
 		Matriz vc = oCola.quienesEstan();
 
 		@SuppressWarnings("unused")

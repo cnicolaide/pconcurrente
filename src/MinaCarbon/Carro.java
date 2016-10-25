@@ -5,8 +5,7 @@ import ProcesadorPetri.Monitor;
 public class Carro implements Runnable {
 
 	private Monitor oMonitor;
-	private int id;
-	private int secuencia[];
+	private int id, secuencia[];
 
 	public Carro(Monitor oMonitor, int id, int secuencia[]) {
 		this.oMonitor = oMonitor;
@@ -20,7 +19,7 @@ public class Carro implements Runnable {
 			while (true) {
 				for (int i = 0; i < secuencia.length; i++) {
 					Thread.sleep(100 * (id + 1));
-					System.out.println("\nSOY EL CARRO: " + id); // Solo para seguimiento
+					System.out.println("\nSOY EL CARRO: " + id); // Seguimiento
 					oMonitor.ejecutar(secuencia[i]);
 					Thread.sleep(1000 * (id + 1));
 				}

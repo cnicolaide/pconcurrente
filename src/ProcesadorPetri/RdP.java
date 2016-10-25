@@ -5,11 +5,7 @@ import Auxiliar.Matriz;
 
 public class RdP {
 
-	private Matriz mMarcadoInicial;
-	private Matriz mMarcadoActual;
-	private Matriz mIncidencia;
-	private Matriz mInhibicion;
-	private Matriz mFdeH;
+	private Matriz mMarcadoInicial, mMarcadoActual, mIncidencia, mInhibicion, mFdeH, mSensibilizadas;
 
 	// CONSTRUCTOR DE LA RED DE PETRI
 	public RdP(Matriz mMarcado, Matriz mIncidencia, Matriz mInhibicion) {
@@ -17,66 +13,63 @@ public class RdP {
 		this.mMarcadoInicial = mMarcado;
 		this.mIncidencia = mIncidencia;
 		this.mInhibicion = mInhibicion;
-	}
+		mSensibilizadas = calcularSensibilizadas();
+		System.out.println("\n");
+		Log.Instance().Escribir("RdP", " ***** SE INSTANCIO LA RED DE PETRI *****");
+		printEstados();
+	} 
 
 	// DISPARA UNA TRANSICION DE LA RED DE PETRI UTILIZANDO LA FORMULA: Mi+1 =
 	// Mi+I*d.AND*(!(F*H))
-	public boolean ejecutar(int posicion, boolean memoria) {
+	public boolean ejecutar(int posicion) {
 
 		// Transforma la posicion que recibe en un vector de disparo
 		Matriz mDisparo = crearVectorDisparo(posicion);
 
-		// Carga en el marcado actual, los valores iniciales para operar
-		mMarcadoActual = mMarcadoInicial;
+		if (mSensibilizadas.getVal(0, posicion) - 1 == 0) {
 
-		// Crea la matriz (!(F*H))
-		mFdeH = crearFporH().Negacion();
-
-		// Crea la matriz d.AND*(!(F*H))
-		Matriz mDandFporHNegado = mDisparo.AND(mFdeH);
-
-		// Verfica que que la operacion d.AND*(!(F*H)) no sea cero
-		if (mDandFporHNegado.ANDporCERO()) {
-			if (memoria)
-				Log.Instance().Escribir("RdP", "No se puede ejecutar el disparo: " + mDisparo.toString());
-			return false;
-		}
-
-		// Crea la matriz I*d.AND*(!(F*H))
-		Matriz mIncidenciaxDisparo = (mIncidencia.mult(mDandFporHNegado.transpose())).transpose();
-
-		// Almacena en la matriz nuevo marcado el resultado de
-		// Mi+I*d.AND*(!(F*H))
-		mMarcadoActual = mMarcadoActual.plus(mIncidenciaxDisparo);
-
-		// Se fija si fue valido el disparo, en caso de que no imprimi mensaje
-		if (!mMarcadoActual.isPos()) {
-			if (memoria)
-				Log.Instance().Escribir("RdP", "No se puede ejecutar el disparo: " + mDisparo.toString());
-			return false;
-		}
-
-		// Si esta activado el flag, guarda el nuevo estado de la red para
-		// continuar operando. Si no esta activado, es porque se esta usando
-		// para obtener las transiciones sensibilizadas
-		if (memoria) {
-			mMarcadoInicial = mMarcadoActual;
-			Log.Instance().Escribir("RdP", "Se ejecuto el disparo: " + mDisparo.toString());
-			printEstados();
-		} else {
+			// Carga en el marcado actual, los valores iniciales para operar
 			mMarcadoActual = mMarcadoInicial;
+
+			// Crea la matriz (!(F*H))
+			mFdeH = crearFporH().Negacion();
+
+			// Crea la matriz d.AND*(!(F*H))
+			Matriz mDandFporHNegado = mDisparo.AND(mFdeH);
+
+			// Crea la matriz I*d.AND*(!(F*H))
+			Matriz mIncidenciaxDisparo = (mIncidencia.mult(mDandFporHNegado.transpose())).transpose();
+
+			// Almacena en la matriz nuevo marcado el resultado de
+			// Mi+I*d.AND*(!(F*H))
+			mMarcadoActual = mMarcadoActual.plus(mIncidenciaxDisparo);
+
+			// Guarda el nuevo estado de la red
+			mMarcadoInicial = mMarcadoActual;
+
+			// Examina cuales son las nuevas transiciones que se pueden disparar
+			mSensibilizadas = calcularSensibilizadas();
+
+			// Imprime los estados y retorna TRUE
+			Log.Instance().Escribir("RdP", "Se ejecuto el disparo: " + mDisparo);
+			printEstados();
+			return true;
 		}
-		return true;
+
+		// Imprime los estados y retorna FALSE
+		Log.Instance().Escribir("RdP", "No se puede ejecutar el disparo: " + mDisparo.toString());
+		printEstados();
+		return false;
 	}
 
 	// CREA EL VECTOR F(Mi)
-	public Matriz crearVectorFdeMi() {
+	private Matriz crearVectorFdeMi() {
 		Matriz mVectorVi = new Matriz(mMarcadoActual.getFilCount(), mMarcadoActual.getColCount());
 		return mVectorVi.FdeMi(mMarcadoActual);
 	}
 
 	// CREA EL VECTOR DE DISPARO
-	public Matriz crearVectorDisparo(int pos) {
+	private Matriz crearVectorDisparo(int pos) {
 		Matriz mDisparo = new Matriz(1, mIncidencia.getColCount());
 		mDisparo.Clear();
 		mDisparo.setDato(0, pos, 1);
@@ -84,50 +77,53 @@ public class RdP {
 	}
 
 	// CREA F POR H
-	public Matriz crearFporH() {
+	private Matriz crearFporH() {
 		Matriz mVectorVi = crearVectorFdeMi();
 		Matriz mFdeH = mVectorVi.mult(mInhibicion);
 		return mFdeH;
 	}
 
-	// DEVUELVE CUALES SON LAS TRANSICIONES SENSIBILIZADAS
-	public Matriz getSensibilizadas() {
+	private Matriz calcularSensibilizadas() {
 		Matriz mSensibilizadas = new Matriz(1, mIncidencia.getColCount());
 
-		// Crea los vectores de prueba en cero
-		mSensibilizadas.Clear();
+		// Inicializa el vector de Sensibilizadas en 1
+		for (int i = 0; i < mIncidencia.getColCount(); i++)
+			mSensibilizadas.setDato(0, i, 1);
 
-		// Prueba cada una de las transiciones, llamando al metodo ejecutar con
-		// el flag de memoria en false asi este no guarda el nuevo estado en
-		// caso de estar sensibilizada
-		for (int i = 0; i < mIncidencia.getColCount(); i++) {
-			if (ejecutar(i, false)) {
-				mSensibilizadas.setDato(0, i, 1);
+		// Variable auxiliar para suma
+		int aux = 0;
+
+		// Recorre la matriz, hace las sumas y en caso que aux < 0 coloca 0 en
+		// la matriz de sensibilizadas
+		for (int i = 0; i < mIncidencia.getFilCount(); i++) {
+			for (int j = 0; j < mIncidencia.getColCount(); j++) {
+				aux = mIncidencia.getVal(i, j) + mMarcadoActual.getVal(0, i);
+				if (aux < 0) {
+					mSensibilizadas.setDato(0, j, 0);
+				}
 			}
 		}
-
-		Log.Instance().Escribir("RdP", "Transiciones Sensibilizadas: " + mSensibilizadas.toString());
-
 		return mSensibilizadas;
 	}
 
-	// DEVUELVE EL MARCADO INICIAL
+	// DEVUELVE MATRIZ CON TRANSICIONES SENSIBILIZADAS
+	public Matriz getSesibilizadas() {
+		return mSensibilizadas;
+	}
+
+	// DEVUELVE MATRIZ CON EL MARCADO INICIAL
 	public Matriz getMarcadoInicial() {
 		return mMarcadoInicial;
 	}
 
-	// DEVUELVE EL NUEVO MARCADO
-	public Matriz getNuevoMarcado() {
+	// DEVUELVE MATRIZ CON EL NUEVO MARCADO
+	public Matriz getMarcadoActual() {
 		return mMarcadoActual;
-	}
-
-	// DEVUELVE LA CANTIDAD DE TRANSCICIONES QUE TIENE LA RED
-	public int getCantidadTransiciones() {
-		return mIncidencia.getColCount();
 	}
 
 	// IMPRIME LOS ESTADOS DE LA RED EN CIERTO MOMENTO
 	private void printEstados() {
-		Log.Instance().Escribir("RdP", "Marcado Actual: " + mMarcadoActual.toString());
+		Log.Instance().Escribir("RdP", "Marcado Actual: " + mMarcadoActual);
+		Log.Instance().Escribir("RdP", "Transiciones Sensibilizadas: " + mSensibilizadas);
 	}
 }

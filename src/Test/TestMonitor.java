@@ -15,7 +15,7 @@ import junit.framework.TestCase;
 public class TestMonitor extends TestCase {
 	private Monitor sone = null, stwo = null;
 	private static Logger logger = Logger.getAnonymousLogger();
-	
+
 	// Lee las matrices de marcado, inicidencia e inhibicion desde el
 	// archivo
 	// HTML exportado en PIPE

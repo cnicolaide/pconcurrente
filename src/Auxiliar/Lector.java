@@ -102,7 +102,7 @@ public class Lector {
 		ldatos.put("incidencia", mat);
 	}
 
-	// PARSEA LA MATRIZ DE INHIBICION 
+	// PARSEA LA MATRIZ DE INHIBICION
 	private void obtenerInhibicion() {
 		Element row = tableRowElements.get(iInhibicion + 1);
 		String[] datos = row.text().split(" ");
