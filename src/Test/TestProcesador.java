@@ -36,7 +36,7 @@ public class TestProcesador {
 		int[][] iEsperada = { { 0, 0, 1, 0, 0, 1, 0, 0 } };
 		Matriz mEsperada = new Matriz(iEsperada);
  
-		oRed.ejecutar(3);
+		oRed.disparar(3);
 
 		Matriz mReal = oRed.getMarcadoActual();
 		comparar(mEsperada, mReal);
@@ -50,7 +50,7 @@ public class TestProcesador {
 		int[][] iEsperada = { { 0, 0, 0, 1, 0, 1, 1, 0 } };
 		Matriz mEsperada = new Matriz(iEsperada);
 
-		oRed.ejecutar(2);
+		oRed.disparar(2);
 
 		Matriz mReal = oRed.getMarcadoActual();
 		comparar(mEsperada, mReal);
@@ -65,9 +65,9 @@ public class TestProcesador {
 		int[][] iEsperada = { { 0, 1, 0, 1, 0, 0, 0, 1 } };
 		Matriz mEsperada = new Matriz(iEsperada);
 
-		oRed.ejecutar(2);
-		oRed.ejecutar(5);
-		oRed.ejecutar(0);
+		oRed.disparar(2);
+		oRed.disparar(5);
+		oRed.disparar(0);
 
 		Matriz mReal = oRed.getMarcadoActual();
 		comparar(mEsperada, mReal);
@@ -81,9 +81,9 @@ public class TestProcesador {
 				" ***** EJECUTANDO TEST: DISPARAR SECUENCIA INCORRECTA DE TRANSICIONES *****");
 		int[][] iEsperada = { { 1, 0, 1, 0, 0, 0, 0, 1 } };
 		Matriz mEsperada = new Matriz(iEsperada);
-		oRed.ejecutar(5);
+		oRed.disparar(5);
 		Matriz mReal = oRed.getMarcadoActual();
-		oRed.ejecutar(0);
+		oRed.disparar(0);
 		comparar(mEsperada, mReal);
 	}
 

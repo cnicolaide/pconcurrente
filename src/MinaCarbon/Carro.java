@@ -1,13 +1,13 @@
 package MinaCarbon;
 
-import ProcesadorPetri.Monitor;
+import ProcesadorPetri.GestorDeMonitor;
 
 public class Carro implements Runnable {
 
-	private Monitor oMonitor;
+	private GestorDeMonitor oMonitor;
 	private int id, secuencia[];
 
-	public Carro(Monitor oMonitor, int id, int secuencia[]) {
+	public Carro(GestorDeMonitor oMonitor, int id, int secuencia[]) {
 		this.oMonitor = oMonitor;
 		this.id = id;
 		this.secuencia = secuencia;
@@ -20,7 +20,7 @@ public class Carro implements Runnable {
 				for (int i = 0; i < secuencia.length; i++) {
 					Thread.sleep(100 * (id + 1));
 					System.out.println("\nSOY EL CARRO: " + id); // Seguimiento
-					oMonitor.ejecutar(secuencia[i]);
+					oMonitor.dispararTransicion(secuencia[i]);
 					Thread.sleep(1000 * (id + 1));
 				}
 			}

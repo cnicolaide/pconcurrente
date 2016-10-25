@@ -21,12 +21,12 @@ public class RdP {
 
 	// DISPARA UNA TRANSICION DE LA RED DE PETRI UTILIZANDO LA FORMULA: Mi+1 =
 	// Mi+I*d.AND*(!(F*H))
-	public boolean ejecutar(int posicion) {
+	public boolean disparar(int posicion) {
 
 		// Transforma la posicion que recibe en un vector de disparo
 		Matriz mDisparo = crearVectorDisparo(posicion);
 
-		if (mSensibilizadas.getVal(0, posicion) - 1 == 0) {
+		if (mSensibilizadas.getVal(0, posicion) == 1) {
 
 			// Carga en el marcado actual, los valores iniciales para operar
 			mMarcadoActual = mMarcadoInicial;

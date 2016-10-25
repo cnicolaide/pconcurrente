@@ -4,42 +4,41 @@ import java.util.concurrent.Semaphore;
 
 import Auxiliar.Matriz;
 
-public class Monitor {
+public class GestorDeMonitor {
 	private RdP oRed;
 	private Colas oCola;
-	private Semaphore mutex, semaforo;
-	private static Monitor instance = null;
+	private Politicas oPolitica;
+	private Semaphore mutex;
+	private static GestorDeMonitor instance = null;
 
 	// CONSTRUCTOR DE LA CLASE MONITOR
-	protected Monitor(RdP oRed, Colas oCola) {
+	protected GestorDeMonitor(RdP oRed, Colas oCola) {
 		this.oRed = oRed;
 		this.oCola = oCola;
+		oPolitica = new Politicas(oRed);
 		mutex = new Semaphore(1, true);
-		semaforo = new Semaphore(0, true);
 	}
 
 	// METODO PARA IMPLEMENTAR PATRON SINGLETON
-	public static Monitor getInstance(RdP oRed, Colas oCola) {
+	public static GestorDeMonitor getInstance(RdP oRed, Colas oCola) {
 		if (instance == null) {
-			instance = new Monitor(oRed, oCola);
+			instance = new GestorDeMonitor(oRed, oCola);
 		}
 		return instance;
 	}
 
-	public void ejecutar(int transicion) throws InterruptedException {
+	public void dispararTransicion(int transicion) throws InterruptedException {
 		mutex.acquire();
 
-		while (!oRed.ejecutar(transicion)) {
+		while (!oRed.disparar(transicion)) {
 			mutex.release();
-			semaforo.acquire();
+			oCola.encolar(transicion);
 			mutex.acquire();
-
 		}
 
 		Matriz vs = oRed.getSesibilizadas();
 		Matriz vc = oCola.quienesEstan();
 
-		@SuppressWarnings("unused")
 		Matriz m = vs.AND(vc);
 
 		// System.err.println("VS: ------------------------------ \n" +
@@ -51,10 +50,13 @@ public class Monitor {
 
 		mutex.release();
 
-		System.out.println(semaforo.availablePermits());
-		if (semaforo.availablePermits() > 0) {
-			semaforo.release();
-		}
-	}
+		// System.err.println("SEMAFORO " + semaforo.getQueueLength() + "\n");
 
+		// System.err.println("La prioridad es de T" + oPolitica.cual(m));
+
+		if (!m.esCero()) {
+			oCola.desencolar(oPolitica.cual(m));
+		}
+
+	}
 }

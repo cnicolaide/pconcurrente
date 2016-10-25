@@ -8,12 +8,12 @@ import org.junit.Assert;
 import Auxiliar.Lector;
 import Auxiliar.Matriz;
 import ProcesadorPetri.Colas;
-import ProcesadorPetri.Monitor;
+import ProcesadorPetri.GestorDeMonitor;
 import ProcesadorPetri.RdP;
 import junit.framework.TestCase;
 
 public class TestMonitor extends TestCase {
-	private Monitor sone = null, stwo = null;
+	private GestorDeMonitor sone = null, stwo = null;
 	private static Logger logger = Logger.getAnonymousLogger();
 
 	// Lee las matrices de marcado, inicidencia e inhibicion desde el
@@ -28,10 +28,10 @@ public class TestMonitor extends TestCase {
 
 	public void setUp() {
 		logger.info("tomando singleton...");
-		sone = Monitor.getInstance(miRed, miCola);
+		sone = GestorDeMonitor.getInstance(miRed, miCola);
 		logger.info("...tiene singleton: " + sone);
 		logger.info("tomando singleton...");
-		stwo = Monitor.getInstance(miRed, miCola);
+		stwo = GestorDeMonitor.getInstance(miRed, miCola);
 		logger.info("...tiene singleton: " + stwo);
 	}
 

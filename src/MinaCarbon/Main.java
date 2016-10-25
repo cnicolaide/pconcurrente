@@ -5,7 +5,7 @@ import java.util.HashMap;
 import Auxiliar.Lector;
 import Auxiliar.Matriz;
 import ProcesadorPetri.Colas;
-import ProcesadorPetri.Monitor;
+import ProcesadorPetri.GestorDeMonitor;
 import ProcesadorPetri.RdP;
 
 public class Main {
@@ -20,7 +20,7 @@ public class Main {
 
 		// Crea la cola y el monitor
 		Colas miCola = new Colas(6);
-		Monitor miMonitor = Monitor.getInstance(miRed, miCola);
+		GestorDeMonitor miMonitor = GestorDeMonitor.getInstance(miRed, miCola);
 
 		int secuenciaA[] = { 5, 0, 1, 2, 3, 4 };
 		int secuenciaB[] = { 2, 3, 4, 5, 0, 1 };

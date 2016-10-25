@@ -185,7 +185,7 @@ public class Matriz {
 	}
 
 	// Sumo en una variable aux el contenido de la operacion
-	public boolean ANDporCERO() {
+	public boolean esCero() {
 		int aux = 0;
 		for (int i = 0; i < this.getFilCount(); i++) {
 			for (int j = 0; j < this.getColCount(); j++) {

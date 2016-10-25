@@ -1,32 +1,35 @@
 package ProcesadorPetri;
 
+import java.util.concurrent.Semaphore;
+
 import Auxiliar.Matriz;
 
 public class Colas {
-	private Semaforo[] arreglosemaforos;
+
+	private Semaphore[] arregloSemaphores;
 
 	public Colas(int tamaño) {
-		arreglosemaforos = new Semaforo[tamaño];
+		arregloSemaphores = new Semaphore[tamaño];
 
 		for (int i = 0; i < tamaño; i++) {
-			arreglosemaforos[i] = new Semaforo(1);
+			arregloSemaphores[i] = new Semaphore(0, true);
 		}
 	}
 
 	public boolean desencolar(int i) throws InterruptedException {
-		if (arreglosemaforos[i] != null) {
-			arreglosemaforos[i].SIGNAL();
+		if (arregloSemaphores[i] != null) {
+			arregloSemaphores[i].release();
 			return true;
 		}
 		return false;
 	}
 
 	public Matriz quienesEstan() {
-		Matriz vc = new Matriz(1, arreglosemaforos.length);
+		Matriz vc = new Matriz(1, arregloSemaphores.length);
 		vc.Clear();
 
-		for (int i = 0; i < arreglosemaforos.length; i++) {
-			if (arreglosemaforos[i].getContador() == 0) {
+		for (int i = 0; i < arregloSemaphores.length; i++) {
+			if (arregloSemaphores[i].getQueueLength() != 0) {
 				vc.setDato(0, i, 1);
 			}
 		}
@@ -35,8 +38,8 @@ public class Colas {
 	}
 
 	public void encolar(int transicion) throws InterruptedException {
-		if (arreglosemaforos[transicion] != null) {
-			arreglosemaforos[transicion].WAIT();
+		if (arregloSemaphores[transicion] != null) {
+			arregloSemaphores[transicion].acquire();
 		}
 	}
 
