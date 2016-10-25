@@ -17,7 +17,7 @@ public class RdP {
 		System.out.println("\n");
 		Log.Instance().Escribir("RdP", " ***** SE INSTANCIO LA RED DE PETRI *****");
 		printEstados();
-	} 
+	}
 
 	// DISPARA UNA TRANSICION DE LA RED DE PETRI UTILIZANDO LA FORMULA: Mi+1 =
 	// Mi+I*d.AND*(!(F*H))
@@ -90,15 +90,11 @@ public class RdP {
 		for (int i = 0; i < mIncidencia.getColCount(); i++)
 			mSensibilizadas.setDato(0, i, 1);
 
-		// Variable auxiliar para suma
-		int aux = 0;
-
 		// Recorre la matriz, hace las sumas y en caso que aux < 0 coloca 0 en
 		// la matriz de sensibilizadas
 		for (int i = 0; i < mIncidencia.getFilCount(); i++) {
 			for (int j = 0; j < mIncidencia.getColCount(); j++) {
-				aux = mIncidencia.getVal(i, j) + mMarcadoActual.getVal(0, i);
-				if (aux < 0) {
+				if (mIncidencia.getVal(i, j) + mMarcadoActual.getVal(0, i) < 0) {
 					mSensibilizadas.setDato(0, j, 0);
 				}
 			}

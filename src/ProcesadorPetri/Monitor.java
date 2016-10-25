@@ -1,19 +1,21 @@
 package ProcesadorPetri;
 
+import java.util.concurrent.Semaphore;
+
 import Auxiliar.Matriz;
 
 public class Monitor {
 	private RdP oRed;
 	private Colas oCola;
-	private Semaforo mutex, semaforo;
+	private Semaphore mutex, semaforo;
 	private static Monitor instance = null;
- 
+
 	// CONSTRUCTOR DE LA CLASE MONITOR
 	protected Monitor(RdP oRed, Colas oCola) {
 		this.oRed = oRed;
 		this.oCola = oCola;
-		mutex = new Semaforo(1);
-		semaforo = new Semaforo(0);
+		mutex = new Semaphore(1, true);
+		semaforo = new Semaphore(0, true);
 	}
 
 	// METODO PARA IMPLEMENTAR PATRON SINGLETON
@@ -25,12 +27,12 @@ public class Monitor {
 	}
 
 	public void ejecutar(int transicion) throws InterruptedException {
-		mutex.WAIT();
+		mutex.acquire();
 
 		while (!oRed.ejecutar(transicion)) {
-			mutex.SIGNAL();
-			semaforo.WAIT();
-			mutex.WAIT();
+			mutex.release();
+			semaforo.acquire();
+			mutex.acquire();
 
 		}
 
@@ -47,10 +49,11 @@ public class Monitor {
 		// System.err.println("M: ------------------------------ \n" +
 		// m.toString());
 
-		mutex.SIGNAL();
+		mutex.release();
 
-		if (semaforo.getBloqueados() > 0) {
-			semaforo.SIGNAL();
+		System.out.println(semaforo.availablePermits());
+		if (semaforo.availablePermits() > 0) {
+			semaforo.release();
 		}
 	}
 
