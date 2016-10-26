@@ -5,7 +5,7 @@ import Auxiliar.Matriz;
 
 public class RdP {
 
-	private Matriz mMarcadoInicial, mMarcadoActual, mIncidencia, mInhibicion, mFdeH, mSensibilizadas;
+	private Matriz mMarcadoInicial, mMarcadoActual, mIncidencia, mInhibicion, mSensibilizadas;
 
 	// CONSTRUCTOR DE LA RED DE PETRI
 	public RdP(Matriz mMarcado, Matriz mIncidencia, Matriz mInhibicion) {
@@ -26,22 +26,17 @@ public class RdP {
 		// Transforma la posicion que recibe en un vector de disparo
 		Matriz mDisparo = crearVectorDisparo(posicion);
 
+		// Verifica que la transicion que le pasan este sensibilizada, si esta,
+		// dispara.
 		if (mSensibilizadas.getVal(0, posicion) == 1) {
 
 			// Carga en el marcado actual, los valores iniciales para operar
 			mMarcadoActual = mMarcadoInicial;
 
-			// Crea la matriz (!(F*H))
-			mFdeH = crearFporH().Negacion();
+			// Crea la matriz I*d
+			Matriz mIncidenciaxDisparo = (mIncidencia.mult(mDisparo.transpose())).transpose();
 
-			// Crea la matriz d.AND*(!(F*H))
-			Matriz mDandFporHNegado = mDisparo.AND(mFdeH);
-
-			// Crea la matriz I*d.AND*(!(F*H))
-			Matriz mIncidenciaxDisparo = (mIncidencia.mult(mDandFporHNegado.transpose())).transpose();
-
-			// Almacena en la matriz nuevo marcado el resultado de
-			// Mi+I*d.AND*(!(F*H))
+			// Almacena en la matriz el nuevo marcado
 			mMarcadoActual = mMarcadoActual.plus(mIncidenciaxDisparo);
 
 			// Guarda el nuevo estado de la red
@@ -90,11 +85,17 @@ public class RdP {
 		for (int i = 0; i < mIncidencia.getColCount(); i++)
 			mSensibilizadas.setDato(0, i, 1);
 
+		// Crea la matriz (!(F*H))
+		Matriz mFdeH = crearFporH().Negacion();
+
 		// Recorre la matriz, hace las sumas y en caso que aux < 0 coloca 0 en
 		// la matriz de sensibilizadas
 		for (int i = 0; i < mIncidencia.getFilCount(); i++) {
 			for (int j = 0; j < mIncidencia.getColCount(); j++) {
-				if (mIncidencia.getVal(i, j) + mMarcadoActual.getVal(0, i) < 0) {
+				// Verifica que (!(F*H)) o que la suma de Incidencia y Marcado
+				// sea menor cero, en ese caso coloca 0 en la posicion de la
+				// transicion
+				if ((mIncidencia.getVal(i, j) + mMarcadoActual.getVal(0, i) < 0) || (mFdeH.getVal(0, j) == 0)) {
 					mSensibilizadas.setDato(0, j, 0);
 				}
 			}

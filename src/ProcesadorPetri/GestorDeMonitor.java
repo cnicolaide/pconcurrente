@@ -45,12 +45,9 @@ public class GestorDeMonitor {
 		// vs.toString());
 		// System.err.println("VC: ------------------------------ \n" +
 		// vc.toString());
-		// System.err.println("M: ------------------------------ \n" +
-		// m.toString());
+		// System.err.println("M: ------------------------------ \n" + m);
 
 		mutex.release();
-
-		// System.err.println("SEMAFORO " + semaforo.getQueueLength() + "\n");
 
 		// System.err.println("La prioridad es de T" + oPolitica.cual(m));
 

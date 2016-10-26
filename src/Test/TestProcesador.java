@@ -35,7 +35,7 @@ public class TestProcesador {
 		Log.Instance().Escribir("TestProcesador", " ***** EJECUTANDO TEST: DISPARAR TRANSICION NO SENSIBILIZADA *****");
 		int[][] iEsperada = { { 0, 0, 1, 0, 0, 1, 0, 0 } };
 		Matriz mEsperada = new Matriz(iEsperada);
- 
+
 		oRed.disparar(3);
 
 		Matriz mReal = oRed.getMarcadoActual();
