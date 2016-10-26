@@ -14,7 +14,7 @@ public class Politicas {
 
 	private void setPrioridad() {
 
-		int[] iPolitica = { 1, 2, 3, 15, 5, 6 };
+		int[] iPolitica = { 15, 7, 18, 1, 5, 19, 20, 21, 22, 23, 24, 25 };
 
 		for (int i = 0; i < oRed.getSesibilizadas().getColCount(); i++) {
 			oPolitica.setDato(0, i, iPolitica[i]);

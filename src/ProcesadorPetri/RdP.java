@@ -46,13 +46,13 @@ public class RdP {
 			mSensibilizadas = calcularSensibilizadas();
 
 			// Imprime los estados y retorna TRUE
-			Log.Instance().Escribir("RdP", "Se ejecuto el disparo: " + mDisparo);
+			Log.Instance().Escribir("RdP", "Se ejecuto el disparo: T" + posicion);
 			printEstados();
 			return true;
 		}
 
 		// Imprime los estados y retorna FALSE
-		Log.Instance().Escribir("RdP", "No se puede ejecutar el disparo: " + mDisparo.toString());
+		Log.Instance().Escribir("RdP", "No se puede ejecutar el disparo: T" + posicion);
 		printEstados();
 		return false;
 	}
