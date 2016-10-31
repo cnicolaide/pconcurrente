@@ -34,7 +34,7 @@ public class Lector {
 				oFile = fileChooser.getSelectedFile();
 			}
 		} else {
-			oFile = new File(System.getProperty("user.dir") + "\\redes\\" + sRed);
+			oFile = new File(System.getProperty("user.dir") + "\\docs\\redes\\" + sRed);
 		}
 		try {
 			html = Jsoup.parse(oFile, "UTF-8", "http://example.com/");
