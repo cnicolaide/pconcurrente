@@ -20,8 +20,7 @@ import jxl.read.biff.BiffException;
 
 public class Lector {
 
-	private int iIncidencia;
-	private int iInhibicion;
+	private int iIncidencia, iInhibicion;
 	private int[] iMarcado = new int[2];
 	private Document html;
 	private Elements tableRowElements;
@@ -162,6 +161,7 @@ public class Lector {
 		ldatos.put("marcado", mat);
 	}
 
+	// PARSEA EL XLS CON LOS TIEMPOS DE LAS TRANSICIONES TEMPORALES
 	private void LeerExcelTiempos() {
 		Matriz tiempo = null;
 		File file;

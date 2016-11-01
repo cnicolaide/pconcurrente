@@ -16,8 +16,8 @@ public class RdP {
 		this.mInhibicion = mInhibicion;
 		this.mTiempo = mTiempo;
 		mSensibilizadas = calcularSensibilizadas();
-		System.out.println("Tiempos: " + mTiempo);
-		System.out.println("\n");
+		// System.out.println("Tiempos: " + mTiempo);
+		// System.out.println("\n");
 		Log.Instance().Escribir("RdP", " ***** SE INSTANCIO LA RED DE PETRI *****");
 		printEstados();
 	}
@@ -81,18 +81,19 @@ public class RdP {
 		return mFdeH;
 	}
 
-	Calendar ahora = Calendar.getInstance();
+	// Calendar ahora = Calendar.getInstance();
 
 	private Matriz calcularSensibilizadas() {
 		Matriz mSensibilizadas = new Matriz(1, mIncidencia.getColCount());
-		long[] timestamp = new long[mIncidencia.getColCount()];
-
-		System.out.println(" Current time is : " + ahora.getTimeInMillis());
+		// long[] timestamp = new long[mIncidencia.getColCount()];
+		//
+		// System.out.println(" Current time is : " + ahora.getTimeInMillis());
 
 		// Inicializa el vector de Sensibilizadas en 1
 		for (int i = 0; i < mIncidencia.getColCount(); i++) {
 			mSensibilizadas.setDato(0, i, 1);
-			mTiempo.setDato(i, 0, (int) (mTiempo.getVal(i, 0) + ahora.getTimeInMillis()));
+			// mTiempo.setDato(i, 0, (int) (mTiempo.getVal(i, 0) +
+			// ahora.getTimeInMillis()));
 		}
 
 		// Crea la matriz (!(F*H))
@@ -108,24 +109,26 @@ public class RdP {
 				if ((mIncidencia.getVal(i, j) + mMarcadoActual.getVal(0, i) < 0) || (mFdeH.getVal(0, j) == 0)) {
 					mSensibilizadas.setDato(0, j, 0);
 				}
-				if (!testVentanaTiempo(1, timestamp[j]))
-					mSensibilizadas.setDato(0, j, 0);
+				// if (!testVentanaTiempo(1, timestamp[j]))
+				// mSensibilizadas.setDato(0, j, 0);
 			}
 		}
 		return mSensibilizadas;
 	}
 
-	private boolean testVentanaTiempo(int disparo, long timestamp) {
-
-		boolean esperando = false;
-		System.out
-				.println("Alfa: " + (mTiempo.getVal(disparo, 0) + timestamp) + "Ahora: " + System.currentTimeMillis());
-		if ((mTiempo.getVal(disparo, 0) + timestamp < ahora.getTimeInMillis())
-				&& (mTiempo.getVal(disparo, 1) + timestamp > ahora.getTimeInMillis()) && ((esperando == false)))
-			return true;
-		return false;
-
-	}
+	// private boolean testVentanaTiempo(int disparo, long timestamp) {
+	//
+	// boolean esperando = false;
+	// System.out
+	// .println("Alfa: " + (mTiempo.getVal(disparo, 0) + timestamp) + "Ahora: "
+	// + System.currentTimeMillis());
+	// if ((mTiempo.getVal(disparo, 0) + timestamp < ahora.getTimeInMillis())
+	// && (mTiempo.getVal(disparo, 1) + timestamp > ahora.getTimeInMillis()) &&
+	// ((esperando == false)))
+	// return true;
+	// return false;
+	//
+	// }
 
 	// DEVUELVE MATRIZ CON TRANSICIONES SENSIBILIZADAS
 	public Matriz getSesibilizadas() {

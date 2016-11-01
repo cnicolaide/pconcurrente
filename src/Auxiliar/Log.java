@@ -41,11 +41,7 @@ public class Log {
 		File fichero = new File(System.getProperty("user.dir") + "\\log\\" + sArchivo);
 		BufferedWriter bw = null;
 		try {
-			if (fichero.exists()) {
-				bw = new BufferedWriter(new FileWriter(fichero, true));
-			} else {
-				bw = new BufferedWriter(new FileWriter(fichero, true));
-			}
+			bw = new BufferedWriter(new FileWriter(fichero, true));
 			bw.write(sTextoFinal);
 			bw.close();
 		} catch (IOException ex) {
