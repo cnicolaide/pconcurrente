@@ -1,12 +1,12 @@
 package ProcesadorPetri;
 
-import java.util.Calendar;
 import Auxiliar.Log;
 import Auxiliar.Matriz;
 
 public class RdP {
 
-	private Matriz mMarcadoInicial, mMarcadoActual, mIncidencia, mInhibicion, mSensibilizadas, mTiempo;
+	private Matriz mMarcadoInicial, mMarcadoActual, mIncidencia, mInhibicion, mSensibilizadas;// ,
+																								// mTiempo;
 
 	// CONSTRUCTOR DE LA RED DE PETRI
 	public RdP(Matriz mMarcado, Matriz mIncidencia, Matriz mInhibicion, Matriz mTiempo) {
@@ -14,7 +14,7 @@ public class RdP {
 		this.mMarcadoInicial = mMarcado;
 		this.mIncidencia = mIncidencia;
 		this.mInhibicion = mInhibicion;
-		this.mTiempo = mTiempo;
+		// this.mTiempo = mTiempo;
 		mSensibilizadas = calcularSensibilizadas();
 		// System.out.println("Tiempos: " + mTiempo);
 		// System.out.println("\n");
@@ -37,7 +37,7 @@ public class RdP {
 			mMarcadoActual = mMarcadoInicial;
 
 			// Crea la matriz I*d
-			Matriz mIncidenciaxDisparo = (mIncidencia.mult(mDisparo.transpose())).transpose();
+			Matriz mIncidenciaxDisparo = mIncidencia.mult(mDisparo.transpose()).transpose();
 
 			// Almacena en la matriz el nuevo marcado
 			mMarcadoActual = mMarcadoActual.plus(mIncidenciaxDisparo);
@@ -106,7 +106,7 @@ public class RdP {
 				// Verifica que (!(F*H)) o que la suma de Incidencia y Marcado
 				// sea menor cero, en ese caso coloca 0 en la posicion de la
 				// transicion
-				if ((mIncidencia.getVal(i, j) + mMarcadoActual.getVal(0, i) < 0) || (mFdeH.getVal(0, j) == 0)) {
+				if (mIncidencia.getVal(i, j) + mMarcadoActual.getVal(0, i) < 0 || mFdeH.getVal(0, j) == 0) {
 					mSensibilizadas.setDato(0, j, 0);
 				}
 				// if (!testVentanaTiempo(1, timestamp[j]))

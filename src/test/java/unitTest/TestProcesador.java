@@ -1,9 +1,11 @@
 package unitTest;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
+
 import org.junit.Test;
+
 import Auxiliar.Lector;
 import Auxiliar.Log;
 import Auxiliar.Matriz;

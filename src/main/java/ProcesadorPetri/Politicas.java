@@ -26,14 +26,12 @@ public class Politicas {
 		int mayor = 0;
 		int pos = 0;
 
-		for (int i = 0; i < oRed.getSesibilizadas().getColCount(); i++) {
-			if (m.getVal(0, i) == 1) {
-				if (oPolitica.getVal(0, i) > mayor) {
-					mayor = oPolitica.getVal(0, i);
-					pos = i;
-				}
+		for (int i = 0; i < oRed.getSesibilizadas().getColCount(); i++)
+			if (m.getVal(0, i) == 1 && oPolitica.getVal(0, i) > mayor) {
+				mayor = oPolitica.getVal(0, i);
+				pos = i;
 			}
-		}
+
 		return pos;
 	}
 }

@@ -132,11 +132,9 @@ public class Matriz {
 		}
 		Matriz C = new Matriz(A.getFilCount(), B.getColCount());
 		for (int i = 0; i < C.getFilCount(); i++) {
-			for (int j = 0; j < C.getColCount(); j++) {
-				for (int k = 0; k < A.getColCount(); k++) {
+			for (int j = 0; j < C.getColCount(); j++)
+				for (int k = 0; k < A.getColCount(); k++)
 					C.setDato(i, j, C.getDato()[i][j] + (A.getDato()[i][k] * B.getDato()[k][j]));
-				}
-			}
 		}
 		return C;
 	}
@@ -187,12 +185,12 @@ public class Matriz {
 	// Sumo en una variable aux el contenido de la operacion
 	public boolean esCero() {
 		int aux = 0;
-		for (int i = 0; i < this.getFilCount(); i++) {
-			for (int j = 0; j < this.getColCount(); j++) {
+
+		for (int i = 0; i < this.getFilCount(); i++)
+			for (int j = 0; j < this.getColCount(); j++)
 				aux = this.getVal(i, j) + aux;
-			}
-		}
-		return (aux == 0);
+
+		return aux == 0;
 	}
 
 	public Matriz FdeMi(Matriz A) {
