@@ -2,14 +2,15 @@ package MinaCarbon;
 
 import ProcesadorPetri.GestorDeMonitor;
 
-public class Bomba implements Runnable {
+public class Hilo implements Runnable {
 
 	private GestorDeMonitor oMonitor;
-	private int id, secuencia[];
+	private int secuencia[];
+	private String nombre;
 
-	public Bomba(GestorDeMonitor oMonitor, int id, int secuencia[]) {
+	public Hilo(GestorDeMonitor oMonitor, String nombre, int secuencia[]) {
 		this.oMonitor = oMonitor;
-		this.id = id;
+		this.nombre = nombre;
 		this.secuencia = secuencia;
 	}
 
@@ -18,11 +19,11 @@ public class Bomba implements Runnable {
 		try {
 			while (true) {
 				for (int i = 0; i < secuencia.length; i++) {
-					Thread.sleep(100 * (id + 1));
-					System.out.println("\nSOY EL HILO: " + id); //
+					Thread.sleep(10);
+					System.out.println("\nSOY EL HILO: " + nombre); //
 					// Seguimiento
 					oMonitor.dispararTransicion(secuencia[i]);
-					Thread.sleep(1000 * (id + 1));
+					Thread.sleep(1000);
 				}
 			}
 

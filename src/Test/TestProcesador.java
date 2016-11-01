@@ -13,9 +13,9 @@ public class TestProcesador {
 
 	// Lee las matrices de marcado, inicidencia e inhibicion desde el archivo
 	// HTML exportado en PIPE
-	private Lector miLector = new Lector("carros.html");
-	private HashMap<String, Matriz> datos = miLector.LeerHTML();
-	private RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"));
+	Lector miLector = new Lector("carros.html", "tiempos.xls");
+	HashMap<String, Matriz> datos = miLector.LeerHTML();
+	RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), datos.get("tiempos"));
 
 	// PRUEBA DEL METODO GETSENSIBILIZADAS
 	@Test

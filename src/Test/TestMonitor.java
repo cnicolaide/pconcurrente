@@ -19,10 +19,9 @@ public class TestMonitor extends TestCase {
 	// Lee las matrices de marcado, inicidencia e inhibicion desde el
 	// archivo
 	// HTML exportado en PIPE
-	private Lector miLector = new Lector("carros.html");
-	private HashMap<String, Matriz> datos = miLector.LeerHTML();
-	private RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"));
-
+	Lector miLector = new Lector("carros.html", "tiempos.xls");
+	HashMap<String, Matriz> datos = miLector.LeerHTML();
+	RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), datos.get("tiempos"));
 	// Crea la cola y el monitor
 	private Colas miCola = new Colas(6);
 

@@ -11,6 +11,13 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import jxl.Cell;
+import jxl.CellType;
+import jxl.NumberCell;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+
 public class Lector {
 
 	private int iIncidencia;
@@ -19,10 +26,11 @@ public class Lector {
 	private Document html;
 	private Elements tableRowElements;
 	private HashMap<String, Matriz> ldatos = new HashMap<>();
-	private String sRed = null;
+	private String sRed = null, sTiempos = null;
 
-	public Lector(String sRed) {
+	public Lector(String sRed, String sTiempos) {
 		this.sRed = sRed;
+		this.sTiempos = sTiempos;
 	}
 
 	public HashMap<String, Matriz> LeerHTML() {
@@ -62,6 +70,7 @@ public class Lector {
 			obtenerIncidencia();
 			obtenerInhibicion();
 			obtenerMarcado();
+			LeerExcelTiempos();
 		} catch (IOException ex) {
 			Logger.getLogger(Lector.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -151,5 +160,39 @@ public class Lector {
 			}
 		}
 		ldatos.put("marcado", mat);
+	}
+
+	private void LeerExcelTiempos() {
+		Matriz tiempo = null;
+		File file;
+		if (sTiempos == null) {
+			JFileChooser fileChooser = new JFileChooser();
+			int seleccion = fileChooser.showSaveDialog(fileChooser);
+			if (seleccion == JFileChooser.APPROVE_OPTION)
+				file = fileChooser.getSelectedFile();
+		}
+		file = new File(System.getProperty("user.dir") + "\\docs\\tablas\\" + sTiempos);
+		Workbook wbook = null;
+		try {
+			wbook = Workbook.getWorkbook(file);
+		} catch (IOException ex) {
+			Logger.getLogger(Lector.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (BiffException ex) {
+			Logger.getLogger(Lector.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		Sheet hoja = wbook.getSheet(0);
+		int columnas = hoja.getColumns();
+		int filas = hoja.getRows();
+		tiempo = new Matriz(filas, columnas);
+		for (int i = 0; i < filas; i++) {
+			for (int j = 0; j < columnas; j++) {
+				Cell cell = hoja.getCell(j, i);
+				if (cell.getType() == CellType.NUMBER) {
+					NumberCell nc = (NumberCell) cell;
+					tiempo.setDato(i, j, (int) nc.getValue());
+				}
+			}
+		}
+		ldatos.put("tiempos", tiempo);
 	}
 }
