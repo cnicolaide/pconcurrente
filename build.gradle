@@ -1,5 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'project-report'
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 apply plugin: "de.aaschmid.cpd"
@@ -42,6 +41,8 @@ repositories {
 
 dependencies {
     testCompile 'junit:junit:4.12'
+	compile group: 'org.jsoup', name: 'jsoup', version: '1.8.3'
+	compile group: 'net.sourceforge.jexcelapi', name: 'jxl', version: '2.6.10'
 }
 
 checkstyle {

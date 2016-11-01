@@ -1,4 +1,4 @@
-package Test;
+package unitTest;
 
 import java.util.HashMap;
 import java.util.logging.Logger;
