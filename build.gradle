@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'project-report'
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 apply plugin: "de.aaschmid.cpd"
@@ -15,6 +16,24 @@ buildscript {
   dependencies {
     classpath "de.aaschmid:gradle-cpd-plugin:1.0"
   }
+}
+
+task compilarMain(type: Jar) {
+	manifest {
+        attributes 'Main-Class': 'MinaCarbon.Main'
+    }
+    baseName = 'Main'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+task compilarMain2(type: Jar) {
+	manifest {
+        attributes 'Main-Class': 'MinaCarbon.Main2'
+    }
+    baseName = 'Main2'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
 
 repositories {
@@ -84,3 +103,8 @@ tasks.withType(FindBugs) {
 }
 
 test.finalizedBy(project.tasks.jacocoTestReport)
+
+task compilarTodo() {
+compilarTodo.dependsOn(compilarMain)
+compilarTodo.dependsOn(compilarMain2)
+}
