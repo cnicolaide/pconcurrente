@@ -14,13 +14,15 @@ public class Main2 {
 		// archivo
 		// HTML exportado en PIPE
 		Lector miLector = new Lector("bombaYSensorycarro.html", "tiempos.xls");
-		HashMap<String, Matriz> datos = miLector.LeerHTML();
+		HashMap<String, Matriz> datos = miLector.read();
 		RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
 				datos.get("tiempos"));
+		
 		// Crea la cola y el monitor
 		Colas miCola = new Colas(12);
 		GestorDeMonitor miMonitor = GestorDeMonitor.getInstance(miRed, miCola);
 
+		// Crea las secuencias de disparo
 		int secuenciaA[] = { 0 }; // CLOCK
 		int secuenciaB[] = { 3 }; // RESTRICCIONES
 		int secuenciaC[] = { 1, 4 }; // TANQUE VACIO
@@ -28,7 +30,7 @@ public class Main2 {
 		int secuenciaE[] = { 11, 6, 7, 8, 9, 10 }; // CARRO 1
 		int secuenciaF[] = { 8, 9, 10, 11, 6, 7 }; // CARRO 2
 
-		// Crea los dos carros, les pasa el monitor, un id, y la secuencia de
+		// Crea los hilos, les pasa el monitor, una descripcion, y la secuencia de
 		// disparo de cada uno
 		Hilo A = new Hilo(miMonitor, "Clock", secuenciaA);
 		Hilo B = new Hilo(miMonitor, "Restricciones", secuenciaB);
@@ -37,7 +39,7 @@ public class Main2 {
 		Hilo E = new Hilo(miMonitor, "Carro A", secuenciaE);
 		Hilo F = new Hilo(miMonitor, "Carro B", secuenciaF);
 
-		// Crea los hilos para los carros
+		// Instancia los hilos 
 		Thread hiloA = new Thread(A);
 		Thread hiloB = new Thread(B);
 		Thread hiloC = new Thread(C);
@@ -45,6 +47,7 @@ public class Main2 {
 		Thread hiloE = new Thread(E);
 		Thread hiloF = new Thread(F);
 
+		// Pone las instancias a correr
 		hiloA.start();
 		hiloB.start();
 		hiloC.start();

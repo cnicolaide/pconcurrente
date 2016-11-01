@@ -20,7 +20,7 @@ public class TestMonitor extends TestCase {
 	// archivo
 	// HTML exportado en PIPE
 	Lector miLector = new Lector("carros.html", "tiempos.xls");
-	HashMap<String, Matriz> datos = miLector.LeerHTML();
+	HashMap<String, Matriz> datos = miLector.read();
 	RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), datos.get("tiempos"));
 	// Crea la cola y el monitor
 	private Colas miCola = new Colas(6);

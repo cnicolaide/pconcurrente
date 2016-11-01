@@ -32,7 +32,7 @@ public class Lector {
 		this.sTiempos = sTiempos;
 	}
 
-	public HashMap<String, Matriz> LeerHTML() {
+	public HashMap<String, Matriz> read() {
 		File oFile = null;
 		if (sRed == null) {
 			JFileChooser fileChooser = new JFileChooser();
@@ -69,7 +69,7 @@ public class Lector {
 			obtenerIncidencia();
 			obtenerInhibicion();
 			obtenerMarcado();
-			LeerExcelTiempos();
+			obtenerTiempos();
 		} catch (IOException ex) {
 			Logger.getLogger(Lector.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -162,7 +162,7 @@ public class Lector {
 	}
 
 	// PARSEA EL XLS CON LOS TIEMPOS DE LAS TRANSICIONES TEMPORALES
-	private void LeerExcelTiempos() {
+	private void obtenerTiempos() {
 		Matriz tiempo = null;
 		File file;
 		if (sTiempos == null) {
