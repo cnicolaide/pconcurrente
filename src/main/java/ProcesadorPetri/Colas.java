@@ -8,10 +8,10 @@ public class Colas {
 
 	private Semaphore[] arregloSemaphores;
 
-	public Colas(int tamaño) {
-		arregloSemaphores = new Semaphore[tamaño];
+	public Colas(int tamano) {
+		arregloSemaphores = new Semaphore[tamano];
 
-		for (int i = 0; i < tamaño; i++) {
+		for (int i = 0; i < tamano; i++) {
 			arregloSemaphores[i] = new Semaphore(0, true);
 		}
 	}
