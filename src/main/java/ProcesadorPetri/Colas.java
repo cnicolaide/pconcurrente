@@ -26,7 +26,7 @@ public class Colas {
 
 	public Matriz quienesEstan() {
 		Matriz vc = new Matriz(1, arregloSemaphores.length);
-		vc.Clear();
+		vc.clear();
 
 		for (int i = 0; i < arregloSemaphores.length; i++) {
 			if (arregloSemaphores[i].getQueueLength() != 0) {

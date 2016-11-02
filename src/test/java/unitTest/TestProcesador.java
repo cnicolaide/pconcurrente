@@ -23,7 +23,7 @@ public class TestProcesador {
 	@Test
 	public void testTransicionesSensibilizadas() {
 
-		Log.Instance().Escribir("TestProcesador", " ***** EJECUTANDO TEST: GETSENSIBILIZADAS *****");
+		Log.getInstance().escribir("TestProcesador", " ***** EJECUTANDO TEST: GETSENSIBILIZADAS *****");
 		int[][] iEsperada = { { 0, 0, 1, 0, 0, 1 } };
 		Matriz mEsperada = oRed.getSesibilizadas();
 		Matriz mReal = new Matriz(iEsperada);
@@ -34,7 +34,7 @@ public class TestProcesador {
 	@Test
 	public void testDispararNoSensibilizada() {
 
-		Log.Instance().Escribir("TestProcesador", " ***** EJECUTANDO TEST: DISPARAR TRANSICION NO SENSIBILIZADA *****");
+		Log.getInstance().escribir("TestProcesador", " ***** EJECUTANDO TEST: DISPARAR TRANSICION NO SENSIBILIZADA *****");
 		int[][] iEsperada = { { 0, 0, 1, 0, 0, 1, 0, 0 } };
 		Matriz mEsperada = new Matriz(iEsperada);
 
@@ -48,7 +48,7 @@ public class TestProcesador {
 	@Test
 	public void testDispararSensibilizada() {
 
-		Log.Instance().Escribir("TestProcesador", " ***** EJECUTANDO TEST: DISPARAR TRANSICION SENSIBILIZADA *****");
+		Log.getInstance().escribir("TestProcesador", " ***** EJECUTANDO TEST: DISPARAR TRANSICION SENSIBILIZADA *****");
 		int[][] iEsperada = { { 0, 0, 0, 1, 0, 1, 1, 0 } };
 		Matriz mEsperada = new Matriz(iEsperada);
 
@@ -62,7 +62,7 @@ public class TestProcesador {
 	@Test
 	public void testDispararSecuenciaCorrecta() {
 
-		Log.Instance().Escribir("TestProcesador",
+		Log.getInstance().escribir("TestProcesador",
 				" ***** EJECUTANDO TEST: DISPARAR SECUENCIA CORRECTA DE TRANSICIONES *****");
 		int[][] iEsperada = { { 0, 1, 0, 1, 0, 0, 0, 1 } };
 		Matriz mEsperada = new Matriz(iEsperada);
@@ -79,7 +79,7 @@ public class TestProcesador {
 	@Test
 	public void testDispararSecuenciaIncorrecta() {
 
-		Log.Instance().Escribir("TestProcesador",
+		Log.getInstance().escribir("TestProcesador",
 				" ***** EJECUTANDO TEST: DISPARAR SECUENCIA INCORRECTA DE TRANSICIONES *****");
 		int[][] iEsperada = { { 1, 0, 1, 0, 0, 0, 0, 1 } };
 		Matriz mEsperada = new Matriz(iEsperada);

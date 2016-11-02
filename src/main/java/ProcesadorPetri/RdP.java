@@ -18,7 +18,7 @@ public class RdP {
 		mSensibilizadas = calcularSensibilizadas();
 		// System.out.println("Tiempos: " + mTiempo);
 		// System.out.println("\n");
-		Log.Instance().Escribir("RdP", " ***** SE INSTANCIO LA RED DE PETRI *****");
+		Log.getInstance().escribir("RdP", " ***** SE INSTANCIO LA RED DE PETRI *****");
 		printEstados();
 	}
 
@@ -49,13 +49,13 @@ public class RdP {
 			mSensibilizadas = calcularSensibilizadas();
 
 			// Imprime los estados y retorna TRUE
-			Log.Instance().Escribir("RdP", "Se ejecuto el disparo: T" + posicion);
+			Log.getInstance().escribir("RdP", "Se ejecuto el disparo: T" + posicion);
 			printEstados();
 			return true;
 		}
 
 		// Imprime los estados y retorna FALSE
-		Log.Instance().Escribir("RdP", "No se puede ejecutar el disparo: T" + posicion);
+		Log.getInstance().escribir("RdP", "No se puede ejecutar el disparo: T" + posicion);
 		printEstados();
 		return false;
 	}
@@ -63,13 +63,13 @@ public class RdP {
 	// CREA EL VECTOR F(Mi)
 	private Matriz crearVectorFdeMi() {
 		Matriz mVectorVi = new Matriz(mMarcadoActual.getFilCount(), mMarcadoActual.getColCount());
-		return mVectorVi.FdeMi(mMarcadoActual);
+		return mVectorVi.getFdeMi(mMarcadoActual);
 	}
 
 	// CREA EL VECTOR DE DISPARO
 	private Matriz crearVectorDisparo(int pos) {
 		Matriz mDisparo = new Matriz(1, mIncidencia.getColCount());
-		mDisparo.Clear();
+		mDisparo.clear();
 		mDisparo.setDato(0, pos, 1);
 		return mDisparo;
 	}
@@ -97,7 +97,7 @@ public class RdP {
 		}
 
 		// Crea la matriz (!(F*H))
-		Matriz mFdeH = crearFporH().Negacion();
+		Matriz mFdeH = crearFporH().negar();
 
 		// Recorre la matriz, hace las sumas y en caso que aux < 0 coloca 0 en
 		// la matriz de sensibilizadas
@@ -147,7 +147,7 @@ public class RdP {
 
 	// IMPRIME LOS ESTADOS DE LA RED EN CIERTO MOMENTO
 	private void printEstados() {
-		Log.Instance().Escribir("RdP", "Marcado Actual: " + mMarcadoActual);
-		Log.Instance().Escribir("RdP", "Transiciones Sensibilizadas: " + mSensibilizadas);
+		Log.getInstance().escribir("RdP", "Marcado Actual: " + mMarcadoActual);
+		Log.getInstance().escribir("RdP", "Transiciones Sensibilizadas: " + mSensibilizadas);
 	}
 }

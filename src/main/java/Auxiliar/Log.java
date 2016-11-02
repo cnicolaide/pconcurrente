@@ -26,7 +26,7 @@ public class Log {
 	}
 
 	// IMPLEMENTA SINGLETON, PARA QUE SOLO EXISTA UNA INSTANCIA DE LOG
-	public static Log Instance() {
+	public static Log getInstance() {
 		if (oFicheros == null) {
 			oFicheros = new Log();
 		}
@@ -34,7 +34,7 @@ public class Log {
 	}
 
 	// IMPRIME EL LOG POR CONSOLA Y TAMBIEN LO GUARDA EN UN ARCHIVO DE TEXTO
-	public void Escribir(String sTitulo, String sTexto) {
+	public void escribir(String sTitulo, String sTexto) {
 		contador++;
 		String sTextoFinal = contador + " > " + sd.format(new Date()) + " - " + sTitulo + ": " + sTexto;
 		System.out.println(sTextoFinal);
@@ -49,5 +49,4 @@ public class Log {
 			JOptionPane.showMessageDialog(null, ex, "Log: ", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
 }

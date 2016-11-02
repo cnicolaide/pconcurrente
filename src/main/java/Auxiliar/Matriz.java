@@ -49,7 +49,7 @@ public class Matriz {
 	}
 
 	// COLOCA CEROS EN TODOS LOS ELEMENTOS DE LA PATRIZ
-	public void Clear() {
+	public void clear() {
 		for (int i = 0; i < this.getFilCount(); i++) {
 			for (int j = 0; j < this.getColCount(); j++) {
 				this.setDato(i, j, 0);
@@ -146,7 +146,7 @@ public class Matriz {
 		}
 	}
 
-	public static int TransActive(int[][] disparo) {
+	public static int transActive(int[][] disparo) {
 		int c = 0;
 		for (int i = 0; i < disparo.length; i++) {
 			for (int j = 0; j < disparo[i].length; j++) {
@@ -193,7 +193,7 @@ public class Matriz {
 		return aux == 0;
 	}
 
-	public Matriz FdeMi(Matriz A) {
+	public Matriz getFdeMi(Matriz A) {
 		Matriz mVectorVi = new Matriz(A.getFilCount(), A.getColCount());
 		for (int i = 0; i < A.getFilCount(); i++) {
 			for (int j = 0; j < A.getColCount(); j++) {
@@ -207,7 +207,7 @@ public class Matriz {
 		return mVectorVi;
 	}
 
-	public Matriz Negacion() {
+	public Matriz negar() {
 		Matriz Negacion = new Matriz(this.getFilCount(), this.getColCount());
 		for (int i = 0; i < this.getFilCount(); i++) {
 			for (int j = 0; j < this.getColCount(); j++) {
