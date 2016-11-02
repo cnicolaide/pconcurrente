@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import Auxiliar.Lector;
@@ -13,11 +14,19 @@ import ProcesadorPetri.RdP;
 
 public class TestProcesador {
 
-	// Lee las matrices de marcado, inicidencia e inhibicion desde el archivo
-	// HTML exportado en PIPE
-	Lector miLector = new Lector("carros.html", "tiempos.xls");
-	HashMap<String, Matriz> datos = miLector.read();
-	RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), datos.get("tiempos"));
+	private Lector miLector;
+	private HashMap<String, Matriz> datos;
+	private RdP oRed;
+
+	@Before
+	public void setUp() {
+		// Lee las matrices de marcado, inicidencia e inhibicion desde el
+		// archivo
+		// HTML exportado en PIPE
+		miLector = new Lector("carros.html", "tiempos.xls");
+		datos = miLector.read();
+		oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), datos.get("tiempos"));
+	}
 
 	// PRUEBA DEL METODO GETSENSIBILIZADAS
 	@Test
@@ -34,7 +43,8 @@ public class TestProcesador {
 	@Test
 	public void testDispararNoSensibilizada() {
 
-		Log.getInstance().escribir("TestProcesador", " ***** EJECUTANDO TEST: DISPARAR TRANSICION NO SENSIBILIZADA *****");
+		Log.getInstance().escribir("TestProcesador",
+				" ***** EJECUTANDO TEST: DISPARAR TRANSICION NO SENSIBILIZADA *****");
 		int[][] iEsperada = { { 0, 0, 1, 0, 0, 1, 0, 0 } };
 		Matriz mEsperada = new Matriz(iEsperada);
 
