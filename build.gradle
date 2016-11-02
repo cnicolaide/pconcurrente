@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'eclipse'
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 apply plugin: "de.aaschmid.cpd"
