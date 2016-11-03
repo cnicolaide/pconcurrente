@@ -15,7 +15,7 @@ import ProcesadorPetri.RdP;
 public class TestProcesador {
 
 	private Lector miLector;
-	private HashMap<String, Matriz> datos;
+	private HashMap<String, Matriz> datos = new HashMap<String, Matriz>();
 	private RdP oRed;
 
 	@Before

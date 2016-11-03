@@ -17,7 +17,7 @@ public class TestMonitor extends TestCase {
 	private GestorDeMonitor sone = null, stwo = null;
 	private static Logger logger = Logger.getAnonymousLogger();
 	private Lector miLector;
-	private HashMap<String, Matriz> datos;
+	private HashMap<String, Matriz> datos = new HashMap<String, Matriz>();
 	private RdP oRed;
 	private Colas miCola;
 
