@@ -14,8 +14,8 @@ import ProcesadorPetri.RdP;
 
 public class TestProcesador {
 
-	private Lector miLector;
-	private HashMap<String, Matriz> datos = new HashMap<String, Matriz>();
+	private Lector miLector = new Lector("carros.html", "tiempos.xls");
+	private HashMap<String, Matriz> datos = miLector.read();
 	private RdP oRed;
 
 	@Before
@@ -23,8 +23,7 @@ public class TestProcesador {
 		// Lee las matrices de marcado, inicidencia e inhibicion desde el
 		// archivo
 		// HTML exportado en PIPE
-		miLector = new Lector("carros.html", "tiempos.xls");
-		datos = miLector.read();
+		System.out.println("\n");
 		oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), datos.get("tiempos"));
 	}
 

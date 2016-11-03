@@ -65,6 +65,8 @@ public class Lector {
 						iMarcado[0] = i;
 						iMarcado[1] = j;
 						break;
+					default:
+						break;
 					}
 				}
 			}

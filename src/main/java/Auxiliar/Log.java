@@ -26,7 +26,7 @@ public class Log {
 	}
 
 	// IMPLEMENTA SINGLETON, PARA QUE SOLO EXISTA UNA INSTANCIA DE LOG
-	public static Log getInstance() {
+	public static synchronized Log getInstance() {
 		if (oFicheros == null) {
 			oFicheros = new Log();
 		}

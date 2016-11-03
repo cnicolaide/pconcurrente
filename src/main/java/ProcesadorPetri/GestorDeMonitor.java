@@ -20,7 +20,7 @@ public class GestorDeMonitor {
 	}
 
 	// METODO PARA IMPLEMENTAR PATRON SINGLETON
-	public static GestorDeMonitor getInstance(RdP oRed, Colas oCola) {
+	public static synchronized GestorDeMonitor getInstance(RdP oRed, Colas oCola) {
 		if (instance == null) {
 			instance = new GestorDeMonitor(oRed, oCola);
 		}

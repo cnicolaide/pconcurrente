@@ -16,15 +16,13 @@ import junit.framework.TestCase;
 public class TestMonitor extends TestCase {
 	private GestorDeMonitor sone = null, stwo = null;
 	private static Logger logger = Logger.getAnonymousLogger();
-	private Lector miLector;
-	private HashMap<String, Matriz> datos = new HashMap<String, Matriz>();
+	private Lector miLector = new Lector("carros.html", "tiempos.xls");
+	private HashMap<String, Matriz> datos = miLector.read();
 	private RdP oRed;
 	private Colas miCola;
 
 	@Before
 	public void setUp() {
-		miLector = new Lector("carros.html", "tiempos.xls");
-		datos = miLector.read();
 		oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), datos.get("tiempos"));
 		miCola = new Colas(6);
 		logger.info("tomando singleton...");
