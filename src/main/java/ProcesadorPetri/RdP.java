@@ -8,6 +8,7 @@ public class RdP {
 	private Matriz mMarcadoInicial, mMarcadoActual, mIncidencia, mInhibicion, mSensibilizadas, mTiempo;
 	private long tiempoSensibilizada;
 	private long[] timestamp;
+	private int ventana;
 
 	// CONSTRUCTOR DE LA RED DE PETRI
 	public RdP(Matriz mMarcado, Matriz mIncidencia, Matriz mInhibicion, Matriz mTiempo) {
@@ -25,7 +26,8 @@ public class RdP {
 	// Mi+I*d.AND*(!(F*H))
 	public boolean disparar(int posicion) {
 
-		int ventana = testVentanaTiempo(posicion);
+		ventana = testVentanaTiempo(posicion);
+		System.err.println("Ventana: " + ventana);
 
 		// Transforma la posicion que recibe en un vector de disparo
 		Matriz mDisparo = crearVectorDisparo(posicion);
@@ -130,15 +132,18 @@ public class RdP {
 
 		System.err.println("Diferencia: " + (tiempoActual - timestamp[disparo]));
 
+		// Pregunta si la transicion es temporizada o no
 		if (mTiempo.getVal(disparo, 0) == 0 && mTiempo.getVal(disparo, 1) == 0) {
 			return 0;
 		}
 
+		// Pregunta si el tiempo transcurrido esta entre alfa y beta
 		else if (mTiempo.getVal(disparo, 0) < (tiempoActual - timestamp[disparo])
 				&& mTiempo.getVal(disparo, 1) > (tiempoActual - timestamp[disparo])) {
 			return 0;
 		}
 
+		// Pregunta si el tiempo transcurrido es menor que alfa
 		else if (mTiempo.getVal(disparo, 0) > (tiempoActual - timestamp[disparo])) {
 			return (int) (mTiempo.getVal(disparo, 0) - ((tiempoActual - timestamp[disparo])));
 		}
@@ -159,6 +164,11 @@ public class RdP {
 	// DEVUELVE MATRIZ CON EL NUEVO MARCADO
 	public Matriz getMarcadoActual() {
 		return mMarcadoActual;
+	}
+
+	// DEVUELVE VENTANA DE TIEMPO EN TRANSICIONES TEMPORIZADAS
+	public int getVentana() {
+		return ventana;
 	}
 
 	// IMPRIME LOS ESTADOS DE LA RED EN CIERTO MOMENTO

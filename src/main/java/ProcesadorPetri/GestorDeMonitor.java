@@ -32,6 +32,8 @@ public class GestorDeMonitor {
 
 		while (!oRed.disparar(transicion)) {
 			mutex.release();
+//			if (oRed.getVentana() > 0)
+//				Thread.sleep(oRed.getVentana());
 			oCola.encolar(transicion);
 			mutex.acquire();
 		}
