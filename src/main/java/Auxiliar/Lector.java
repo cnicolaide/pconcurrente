@@ -43,7 +43,7 @@ public class Lector {
 				oFile = fileChooser.getSelectedFile();
 			}
 		} else {
-			oFile = new File(System.getProperty("user.dir") + "\\docs\\redes\\" + sRed);
+			oFile = new File(System.getProperty("user.dir") + "//docs//redes//" + sRed);
 		}
 		try {
 			html = Jsoup.parse(oFile, "UTF-8", "http://example.com/");
@@ -175,7 +175,7 @@ public class Lector {
 			if (seleccion == JFileChooser.APPROVE_OPTION)
 				file = fileChooser.getSelectedFile();
 		}
-		file = new File(System.getProperty("user.dir") + "\\docs\\tablas\\" + sTiempos);
+		file = new File(System.getProperty("user.dir") + "//docs//tablas//" + sTiempos);
 		Workbook wbook = null;
 		try {
 			wbook = Workbook.getWorkbook(file);
