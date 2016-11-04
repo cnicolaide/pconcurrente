@@ -5,8 +5,9 @@ import Auxiliar.Matriz;
 
 public class RdP {
 
-	private Matriz mMarcadoInicial, mMarcadoActual, mIncidencia, mInhibicion, mSensibilizadas;// ,
-																								// mTiempo;
+	private Matriz mMarcadoInicial, mMarcadoActual, mIncidencia, mInhibicion, mSensibilizadas, mTiempo;
+	private long tiempoSensibilizada;
+	private long[] timestamp;
 
 	// CONSTRUCTOR DE LA RED DE PETRI
 	public RdP(Matriz mMarcado, Matriz mIncidencia, Matriz mInhibicion, Matriz mTiempo) {
@@ -14,10 +15,8 @@ public class RdP {
 		this.mMarcadoInicial = mMarcado;
 		this.mIncidencia = mIncidencia;
 		this.mInhibicion = mInhibicion;
-		// this.mTiempo = mTiempo;
+		this.mTiempo = mTiempo;
 		mSensibilizadas = calcularSensibilizadas();
-		// System.out.println("Tiempos: " + mTiempo);
-		// System.out.println("\n");
 		Log.getInstance().escribir("RdP", " ***** SE INSTANCIO LA RED DE PETRI *****");
 		printEstados();
 	}
@@ -26,12 +25,14 @@ public class RdP {
 	// Mi+I*d.AND*(!(F*H))
 	public boolean disparar(int posicion) {
 
+		int ventana = testVentanaTiempo(posicion);
+
 		// Transforma la posicion que recibe en un vector de disparo
 		Matriz mDisparo = crearVectorDisparo(posicion);
 
 		// Verifica que la transicion que le pasan este sensibilizada, si esta,
 		// dispara.
-		if (mSensibilizadas.getVal(0, posicion) == 1) {
+		if (mSensibilizadas.getVal(0, posicion) == 1 && ventana == 0) {
 
 			// Carga en el marcado actual, los valores iniciales para operar
 			mMarcadoActual = mMarcadoInicial;
@@ -55,7 +56,17 @@ public class RdP {
 		}
 
 		// Imprime los estados y retorna FALSE
-		Log.getInstance().escribir("RdP", "No se puede ejecutar el disparo: T" + posicion);
+		String causa = "";
+
+		if (ventana == 0) {
+			causa = "por no estar sensibilizada: T";
+		} else if (ventana == -1) {
+			causa = "por llegar despues del intervalo: T";
+		} else if (ventana > 0) {
+			causa = "por llegar " + ventana + " antes, T:";
+		}
+
+		Log.getInstance().escribir("RdP", "No se puede ejecutar el disparo, " + causa + posicion);
 		printEstados();
 		return false;
 	}
@@ -81,19 +92,17 @@ public class RdP {
 		return mFdeH;
 	}
 
-	// Calendar ahora = Calendar.getInstance();
-
 	private Matriz calcularSensibilizadas() {
 		Matriz mSensibilizadas = new Matriz(1, mIncidencia.getColCount());
-		// long[] timestamp = new long[mIncidencia.getColCount()];
-		//
+		timestamp = new long[mIncidencia.getColCount()];
+
+		tiempoSensibilizada = System.currentTimeMillis();
 		// System.out.println(" Current time is : " + ahora.getTimeInMillis());
 
 		// Inicializa el vector de Sensibilizadas en 1
 		for (int i = 0; i < mIncidencia.getColCount(); i++) {
 			mSensibilizadas.setDato(0, i, 1);
-			// mTiempo.setDato(i, 0, (int) (mTiempo.getVal(i, 0) +
-			// ahora.getTimeInMillis()));
+			timestamp[i] = tiempoSensibilizada;
 		}
 
 		// Crea la matriz (!(F*H))
@@ -108,27 +117,34 @@ public class RdP {
 				// transicion
 				if (mIncidencia.getVal(i, j) + mMarcadoActual.getVal(0, i) < 0 || mFdeH.getVal(0, j) == 0) {
 					mSensibilizadas.setDato(0, j, 0);
+					timestamp[j] = 0;
 				}
-				// if (!testVentanaTiempo(1, timestamp[j]))
-				// mSensibilizadas.setDato(0, j, 0);
 			}
 		}
 		return mSensibilizadas;
 	}
 
-	// private boolean testVentanaTiempo(int disparo, long timestamp) {
-	//
-	// boolean esperando = false;
-	// System.out
-	// .println("Alfa: " + (mTiempo.getVal(disparo, 0) + timestamp) + "Ahora: "
-	// + System.currentTimeMillis());
-	// if ((mTiempo.getVal(disparo, 0) + timestamp < ahora.getTimeInMillis())
-	// && (mTiempo.getVal(disparo, 1) + timestamp > ahora.getTimeInMillis()) &&
-	// ((esperando == false)))
-	// return true;
-	// return false;
-	//
-	// }
+	private int testVentanaTiempo(int disparo) {
+
+		long tiempoActual = System.currentTimeMillis();
+
+		System.err.println("Diferencia: " + (tiempoActual - timestamp[disparo]));
+
+		if (mTiempo.getVal(disparo, 0) == 0 && mTiempo.getVal(disparo, 1) == 0) {
+			return 0;
+		}
+
+		else if (mTiempo.getVal(disparo, 0) < (tiempoActual - timestamp[disparo])
+				&& mTiempo.getVal(disparo, 1) > (tiempoActual - timestamp[disparo])) {
+			return 0;
+		}
+
+		else if (mTiempo.getVal(disparo, 0) > (tiempoActual - timestamp[disparo])) {
+			return (int) (mTiempo.getVal(disparo, 0) - ((tiempoActual - timestamp[disparo])));
+		}
+
+		return -1;
+	}
 
 	// DEVUELVE MATRIZ CON TRANSICIONES SENSIBILIZADAS
 	public Matriz getSesibilizadas() {
