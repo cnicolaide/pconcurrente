@@ -32,10 +32,13 @@ public class GestorDeMonitor {
 
 		while (!oRed.disparar(transicion)) {
 			mutex.release();
-//			if (oRed.getVentana() > 0)
-//				Thread.sleep(oRed.getVentana());
-			oCola.encolar(transicion);
-			mutex.acquire();
+			if (oRed.getVentana() > 0) {
+				Thread.sleep(oRed.getVentana());
+				mutex.acquire();
+			} else {
+				oCola.encolar(transicion);
+				mutex.acquire();
+			}
 		}
 
 		Matriz vs = oRed.getSesibilizadas();

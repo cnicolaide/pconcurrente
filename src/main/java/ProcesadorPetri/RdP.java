@@ -17,6 +17,8 @@ public class RdP {
 		this.mIncidencia = mIncidencia;
 		this.mInhibicion = mInhibicion;
 		this.mTiempo = mTiempo;
+		timestamp = new long[mIncidencia.getColCount()];
+		mSensibilizadas = new Matriz(1, mIncidencia.getColCount());
 		mSensibilizadas = calcularSensibilizadas();
 		Log.getInstance().escribir("RdP", " ***** SE INSTANCIO LA RED DE PETRI *****");
 		printEstados();
@@ -65,7 +67,7 @@ public class RdP {
 		} else if (ventana == -1) {
 			causa = "por llegar despues del intervalo: T";
 		} else if (ventana > 0) {
-			causa = "por llegar " + ventana + " antes, T:";
+			causa = "por llegar " + ventana + " antes: T";
 		}
 
 		Log.getInstance().escribir("RdP", "No se puede ejecutar el disparo, " + causa + posicion);
@@ -94,17 +96,16 @@ public class RdP {
 		return mFdeH;
 	}
 
-	private Matriz calcularSensibilizadas() {
-		Matriz mSensibilizadas = new Matriz(1, mIncidencia.getColCount());
-		timestamp = new long[mIncidencia.getColCount()];
+	int contador = 0;
 
+	private Matriz calcularSensibilizadas() {
 		tiempoSensibilizada = System.currentTimeMillis();
-		// System.out.println(" Current time is : " + ahora.getTimeInMillis());
 
 		// Inicializa el vector de Sensibilizadas en 1
 		for (int i = 0; i < mIncidencia.getColCount(); i++) {
 			mSensibilizadas.setDato(0, i, 1);
-			timestamp[i] = tiempoSensibilizada;
+			if (contador == 0)
+				timestamp[i] = tiempoSensibilizada;
 		}
 
 		// Crea la matriz (!(F*H))
@@ -120,9 +121,17 @@ public class RdP {
 				if (mIncidencia.getVal(i, j) + mMarcadoActual.getVal(0, i) < 0 || mFdeH.getVal(0, j) == 0) {
 					mSensibilizadas.setDato(0, j, 0);
 					timestamp[j] = 0;
+
 				}
 			}
 		}
+
+		for (int i = 0; i < mIncidencia.getColCount(); i++) {
+			if (mSensibilizadas.getVal(0, i) == 1 && timestamp[i] == 0) {
+				timestamp[i] = tiempoSensibilizada;
+			}
+		}
+		contador++;
 		return mSensibilizadas;
 	}
 
