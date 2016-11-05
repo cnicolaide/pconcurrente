@@ -1,8 +1,8 @@
-package MinaCarbon;
+package minaCarbon;
 
 import java.util.Random;
 
-import ProcesadorPetri.GestorDeMonitor;
+import procesadorPetri.GestorDeMonitor;
 
 public class Hilo implements Runnable {
 

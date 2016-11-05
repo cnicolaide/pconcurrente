@@ -1,19 +1,19 @@
-package MinaCarbon;
+package minaCarbon;
 
 import java.util.HashMap;
 
-import Auxiliar.Lector;
-import Auxiliar.Matriz;
-import ProcesadorPetri.Colas;
-import ProcesadorPetri.GestorDeMonitor;
-import ProcesadorPetri.RdP;
+import auxiliar.Lector;
+import auxiliar.Matriz;
+import procesadorPetri.Colas;
+import procesadorPetri.GestorDeMonitor;
+import procesadorPetri.RdP;
 
 public class Main2 {
 	public static void main(String[] args) {
 		// Lee las matrices de marcado, inicidencia e inhibicion desde el
 		// archivo
 		// HTML exportado en PIPE
-		Lector miLector = new Lector("bombaYSensorycarro.html", "tiempos.xls");
+		Lector miLector = new Lector("bombaYSensorycarro.html", "completasintiempos.xls");
 		HashMap<String, Matriz> datos = miLector.read();
 		RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
 				datos.get("tiempos"));

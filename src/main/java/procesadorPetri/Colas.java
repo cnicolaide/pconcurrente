@@ -1,8 +1,8 @@
-package ProcesadorPetri;
+package procesadorPetri;
 
 import java.util.concurrent.Semaphore;
 
-import Auxiliar.Matriz;
+import auxiliar.Matriz;
 
 public class Colas {
 

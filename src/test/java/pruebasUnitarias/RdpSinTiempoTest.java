@@ -1,4 +1,4 @@
-package unitTest;
+package pruebasUnitarias;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,14 +7,14 @@ import java.util.HashMap;
 import org.junit.Before;
 import org.junit.Test;
 
-import Auxiliar.Lector;
-import Auxiliar.Log;
-import Auxiliar.Matriz;
-import ProcesadorPetri.RdP;
+import auxiliar.Lector;
+import auxiliar.Log;
+import auxiliar.Matriz;
+import procesadorPetri.RdP;
 
-public class TestProcesador {
+public class RdpSinTiempoTest {
 
-	private Lector miLector = new Lector("carros.html", "tiempos.xls");
+	private Lector miLector = new Lector("carros.html", "sintiempos.xls");
 	private HashMap<String, Matriz> datos = miLector.read();
 	private RdP oRed;
 

@@ -1,8 +1,8 @@
-package ProcesadorPetri;
+package procesadorPetri;
 
 import java.util.concurrent.Semaphore;
 
-import Auxiliar.Matriz;
+import auxiliar.Matriz;
 
 public class GestorDeMonitor {
 	private RdP oRed;
@@ -27,14 +27,17 @@ public class GestorDeMonitor {
 		return instance;
 	}
 
+	// METODO QUE DISPARA TRANSICIONES TEMPORIZADAS Y AUTOMATICAS
 	public void dispararTransicion(int transicion) throws InterruptedException {
 		mutex.acquire();
 
 		while (!oRed.disparar(transicion)) {
 			mutex.release();
+			// Verifica si es una transicion con tiempo
 			if (oRed.getVentana() > 0) {
 				Thread.sleep(oRed.getVentana());
 				mutex.acquire();
+				// En caso contrario
 			} else {
 				oCola.encolar(transicion);
 				mutex.acquire();
@@ -43,22 +46,12 @@ public class GestorDeMonitor {
 
 		Matriz vs = oRed.getSesibilizadas();
 		Matriz vc = oCola.quienesEstan();
-
 		Matriz m = vs.AND(vc);
 
-		// System.err.println("VS: ------------------------------ \n" +
-		// vs.toString());
-		// System.err.println("VC: ------------------------------ \n" +
-		// vc.toString());
-		// System.err.println("M: ------------------------------ \n" + m);
-
 		mutex.release();
-
-		// System.err.println("La prioridad es de T" + oPolitica.cual(m));
 
 		if (!m.esCero()) {
 			oCola.desencolar(oPolitica.cual(m));
 		}
-
 	}
 }

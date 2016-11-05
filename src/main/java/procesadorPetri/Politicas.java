@@ -1,6 +1,6 @@
-package ProcesadorPetri;
+package procesadorPetri;
 
-import Auxiliar.Matriz;
+import auxiliar.Matriz;
 
 public class Politicas {
 	RdP oRed;
@@ -13,7 +13,6 @@ public class Politicas {
 	}
 
 	private void setPrioridad() {
-
 		int[] iPolitica = { 15, 7, 18, 1, 5, 19, 20, 21, 22, 23, 24, 25 };
 
 		for (int i = 0; i < oRed.getSesibilizadas().getColCount(); i++) {
@@ -31,7 +30,6 @@ public class Politicas {
 				mayor = oPolitica.getVal(0, i);
 				pos = i;
 			}
-
 		return pos;
 	}
 }

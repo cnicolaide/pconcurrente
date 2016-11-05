@@ -20,7 +20,7 @@ buildscript {
 
 task compilarMain(type: Jar) {
 	manifest {
-        attributes 'Main-Class': 'MinaCarbon.Main'
+        attributes 'Main-Class': 'minaCarbon.Main'
     }
     baseName = 'Main'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
@@ -29,7 +29,7 @@ task compilarMain(type: Jar) {
 
 task compilarMain2(type: Jar) {
 	manifest {
-        attributes 'Main-Class': 'MinaCarbon.Main2'
+        attributes 'Main-Class': 'minaCarbon.Main2'
     }
     baseName = 'Main2'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }

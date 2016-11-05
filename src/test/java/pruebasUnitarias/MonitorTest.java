@@ -1,4 +1,4 @@
-package unitTest;
+package pruebasUnitarias;
 
 import java.util.HashMap;
 import java.util.logging.Logger;
@@ -6,14 +6,14 @@ import java.util.logging.Logger;
 import org.junit.Assert;
 import org.junit.Before;
 
-import Auxiliar.Lector;
-import Auxiliar.Matriz;
-import ProcesadorPetri.Colas;
-import ProcesadorPetri.GestorDeMonitor;
-import ProcesadorPetri.RdP;
+import auxiliar.Lector;
+import auxiliar.Matriz;
 import junit.framework.TestCase;
+import procesadorPetri.Colas;
+import procesadorPetri.GestorDeMonitor;
+import procesadorPetri.RdP;
 
-public class TestMonitor extends TestCase {
+public class MonitorTest extends TestCase {
 	private GestorDeMonitor sone = null, stwo = null;
 	private static Logger logger = Logger.getAnonymousLogger();
 	private Lector miLector = new Lector("carros.html", "tiempos.xls");

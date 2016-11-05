@@ -1,14 +1,14 @@
-package ProcesadorPetri;
+package procesadorPetri;
 
-import Auxiliar.Log;
-import Auxiliar.Matriz;
+import auxiliar.Log;
+import auxiliar.Matriz;
 
 public class RdP {
 
 	private Matriz mMarcadoInicial, mMarcadoActual, mIncidencia, mInhibicion, mSensibilizadas, mTiempo;
 	private long tiempoSensibilizada;
 	private long[] timestamp;
-	private int ventana;
+	private int ventana, primeraVez = 0;
 
 	// CONSTRUCTOR DE LA RED DE PETRI
 	public RdP(Matriz mMarcado, Matriz mIncidencia, Matriz mInhibicion, Matriz mTiempo) {
@@ -28,14 +28,15 @@ public class RdP {
 	// Mi+I*d.AND*(!(F*H))
 	public boolean disparar(int posicion) {
 
+		// Se fija si la transicion tiene tiene o no tiempo
 		ventana = testVentanaTiempo(posicion);
 		System.err.println("Ventana: " + ventana);
 
 		// Transforma la posicion que recibe en un vector de disparo
 		Matriz mDisparo = crearVectorDisparo(posicion);
 
-		// Verifica que la transicion que le pasan este sensibilizada, si esta,
-		// dispara.
+		// Verifica que la transicion que le pasan este sensibilizada, si esta y
+		// es automatica, dispara.
 		if (mSensibilizadas.getVal(0, posicion) == 1 && ventana == 0) {
 
 			// Carga en el marcado actual, los valores iniciales para operar
@@ -72,6 +73,7 @@ public class RdP {
 
 		Log.getInstance().escribir("RdP", "No se puede ejecutar el disparo, " + causa + posicion);
 		printEstados();
+
 		return false;
 	}
 
@@ -96,15 +98,13 @@ public class RdP {
 		return mFdeH;
 	}
 
-	int contador = 0;
-
 	private Matriz calcularSensibilizadas() {
 		tiempoSensibilizada = System.currentTimeMillis();
 
 		// Inicializa el vector de Sensibilizadas en 1
 		for (int i = 0; i < mIncidencia.getColCount(); i++) {
 			mSensibilizadas.setDato(0, i, 1);
-			if (contador == 0)
+			if (primeraVez == 0)
 				timestamp[i] = tiempoSensibilizada;
 		}
 
@@ -120,18 +120,20 @@ public class RdP {
 				// transicion
 				if (mIncidencia.getVal(i, j) + mMarcadoActual.getVal(0, i) < 0 || mFdeH.getVal(0, j) == 0) {
 					mSensibilizadas.setDato(0, j, 0);
+					// Si no esta sensibilizada coloca tiempo 0
 					timestamp[j] = 0;
-
 				}
 			}
 		}
 
+		// Si esta sensibilizada, y no tiene tiempo 0 seteado, actualiza el
+		// tiempo
 		for (int i = 0; i < mIncidencia.getColCount(); i++) {
 			if (mSensibilizadas.getVal(0, i) == 1 && timestamp[i] == 0) {
 				timestamp[i] = tiempoSensibilizada;
 			}
 		}
-		contador++;
+		primeraVez++;
 		return mSensibilizadas;
 	}
 
