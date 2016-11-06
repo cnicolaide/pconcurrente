@@ -21,8 +21,7 @@ public class RdpSinTiempoTest {
 	@Before
 	public void setUp() {
 		// Lee las matrices de marcado, inicidencia e inhibicion desde el
-		// archivo
-		// HTML exportado en PIPE
+		// archivo HTML exportado en PIPE
 		System.out.println("\n");
 		oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), datos.get("tiempos"));
 	}
