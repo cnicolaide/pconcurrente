@@ -23,13 +23,13 @@ public class Hilo implements Runnable {
 			while (true) {
 				for (int i = 0; i < secuencia.length; i++) {
 					Thread.sleep(r.nextInt(100)); // sleep chico
-																// random
+													// random
 					System.out.println("\nSOY EL HILO: " + nombre); // Seguimiento
 					oMonitor.dispararTransicion(secuencia[i]); // dispara
 																// transicion de
 																// la secuencia
 					Thread.sleep(r.nextInt(5000)); // sleep grande
-																// random
+													// random
 				}
 			}
 

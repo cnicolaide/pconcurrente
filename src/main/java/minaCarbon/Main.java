@@ -9,7 +9,6 @@ import procesadorPetri.GestorDeMonitor;
 import procesadorPetri.RdP;
 
 public class Main {
-
 	public static void main(String[] args) {
 		// Lee las matrices de marcado, inicidencia e inhibicion desde el
 		// archivo HTML exportado en PIPE

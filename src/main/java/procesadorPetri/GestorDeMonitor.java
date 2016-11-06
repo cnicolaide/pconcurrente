@@ -12,7 +12,7 @@ public class GestorDeMonitor {
 	private static GestorDeMonitor instance = null;
 
 	// CONSTRUCTOR DE LA CLASE MONITOR
-	protected GestorDeMonitor(RdP oRed, Colas oCola) {
+	private GestorDeMonitor(RdP oRed, Colas oCola) {
 		this.oRed = oRed;
 		this.oCola = oCola;
 		oPolitica = new Politicas(oRed);
