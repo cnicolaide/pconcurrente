@@ -14,7 +14,7 @@ import procesadorPetri.RdP;
 
 public class RdpSinTiempoTest {
 
-	private Lector miLector = new Lector("carros.html", "sintiempos.xls");
+	private Lector miLector = new Lector("carros.html", "chicaSinTiempos.xls");
 	private HashMap<String, Matriz> datos = miLector.read();
 	private RdP oRed;
 

@@ -13,7 +13,7 @@ public class Main3 {
 		// Lee las matrices de marcado, inicidencia e inhibicion desde el
 		// archivo
 		// HTML exportado en PIPE
-		Lector miLector = new Lector("redCompleta.html", "completa.xls");
+		Lector miLector = new Lector("redCompleta.html", "completaSinTiempos.xls");
 		HashMap<String, Matriz> datos = miLector.read();
 		RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
 				datos.get("tiempos"));

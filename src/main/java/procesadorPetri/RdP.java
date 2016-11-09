@@ -196,7 +196,7 @@ public class RdP {
 	// IMPRIME LOS ESTADOS DE LA RED EN CIERTO MOMENTO
 	private void printEstados() {
 		Log.getInstance().escribir("RdP", "Marcado Actual: " + mMarcadoActual);
-		Log.getInstance().escribir("RdP", "Transiciones Sensibilizadas: " + mSensibilizadas);
+		Log.getInstance().escribir("RdP", "Trans. Sensibi: " + mSensibilizadas);
 	}
 
 	public boolean estaSensibilizada(int transicion) {
