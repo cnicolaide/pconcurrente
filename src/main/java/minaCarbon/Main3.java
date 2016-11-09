@@ -13,7 +13,7 @@ public class Main3 {
 		// Lee las matrices de marcado, inicidencia e inhibicion desde el
 		// archivo
 		// HTML exportado en PIPE
-		Lector miLector = new Lector("redCompleta.html", "completaSinTiempos.xls");
+		Lector miLector = new Lector("redCompleta.html", "completaConTiempos.xls");
 		HashMap<String, Matriz> datos = miLector.read();
 		RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
 				datos.get("tiempos"));
@@ -30,13 +30,13 @@ public class Main3 {
 		int secuenciaE[] = { 8, 11, 10, 9, 6, 7 }; // CARRO 1
 		int secuenciaF[] = { 9, 6, 7, 8, 11, 10 }; // CARRO 2
 		int secuenciaG[] = { 12 }; // CLOCK SENSOR CH4
-		int secuenciaH[] = { 13, 14 }; // LECTOR CH4
+		int secuenciaH[] = { 13 }; // LECTOR CH4
 		int secuenciaI[] = { 19, 20 }; // TIMEOUT
 		int secuenciaJ[] = { 16 }; // NO HAY GAS
 		int secuenciaK[] = { 15, 17 }; // HAY GAS
 		int secuenciaL[] = { 18 }; // RESTRICCION CH4
 		int secuenciaM[] = { 21 }; // RESET
-
+		int secuenciaN[] = { 14 }; // MEDICION CH4
 		// Crea los hilos, les pasa el monitor, una descripcion, y la secuencia
 		// de
 		// disparo de cada uno
@@ -53,6 +53,7 @@ public class Main3 {
 		Hilo K = new Hilo(miMonitor, "Hay gas", secuenciaK);
 		Hilo L = new Hilo(miMonitor, "Restriccion CH4", secuenciaL);
 		Hilo M = new Hilo(miMonitor, "Reset", secuenciaM);
+		Hilo N = new Hilo(miMonitor, "Medicion CH4", secuenciaN);
 
 		// Instancia los hilos
 		Thread hiloA = new Thread(A);
@@ -68,6 +69,7 @@ public class Main3 {
 		Thread hiloK = new Thread(K);
 		Thread hiloL = new Thread(L);
 		Thread hiloM = new Thread(M);
+		Thread hiloN = new Thread(N);
 
 		// Pone las instancias a correr
 		hiloA.start();
@@ -83,5 +85,6 @@ public class Main3 {
 		hiloK.start();
 		hiloL.start();
 		hiloM.start();
+		hiloN.start();
 	}
 }

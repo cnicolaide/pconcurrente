@@ -23,7 +23,7 @@ public class Hilo implements Runnable {
 		try {
 			while (true) {
 				for (int i = 0; i < secuencia.length; i++) {
-//					Thread.sleep(r.nextInt(1500)); // sleep chico
+					Thread.sleep(r.nextInt(1000)); // sleep chico
 													// random
 //					Log.getInstance().escribir("\n SOY EL HILO: ", nombre);
 					 System.out.println("\nSOY EL HILO: " + nombre); //
