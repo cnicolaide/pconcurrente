@@ -30,7 +30,7 @@ public class RdP {
 
 		// Se fija si la transicion tiene tiene o no tiempo
 		ventana = testVentanaTiempo(posicion);
-		System.err.println("Ventana: " + ventana);
+		// System.err.println("Ventana: " + ventana);
 
 		// Transforma la posicion que recibe en un vector de disparo
 		Matriz mDisparo = crearVectorDisparo(posicion);
@@ -55,24 +55,32 @@ public class RdP {
 			mSensibilizadas = calcularSensibilizadas();
 
 			// Imprime los estados y retorna TRUE
-			Log.getInstance().escribir("RdP", "Se ejecuto el disparo: T" + posicion);
-			printEstados();
+			synchronized (Log.getInstance()) {
+				Log.getInstance().escribir("RdP", "Se ejecuto el disparo: T" + posicion);
+				printEstados();
+			}
 			return true;
 		}
 
 		// Imprime los estados y retorna FALSE
 		String causa = "";
 
-		if (ventana == 0) {
+		if (ventana == 0 && mSensibilizadas.getVal(0, posicion) == 0) {
 			causa = "por no estar sensibilizada: T";
-		} else if (ventana == -1) {
-			causa = "por llegar despues del intervalo: T";
-		} else if (ventana > 0) {
-			causa = "por llegar " + ventana + " antes: T";
+		} else if (ventana == -1 && mSensibilizadas.getVal(0, posicion) == 0) {
+			causa = "por ser temporizada y no estar sensibilizada: T";
+		} else if (ventana == -1 && mSensibilizadas.getVal(0, posicion) == 1) {
+			causa = "por ser temporizada y llegar despues del intervalo: T";
+		} else if (ventana > 0 && mSensibilizadas.getVal(0, posicion) == 0) {
+			causa = "por llegar " + ventana + " antes pero no estar sensibilizada: T";
+		} else if (ventana > 0 && mSensibilizadas.getVal(0, posicion) == 1) {
+			causa = "por llegar " + ventana + " antes y estar sensibilizada: T";
 		}
 
-		Log.getInstance().escribir("RdP", "No se puede ejecutar el disparo, " + causa + posicion);
-		printEstados();
+		synchronized (Log.getInstance()) {
+			Log.getInstance().escribir("RdP", "No se puede ejecutar el disparo, " + causa + posicion);
+			printEstados();
+		}
 
 		return false;
 	}
@@ -133,15 +141,18 @@ public class RdP {
 				timestamp[i] = tiempoSensibilizada;
 			}
 		}
-		primeraVez++;
+
+		primeraVez = 1;
 		return mSensibilizadas;
 	}
 
 	private int testVentanaTiempo(int disparo) {
 
 		long tiempoActual = System.currentTimeMillis();
-
-		System.err.println("Diferencia: " + (tiempoActual - timestamp[disparo]));
+		// System.err.println("Tiempo actual: " + (tiempoActual));
+		// System.err.println("Time stamp: " + (timestamp[disparo]));
+		// System.err.println("Diferencia: " + (tiempoActual -
+		// timestamp[disparo]));
 
 		// Pregunta si la transicion es temporizada o no
 		if (mTiempo.getVal(disparo, 0) == 0 && mTiempo.getVal(disparo, 1) == 0) {
@@ -149,8 +160,8 @@ public class RdP {
 		}
 
 		// Pregunta si el tiempo transcurrido esta entre alfa y beta
-		else if (mTiempo.getVal(disparo, 0) < (tiempoActual - timestamp[disparo])
-				&& mTiempo.getVal(disparo, 1) > (tiempoActual - timestamp[disparo])) {
+		else if ((mTiempo.getVal(disparo, 0) < (tiempoActual - timestamp[disparo]))
+				&& (mTiempo.getVal(disparo, 1) > (tiempoActual - timestamp[disparo]))) {
 			return 0;
 		}
 
@@ -186,5 +197,9 @@ public class RdP {
 	private void printEstados() {
 		Log.getInstance().escribir("RdP", "Marcado Actual: " + mMarcadoActual);
 		Log.getInstance().escribir("RdP", "Transiciones Sensibilizadas: " + mSensibilizadas);
+	}
+
+	public boolean estaSensibilizada(int transicion) {
+		return mSensibilizadas.getVal(0, transicion) == 1;
 	}
 }

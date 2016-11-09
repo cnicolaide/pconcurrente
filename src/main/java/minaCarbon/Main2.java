@@ -19,7 +19,7 @@ public class Main2 {
 				datos.get("tiempos"));
 		
 		// Crea la cola y el monitor
-		Colas miCola = new Colas(12);
+		Colas miCola = new Colas(datos.get("incidencia").getColCount());
 		GestorDeMonitor miMonitor = GestorDeMonitor.getInstance(miRed, miCola);
 
 		// Crea las secuencias de disparo

@@ -2,6 +2,7 @@ package minaCarbon;
 
 import java.util.Random;
 
+import auxiliar.Log;
 import procesadorPetri.GestorDeMonitor;
 
 public class Hilo implements Runnable {
@@ -22,13 +23,15 @@ public class Hilo implements Runnable {
 		try {
 			while (true) {
 				for (int i = 0; i < secuencia.length; i++) {
-					Thread.sleep(r.nextInt(100)); // sleep chico
+//					Thread.sleep(r.nextInt(1500)); // sleep chico
 													// random
-					System.out.println("\nSOY EL HILO: " + nombre); // Seguimiento
+//					Log.getInstance().escribir("\n SOY EL HILO: ", nombre);
+					 System.out.println("\nSOY EL HILO: " + nombre); //
+					// Seguimiento
 					oMonitor.dispararTransicion(secuencia[i]); // dispara
 																// transicion de
 																// la secuencia
-					Thread.sleep(r.nextInt(5000)); // sleep grande
+//					Thread.sleep(r.nextInt(5000)); // sleep grande
 													// random
 				}
 			}
