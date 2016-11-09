@@ -43,6 +43,7 @@ public class Log {
 		try {
 			bw = new BufferedWriter(new FileWriter(fichero, true));
 			bw.write(sTextoFinal);
+			bw.newLine();
 			bw.close();
 		} catch (IOException ex) {
 			System.out.println(ex);

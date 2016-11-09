@@ -13,7 +13,7 @@ public class Politicas {
 	}
 
 	private void setPrioridad() {
-		int[] iPolitica = { 15, 7, 18, 1, 5, 19, 20, 21, 22, 23, 24, 25, 15, 7, 18, 1, 5, 19, 20, 21, 22, 23 };
+		int[] iPolitica = { 17, 18, 14, 1, 5, 19, 20, 21, 22, 23, 24, 25, 15, 16, 27, 26, 28, 19, 13, 11, 10, 12 };
 
 		for (int i = 0; i < oRed.getSesibilizadas().getColCount(); i++) {
 			oPolitica.setDato(0, i, iPolitica[i]);
