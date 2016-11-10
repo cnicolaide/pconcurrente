@@ -30,7 +30,6 @@ public class GestorDeMonitor {
 	// METODO QUE DISPARA TRANSICIONES TEMPORIZADAS Y AUTOMATICAS
 	public void dispararTransicion(int transicion) throws InterruptedException {
 		mutex.acquire();
-
 		while (!oRed.disparar(transicion)) {
 			mutex.release();
 			// Verifica si es una transicion con tiempo

@@ -7,7 +7,7 @@ public class RdP {
 	private Matriz mMarcadoInicial, mMarcadoActual, mIncidencia, mInhibicion, mSensibilizadas, mTiempo;
 	private long tiempoSensibilizada;
 	private long[] timestamp;
-	private int ventana, primeraVez = 0;
+	private int ventana, sensibilizada, primeraVez = 0;
 
 	// CONSTRUCTOR DE LA RED DE PETRI
 	public RdP(Matriz mMarcado, Matriz mIncidencia, Matriz mInhibicion, Matriz mTiempo) {
@@ -20,7 +20,7 @@ public class RdP {
 		mSensibilizadas = new Matriz(1, mIncidencia.getColCount());
 		mSensibilizadas = calcularSensibilizadas();
 		Log.getInstance().escribir("RdP", " ***** SE INSTANCIO LA RED DE PETRI *****");
-		printEstados();
+		// printEstados();
 	}
 
 	// DISPARA UNA TRANSICION DE LA RED DE PETRI UTILIZANDO LA FORMULA: Mi+1 =
@@ -29,14 +29,14 @@ public class RdP {
 
 		// Se fija si la transicion tiene tiene o no tiempo
 		ventana = testVentanaTiempo(posicion);
-		// System.err.println("Ventana: " + ventana);
+		sensibilizada = mSensibilizadas.getVal(0, posicion);
 
 		// Transforma la posicion que recibe en un vector de disparo
 		Matriz mDisparo = crearVectorDisparo(posicion);
 
 		// Verifica que la transicion que le pasan este sensibilizada, si esta y
 		// es automatica, dispara.
-		if (mSensibilizadas.getVal(0, posicion) == 1 && ventana == 0) {
+		if (sensibilizada == 1 && ventana == 0) {
 
 			// Carga en el marcado actual, los valores iniciales para operar
 			mMarcadoActual = mMarcadoInicial;
@@ -54,33 +54,12 @@ public class RdP {
 			mSensibilizadas = calcularSensibilizadas();
 
 			// Imprime los estados y retorna TRUE
-			synchronized (Log.getInstance()) {
-				Log.getInstance().escribir("RdP", "Se ejecuto el disparo: T" + posicion);
-				printEstados();
-			}
+			printEstados(ventana, sensibilizada, posicion);
 			return true;
 		}
 
 		// Imprime los estados y retorna FALSE
-		String causa = "";
-
-		if (ventana == 0 && mSensibilizadas.getVal(0, posicion) == 0) {
-			causa = "por no estar sensibilizada: T";
-		} else if (ventana == -1 && mSensibilizadas.getVal(0, posicion) == 0) {
-			causa = "por ser temporizada y no estar sensibilizada: T";
-		} else if (ventana == -1 && mSensibilizadas.getVal(0, posicion) == 1) {
-			causa = "por ser temporizada y llegar despues del intervalo: T";
-		} else if (ventana > 0 && mSensibilizadas.getVal(0, posicion) == 0) {
-			causa = "por llegar " + ventana + " antes pero no estar sensibilizada: T";
-		} else if (ventana > 0 && mSensibilizadas.getVal(0, posicion) == 1) {
-			causa = "por llegar " + ventana + " antes y estar sensibilizada: T";
-		}
-
-		synchronized (Log.getInstance()) {
-			Log.getInstance().escribir("RdP", "No se puede ejecutar el disparo, " + causa + posicion);
-			printEstados();
-		}
-
+		printEstados(ventana, sensibilizada, posicion);
 		return false;
 	}
 
@@ -148,10 +127,6 @@ public class RdP {
 	private int testVentanaTiempo(int disparo) {
 
 		long tiempoActual = System.currentTimeMillis();
-		// System.err.println("Tiempo actual: " + (tiempoActual));
-		// System.err.println("Time stamp: " + (timestamp[disparo]));
-		// System.err.println("Diferencia: " + (tiempoActual -
-		// timestamp[disparo]));
 
 		// Pregunta si la transicion es temporizada o no
 		if (mTiempo.getVal(disparo, 0) == 0 && mTiempo.getVal(disparo, 1) == 0) {
@@ -193,9 +168,30 @@ public class RdP {
 	}
 
 	// IMPRIME LOS ESTADOS DE LA RED EN CIERTO MOMENTO
-	private void printEstados() {
-		Log.getInstance().escribir("RdP", "Marcado Actual: " + mMarcadoActual);
-		Log.getInstance().escribir("RdP", "Trans. Sensibi: " + mSensibilizadas);
+	private void printEstados(int ventana, int sensibilizada, int posicion) {
+		String resultado = " ---- Este caso no fue tenido en cuenta, verificar ---- ";
+		
+		synchronized (this) {
+			System.err.println(Thread.currentThread().getName());
+
+			if (ventana == 0 && sensibilizada == 1)
+				resultado = "Se ejecuto el disparo T";
+			if (ventana == 0 && sensibilizada == 0)
+				resultado = "No se puede ejecutar el disparo, por no estar sensibilizada T";
+			if (ventana == -1 && sensibilizada == 0)
+				resultado = "No se puede ejecutar el disparo, por ser temporizada y no estar sensibilizada T";
+			if (ventana == -1 && sensibilizada == 1)
+				resultado = "No se puede ejecutar el disparo, por ser temporizada y llegar despues del intervalo T";
+			if (ventana > 0 && sensibilizada == 0)
+				resultado = "No se puede ejecutar el disparo, por llegar " + ventana
+						+ " antes pero no estar sensibilizada T";
+			if (ventana > 0 && sensibilizada == 1)
+				resultado = "No se puede ejecutar el disparo, por llegar " + ventana + " antes y estar sensibilizada T";
+
+			Log.getInstance().escribir("RdP", "Resultado: " + resultado + posicion);
+			Log.getInstance().escribir("RdP", "Marcado Actual: " + mMarcadoActual);
+			Log.getInstance().escribir("RdP", "Trans. Sensibi: " + mSensibilizadas + "\n");
+		}
 	}
 
 	public boolean estaSensibilizada(int transicion) {
