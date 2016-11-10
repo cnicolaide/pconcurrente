@@ -4,6 +4,7 @@ import auxiliar.Log;
 import auxiliar.Matriz;
 
 public class RdP {
+
 	private Matriz mMarcadoInicial, mMarcadoActual, mIncidencia, mInhibicion, mSensibilizadas, mTiempo;
 	private long tiempoSensibilizada;
 	private long[] timestamp;
@@ -102,10 +103,9 @@ public class RdP {
 			for (int j = 0; j < mIncidencia.getColCount(); j++) {
 				// Verifica que (!(F*H)) o que la suma de Incidencia y Marcado
 				// sea menor cero, en ese caso coloca 0 en la posicion de la
-				// transicion
+				// transicion y en el timestamp
 				if (mIncidencia.getVal(i, j) + mMarcadoActual.getVal(0, i) < 0 || mFdeH.getVal(0, j) == 0) {
 					mSensibilizadas.setDato(0, j, 0);
-					// Si no esta sensibilizada coloca tiempo 0
 					timestamp[j] = 0;
 				}
 			}
@@ -166,8 +166,6 @@ public class RdP {
 		String resultado = " ---- Este caso no fue tenido en cuenta, verificar ---- ";
 
 		synchronized (this) {
-			Log.getInstance().escribir("Hilo", Thread.currentThread().getName(), true);
-			// System.err.println(Thread.currentThread().getName());
 
 			if (ventana == 0 && sensibilizada == 1)
 				resultado = "Se ejecuto el disparo T";
@@ -183,6 +181,7 @@ public class RdP {
 			if (ventana > 0 && sensibilizada == 1)
 				resultado = "No se puede ejecutar el disparo, por llegar " + ventana + " antes y estar sensibilizada T";
 
+			Log.getInstance().escribir("Hilo", Thread.currentThread().getName(), true);
 			Log.getInstance().escribir("RdP", "Resultado: " + resultado + posicion, false);
 			Log.getInstance().escribir("RdP", "Marcado Actual: " + mMarcadoActual, false);
 			Log.getInstance().escribir("RdP", "Trans. Sensibi: " + mSensibilizadas + "\n", false);

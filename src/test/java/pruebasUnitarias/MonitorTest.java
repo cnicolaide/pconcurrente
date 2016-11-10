@@ -14,6 +14,7 @@ import procesadorPetri.GestorDeMonitor;
 import procesadorPetri.RdP;
 
 public class MonitorTest extends TestCase {
+
 	private GestorDeMonitor sone = null, stwo = null;
 	private static Logger logger = Logger.getAnonymousLogger();
 	private Lector miLector = new Lector("carros.html", "chicaSinTiempos.xls");

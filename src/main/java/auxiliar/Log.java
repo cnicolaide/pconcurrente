@@ -19,7 +19,6 @@ public class Log {
 	private Log() {
 		this.sArchivo = "System.txt";
 		File fichero = new File(System.getProperty("user.dir") + "\\log\\" + sArchivo);
-		// Asegura escribir un log nuevo por cada corrida
 		if (fichero.exists()) {
 			fichero.delete();
 		}

@@ -1,45 +1,614 @@
-1 > 10/11/16 09:57:15 - RdP:  ***** SE INSTANCIO LA RED DE PETRI *****
-2 > 10/11/16 09:57:15 - TestProcesador:  ***** EJECUTANDO TEST: GETSENSIBILIZADAS *****
-3 > 10/11/16 09:57:15 - RdP:  ***** SE INSTANCIO LA RED DE PETRI *****
-4 > 10/11/16 09:57:15 - TestProcesador:  ***** EJECUTANDO TEST: DISPARAR SECUENCIA CORRECTA DE TRANSICIONES *****
-5 > 10/11/16 09:57:15 - Hilo: main
-6 > 10/11/16 09:57:15 - RdP: Resultado: Se ejecuto el disparo T2
-7 > 10/11/16 09:57:15 - RdP: Marcado Actual:  0  0  0  1  0  1  1  0  
-8 > 10/11/16 09:57:15 - RdP: Trans. Sensibi:  0  0  0  0  0  1  
+1 > 10/11/16 10:39:31 - RdP:  ***** SE INSTANCIO LA RED DE PETRI *****
+2 > 10/11/16 10:39:31 - Hilo: Carro A
+3 > 10/11/16 10:39:31 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1482 antes y estar sensibilizada T5
+4 > 10/11/16 10:39:31 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+5 > 10/11/16 10:39:31 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
 
-9 > 10/11/16 09:57:15 - Hilo: main
-10 > 10/11/16 09:57:15 - RdP: Resultado: Se ejecuto el disparo T5
-11 > 10/11/16 09:57:15 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
-12 > 10/11/16 09:57:15 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+6 > 10/11/16 10:39:31 - Hilo: Carro B
+7 > 10/11/16 10:39:31 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1456 antes y estar sensibilizada T2
+8 > 10/11/16 10:39:31 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+9 > 10/11/16 10:39:31 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
 
-13 > 10/11/16 09:57:15 - Hilo: main
-14 > 10/11/16 09:57:15 - RdP: Resultado: Se ejecuto el disparo T0
-15 > 10/11/16 09:57:15 - RdP: Marcado Actual:  0  1  0  1  0  0  0  1  
-16 > 10/11/16 09:57:15 - RdP: Trans. Sensibi:  0  1  0  1  0  0  
+10 > 10/11/16 10:39:33 - Hilo: Carro B
+11 > 10/11/16 10:39:33 - RdP: Resultado: Se ejecuto el disparo T2
+12 > 10/11/16 10:39:33 - RdP: Marcado Actual:  0  0  0  1  0  1  1  0  
+13 > 10/11/16 10:39:33 - RdP: Trans. Sensibi:  0  0  0  0  0  1  
 
-17 > 10/11/16 09:57:15 - RdP:  ***** SE INSTANCIO LA RED DE PETRI *****
-18 > 10/11/16 09:57:15 - TestProcesador:  ***** EJECUTANDO TEST: DISPARAR TRANSICION NO SENSIBILIZADA *****
-19 > 10/11/16 09:57:15 - Hilo: main
-20 > 10/11/16 09:57:15 - RdP: Resultado: No se puede ejecutar el disparo, por no estar sensibilizada T3
-21 > 10/11/16 09:57:15 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
-22 > 10/11/16 09:57:16 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+14 > 10/11/16 10:39:33 - Hilo: Carro A
+15 > 10/11/16 10:39:33 - RdP: Resultado: Se ejecuto el disparo T5
+16 > 10/11/16 10:39:33 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+17 > 10/11/16 10:39:33 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
 
-23 > 10/11/16 09:57:16 - RdP:  ***** SE INSTANCIO LA RED DE PETRI *****
-24 > 10/11/16 09:57:16 - TestProcesador:  ***** EJECUTANDO TEST: DISPARAR SECUENCIA INCORRECTA DE TRANSICIONES *****
-25 > 10/11/16 09:57:16 - Hilo: main
-26 > 10/11/16 09:57:16 - RdP: Resultado: Se ejecuto el disparo T5
-27 > 10/11/16 09:57:16 - RdP: Marcado Actual:  1  0  1  0  0  0  0  1  
-28 > 10/11/16 09:57:16 - RdP: Trans. Sensibi:  0  0  1  0  0  0  
+18 > 10/11/16 10:39:33 - Hilo: Carro B
+19 > 10/11/16 10:39:33 - RdP: Resultado: Se ejecuto el disparo T3
+20 > 10/11/16 10:39:33 - RdP: Marcado Actual:  1  0  0  0  1  0  1  0  
+21 > 10/11/16 10:39:33 - RdP: Trans. Sensibi:  1  0  0  0  1  0  
 
-29 > 10/11/16 09:57:16 - Hilo: main
-30 > 10/11/16 09:57:16 - RdP: Resultado: No se puede ejecutar el disparo, por no estar sensibilizada T0
-31 > 10/11/16 09:57:16 - RdP: Marcado Actual:  1  0  1  0  0  0  0  1  
-32 > 10/11/16 09:57:16 - RdP: Trans. Sensibi:  0  0  1  0  0  0  
+22 > 10/11/16 10:39:33 - Hilo: Carro A
+23 > 10/11/16 10:39:33 - RdP: Resultado: Se ejecuto el disparo T0
+24 > 10/11/16 10:39:33 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+25 > 10/11/16 10:39:33 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
 
-33 > 10/11/16 09:57:16 - RdP:  ***** SE INSTANCIO LA RED DE PETRI *****
-34 > 10/11/16 09:57:16 - TestProcesador:  ***** EJECUTANDO TEST: DISPARAR TRANSICION SENSIBILIZADA *****
-35 > 10/11/16 09:57:16 - Hilo: main
-36 > 10/11/16 09:57:16 - RdP: Resultado: Se ejecuto el disparo T2
-37 > 10/11/16 09:57:16 - RdP: Marcado Actual:  0  0  0  1  0  1  1  0  
-38 > 10/11/16 09:57:16 - RdP: Trans. Sensibi:  0  0  0  0  0  1  
+26 > 10/11/16 10:39:33 - Hilo: Carro B
+27 > 10/11/16 10:39:33 - RdP: Resultado: Se ejecuto el disparo T4
+28 > 10/11/16 10:39:33 - RdP: Marcado Actual:  0  1  0  0  0  1  0  0  
+29 > 10/11/16 10:39:33 - RdP: Trans. Sensibi:  0  1  0  0  0  1  
 
+30 > 10/11/16 10:39:33 - Hilo: Carro A
+31 > 10/11/16 10:39:33 - RdP: Resultado: Se ejecuto el disparo T1
+32 > 10/11/16 10:39:33 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+33 > 10/11/16 10:39:33 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+34 > 10/11/16 10:39:33 - Hilo: Carro B
+35 > 10/11/16 10:39:33 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1413 antes y estar sensibilizada T5
+36 > 10/11/16 10:39:33 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+37 > 10/11/16 10:39:33 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+38 > 10/11/16 10:39:33 - Hilo: Carro A
+39 > 10/11/16 10:39:33 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1450 antes y estar sensibilizada T2
+40 > 10/11/16 10:39:33 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+41 > 10/11/16 10:39:33 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+42 > 10/11/16 10:39:34 - Hilo: Carro B
+43 > 10/11/16 10:39:34 - RdP: Resultado: Se ejecuto el disparo T5
+44 > 10/11/16 10:39:34 - RdP: Marcado Actual:  1  0  1  0  0  0  0  1  
+45 > 10/11/16 10:39:34 - RdP: Trans. Sensibi:  0  0  1  0  0  0  
+
+46 > 10/11/16 10:39:34 - Hilo: Carro A
+47 > 10/11/16 10:39:34 - RdP: Resultado: Se ejecuto el disparo T2
+48 > 10/11/16 10:39:34 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+49 > 10/11/16 10:39:34 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+50 > 10/11/16 10:39:34 - Hilo: Carro B
+51 > 10/11/16 10:39:34 - RdP: Resultado: Se ejecuto el disparo T0
+52 > 10/11/16 10:39:34 - RdP: Marcado Actual:  0  1  0  1  0  0  0  1  
+53 > 10/11/16 10:39:34 - RdP: Trans. Sensibi:  0  1  0  1  0  0  
+
+54 > 10/11/16 10:39:34 - Hilo: Carro A
+55 > 10/11/16 10:39:34 - RdP: Resultado: Se ejecuto el disparo T3
+56 > 10/11/16 10:39:34 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+57 > 10/11/16 10:39:34 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+58 > 10/11/16 10:39:34 - Hilo: Carro B
+59 > 10/11/16 10:39:34 - RdP: Resultado: Se ejecuto el disparo T1
+60 > 10/11/16 10:39:34 - RdP: Marcado Actual:  0  0  1  0  1  0  0  0  
+61 > 10/11/16 10:39:34 - RdP: Trans. Sensibi:  0  0  1  0  1  0  
+
+62 > 10/11/16 10:39:34 - Hilo: Carro A
+63 > 10/11/16 10:39:34 - RdP: Resultado: Se ejecuto el disparo T4
+64 > 10/11/16 10:39:34 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+65 > 10/11/16 10:39:34 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+66 > 10/11/16 10:39:34 - Hilo: Carro B
+67 > 10/11/16 10:39:34 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1466 antes y estar sensibilizada T2
+68 > 10/11/16 10:39:34 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+69 > 10/11/16 10:39:34 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+70 > 10/11/16 10:39:34 - Hilo: Carro A
+71 > 10/11/16 10:39:34 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1466 antes y estar sensibilizada T5
+72 > 10/11/16 10:39:34 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+73 > 10/11/16 10:39:34 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+74 > 10/11/16 10:39:36 - Hilo: Carro B
+75 > 10/11/16 10:39:36 - RdP: Resultado: Se ejecuto el disparo T2
+76 > 10/11/16 10:39:36 - RdP: Marcado Actual:  0  0  0  1  0  1  1  0  
+77 > 10/11/16 10:39:36 - RdP: Trans. Sensibi:  0  0  0  0  0  1  
+
+78 > 10/11/16 10:39:36 - Hilo: Carro A
+79 > 10/11/16 10:39:36 - RdP: Resultado: Se ejecuto el disparo T5
+80 > 10/11/16 10:39:36 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+81 > 10/11/16 10:39:36 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+82 > 10/11/16 10:39:36 - Hilo: Carro B
+83 > 10/11/16 10:39:36 - RdP: Resultado: Se ejecuto el disparo T3
+84 > 10/11/16 10:39:36 - RdP: Marcado Actual:  1  0  0  0  1  0  1  0  
+85 > 10/11/16 10:39:36 - RdP: Trans. Sensibi:  1  0  0  0  1  0  
+
+86 > 10/11/16 10:39:36 - Hilo: Carro A
+87 > 10/11/16 10:39:36 - RdP: Resultado: Se ejecuto el disparo T0
+88 > 10/11/16 10:39:36 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+89 > 10/11/16 10:39:36 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+90 > 10/11/16 10:39:36 - Hilo: Carro B
+91 > 10/11/16 10:39:36 - RdP: Resultado: Se ejecuto el disparo T4
+92 > 10/11/16 10:39:36 - RdP: Marcado Actual:  0  1  0  0  0  1  0  0  
+93 > 10/11/16 10:39:36 - RdP: Trans. Sensibi:  0  1  0  0  0  1  
+
+94 > 10/11/16 10:39:36 - Hilo: Carro A
+95 > 10/11/16 10:39:36 - RdP: Resultado: Se ejecuto el disparo T1
+96 > 10/11/16 10:39:36 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+97 > 10/11/16 10:39:36 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+98 > 10/11/16 10:39:36 - Hilo: Carro B
+99 > 10/11/16 10:39:36 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1465 antes y estar sensibilizada T5
+100 > 10/11/16 10:39:36 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+101 > 10/11/16 10:39:36 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+102 > 10/11/16 10:39:36 - Hilo: Carro A
+103 > 10/11/16 10:39:36 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1465 antes y estar sensibilizada T2
+104 > 10/11/16 10:39:36 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+105 > 10/11/16 10:39:36 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+106 > 10/11/16 10:39:38 - Hilo: Carro B
+107 > 10/11/16 10:39:38 - RdP: Resultado: Se ejecuto el disparo T5
+108 > 10/11/16 10:39:38 - RdP: Marcado Actual:  1  0  1  0  0  0  0  1  
+109 > 10/11/16 10:39:38 - RdP: Trans. Sensibi:  0  0  1  0  0  0  
+
+110 > 10/11/16 10:39:38 - Hilo: Carro A
+111 > 10/11/16 10:39:38 - RdP: Resultado: Se ejecuto el disparo T2
+112 > 10/11/16 10:39:38 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+113 > 10/11/16 10:39:38 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+114 > 10/11/16 10:39:38 - Hilo: Carro B
+115 > 10/11/16 10:39:38 - RdP: Resultado: Se ejecuto el disparo T0
+116 > 10/11/16 10:39:38 - RdP: Marcado Actual:  0  1  0  1  0  0  0  1  
+117 > 10/11/16 10:39:38 - RdP: Trans. Sensibi:  0  1  0  1  0  0  
+
+118 > 10/11/16 10:39:38 - Hilo: Carro A
+119 > 10/11/16 10:39:38 - RdP: Resultado: Se ejecuto el disparo T3
+120 > 10/11/16 10:39:38 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+121 > 10/11/16 10:39:38 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+122 > 10/11/16 10:39:38 - Hilo: Carro B
+123 > 10/11/16 10:39:38 - RdP: Resultado: Se ejecuto el disparo T1
+124 > 10/11/16 10:39:38 - RdP: Marcado Actual:  0  0  1  0  1  0  0  0  
+125 > 10/11/16 10:39:38 - RdP: Trans. Sensibi:  0  0  1  0  1  0  
+
+126 > 10/11/16 10:39:38 - Hilo: Carro A
+127 > 10/11/16 10:39:38 - RdP: Resultado: Se ejecuto el disparo T4
+128 > 10/11/16 10:39:38 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+129 > 10/11/16 10:39:38 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+130 > 10/11/16 10:39:38 - Hilo: Carro B
+131 > 10/11/16 10:39:38 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1461 antes y estar sensibilizada T2
+132 > 10/11/16 10:39:38 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+133 > 10/11/16 10:39:38 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+134 > 10/11/16 10:39:38 - Hilo: Carro A
+135 > 10/11/16 10:39:38 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1466 antes y estar sensibilizada T5
+136 > 10/11/16 10:39:38 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+137 > 10/11/16 10:39:38 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+138 > 10/11/16 10:39:39 - Hilo: Carro B
+139 > 10/11/16 10:39:39 - RdP: Resultado: Se ejecuto el disparo T2
+140 > 10/11/16 10:39:39 - RdP: Marcado Actual:  0  0  0  1  0  1  1  0  
+141 > 10/11/16 10:39:39 - RdP: Trans. Sensibi:  0  0  0  0  0  1  
+
+142 > 10/11/16 10:39:39 - Hilo: Carro A
+143 > 10/11/16 10:39:39 - RdP: Resultado: Se ejecuto el disparo T5
+144 > 10/11/16 10:39:39 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+145 > 10/11/16 10:39:39 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+146 > 10/11/16 10:39:39 - Hilo: Carro B
+147 > 10/11/16 10:39:39 - RdP: Resultado: Se ejecuto el disparo T3
+148 > 10/11/16 10:39:39 - RdP: Marcado Actual:  1  0  0  0  1  0  1  0  
+149 > 10/11/16 10:39:39 - RdP: Trans. Sensibi:  1  0  0  0  1  0  
+
+150 > 10/11/16 10:39:39 - Hilo: Carro A
+151 > 10/11/16 10:39:39 - RdP: Resultado: Se ejecuto el disparo T0
+152 > 10/11/16 10:39:39 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+153 > 10/11/16 10:39:39 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+154 > 10/11/16 10:39:39 - Hilo: Carro B
+155 > 10/11/16 10:39:39 - RdP: Resultado: Se ejecuto el disparo T4
+156 > 10/11/16 10:39:39 - RdP: Marcado Actual:  0  1  0  0  0  1  0  0  
+157 > 10/11/16 10:39:39 - RdP: Trans. Sensibi:  0  1  0  0  0  1  
+
+158 > 10/11/16 10:39:39 - Hilo: Carro A
+159 > 10/11/16 10:39:39 - RdP: Resultado: Se ejecuto el disparo T1
+160 > 10/11/16 10:39:39 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+161 > 10/11/16 10:39:39 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+162 > 10/11/16 10:39:39 - Hilo: Carro B
+163 > 10/11/16 10:39:39 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1466 antes y estar sensibilizada T5
+164 > 10/11/16 10:39:39 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+165 > 10/11/16 10:39:39 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+166 > 10/11/16 10:39:39 - Hilo: Carro A
+167 > 10/11/16 10:39:39 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1466 antes y estar sensibilizada T2
+168 > 10/11/16 10:39:39 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+169 > 10/11/16 10:39:39 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+170 > 10/11/16 10:39:41 - Hilo: Carro B
+171 > 10/11/16 10:39:41 - RdP: Resultado: Se ejecuto el disparo T5
+172 > 10/11/16 10:39:41 - RdP: Marcado Actual:  1  0  1  0  0  0  0  1  
+173 > 10/11/16 10:39:41 - RdP: Trans. Sensibi:  0  0  1  0  0  0  
+
+174 > 10/11/16 10:39:41 - Hilo: Carro A
+175 > 10/11/16 10:39:41 - RdP: Resultado: Se ejecuto el disparo T2
+176 > 10/11/16 10:39:41 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+177 > 10/11/16 10:39:41 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+178 > 10/11/16 10:39:41 - Hilo: Carro B
+179 > 10/11/16 10:39:41 - RdP: Resultado: Se ejecuto el disparo T0
+180 > 10/11/16 10:39:41 - RdP: Marcado Actual:  0  1  0  1  0  0  0  1  
+181 > 10/11/16 10:39:41 - RdP: Trans. Sensibi:  0  1  0  1  0  0  
+
+182 > 10/11/16 10:39:41 - Hilo: Carro A
+183 > 10/11/16 10:39:41 - RdP: Resultado: Se ejecuto el disparo T3
+184 > 10/11/16 10:39:41 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+185 > 10/11/16 10:39:41 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+186 > 10/11/16 10:39:41 - Hilo: Carro B
+187 > 10/11/16 10:39:41 - RdP: Resultado: Se ejecuto el disparo T1
+188 > 10/11/16 10:39:41 - RdP: Marcado Actual:  0  0  1  0  1  0  0  0  
+189 > 10/11/16 10:39:41 - RdP: Trans. Sensibi:  0  0  1  0  1  0  
+
+190 > 10/11/16 10:39:41 - Hilo: Carro A
+191 > 10/11/16 10:39:41 - RdP: Resultado: Se ejecuto el disparo T4
+192 > 10/11/16 10:39:41 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+193 > 10/11/16 10:39:41 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+194 > 10/11/16 10:39:41 - Hilo: Carro B
+195 > 10/11/16 10:39:41 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1466 antes y estar sensibilizada T2
+196 > 10/11/16 10:39:41 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+197 > 10/11/16 10:39:41 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+198 > 10/11/16 10:39:41 - Hilo: Carro A
+199 > 10/11/16 10:39:41 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1462 antes y estar sensibilizada T5
+200 > 10/11/16 10:39:41 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+201 > 10/11/16 10:39:41 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+202 > 10/11/16 10:39:42 - Hilo: Carro B
+203 > 10/11/16 10:39:42 - RdP: Resultado: Se ejecuto el disparo T2
+204 > 10/11/16 10:39:42 - RdP: Marcado Actual:  0  0  0  1  0  1  1  0  
+205 > 10/11/16 10:39:42 - RdP: Trans. Sensibi:  0  0  0  0  0  1  
+
+206 > 10/11/16 10:39:42 - Hilo: Carro A
+207 > 10/11/16 10:39:42 - RdP: Resultado: Se ejecuto el disparo T5
+208 > 10/11/16 10:39:42 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+209 > 10/11/16 10:39:42 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+210 > 10/11/16 10:39:42 - Hilo: Carro B
+211 > 10/11/16 10:39:42 - RdP: Resultado: Se ejecuto el disparo T3
+212 > 10/11/16 10:39:42 - RdP: Marcado Actual:  1  0  0  0  1  0  1  0  
+213 > 10/11/16 10:39:42 - RdP: Trans. Sensibi:  1  0  0  0  1  0  
+
+214 > 10/11/16 10:39:42 - Hilo: Carro A
+215 > 10/11/16 10:39:42 - RdP: Resultado: Se ejecuto el disparo T0
+216 > 10/11/16 10:39:42 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+217 > 10/11/16 10:39:43 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+218 > 10/11/16 10:39:43 - Hilo: Carro B
+219 > 10/11/16 10:39:43 - RdP: Resultado: Se ejecuto el disparo T4
+220 > 10/11/16 10:39:43 - RdP: Marcado Actual:  0  1  0  0  0  1  0  0  
+221 > 10/11/16 10:39:43 - RdP: Trans. Sensibi:  0  1  0  0  0  1  
+
+222 > 10/11/16 10:39:43 - Hilo: Carro A
+223 > 10/11/16 10:39:43 - RdP: Resultado: Se ejecuto el disparo T1
+224 > 10/11/16 10:39:43 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+225 > 10/11/16 10:39:43 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+226 > 10/11/16 10:39:43 - Hilo: Carro B
+227 > 10/11/16 10:39:43 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1464 antes y estar sensibilizada T5
+228 > 10/11/16 10:39:43 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+229 > 10/11/16 10:39:43 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+230 > 10/11/16 10:39:43 - Hilo: Carro A
+231 > 10/11/16 10:39:43 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1466 antes y estar sensibilizada T2
+232 > 10/11/16 10:39:43 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+233 > 10/11/16 10:39:43 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+234 > 10/11/16 10:39:44 - Hilo: Carro B
+235 > 10/11/16 10:39:44 - RdP: Resultado: Se ejecuto el disparo T5
+236 > 10/11/16 10:39:44 - RdP: Marcado Actual:  1  0  1  0  0  0  0  1  
+237 > 10/11/16 10:39:44 - RdP: Trans. Sensibi:  0  0  1  0  0  0  
+
+238 > 10/11/16 10:39:44 - Hilo: Carro A
+239 > 10/11/16 10:39:44 - RdP: Resultado: Se ejecuto el disparo T2
+240 > 10/11/16 10:39:44 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+241 > 10/11/16 10:39:44 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+242 > 10/11/16 10:39:44 - Hilo: Carro B
+243 > 10/11/16 10:39:44 - RdP: Resultado: Se ejecuto el disparo T0
+244 > 10/11/16 10:39:44 - RdP: Marcado Actual:  0  1  0  1  0  0  0  1  
+245 > 10/11/16 10:39:44 - RdP: Trans. Sensibi:  0  1  0  1  0  0  
+
+246 > 10/11/16 10:39:44 - Hilo: Carro A
+247 > 10/11/16 10:39:44 - RdP: Resultado: Se ejecuto el disparo T3
+248 > 10/11/16 10:39:44 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+249 > 10/11/16 10:39:44 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+250 > 10/11/16 10:39:44 - Hilo: Carro B
+251 > 10/11/16 10:39:44 - RdP: Resultado: Se ejecuto el disparo T1
+252 > 10/11/16 10:39:44 - RdP: Marcado Actual:  0  0  1  0  1  0  0  0  
+253 > 10/11/16 10:39:44 - RdP: Trans. Sensibi:  0  0  1  0  1  0  
+
+254 > 10/11/16 10:39:44 - Hilo: Carro A
+255 > 10/11/16 10:39:44 - RdP: Resultado: Se ejecuto el disparo T4
+256 > 10/11/16 10:39:44 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+257 > 10/11/16 10:39:44 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+258 > 10/11/16 10:39:44 - Hilo: Carro B
+259 > 10/11/16 10:39:44 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1462 antes y estar sensibilizada T2
+260 > 10/11/16 10:39:44 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+261 > 10/11/16 10:39:44 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+262 > 10/11/16 10:39:44 - Hilo: Carro A
+263 > 10/11/16 10:39:44 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1467 antes y estar sensibilizada T5
+264 > 10/11/16 10:39:44 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+265 > 10/11/16 10:39:44 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+266 > 10/11/16 10:39:46 - Hilo: Carro B
+267 > 10/11/16 10:39:46 - RdP: Resultado: Se ejecuto el disparo T2
+268 > 10/11/16 10:39:46 - RdP: Marcado Actual:  0  0  0  1  0  1  1  0  
+269 > 10/11/16 10:39:46 - RdP: Trans. Sensibi:  0  0  0  0  0  1  
+
+270 > 10/11/16 10:39:46 - Hilo: Carro A
+271 > 10/11/16 10:39:46 - RdP: Resultado: Se ejecuto el disparo T5
+272 > 10/11/16 10:39:46 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+273 > 10/11/16 10:39:46 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+274 > 10/11/16 10:39:46 - Hilo: Carro B
+275 > 10/11/16 10:39:46 - RdP: Resultado: Se ejecuto el disparo T3
+276 > 10/11/16 10:39:46 - RdP: Marcado Actual:  1  0  0  0  1  0  1  0  
+277 > 10/11/16 10:39:46 - RdP: Trans. Sensibi:  1  0  0  0  1  0  
+
+278 > 10/11/16 10:39:46 - Hilo: Carro A
+279 > 10/11/16 10:39:46 - RdP: Resultado: Se ejecuto el disparo T0
+280 > 10/11/16 10:39:46 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+281 > 10/11/16 10:39:46 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+282 > 10/11/16 10:39:46 - Hilo: Carro B
+283 > 10/11/16 10:39:46 - RdP: Resultado: Se ejecuto el disparo T4
+284 > 10/11/16 10:39:46 - RdP: Marcado Actual:  0  1  0  0  0  1  0  0  
+285 > 10/11/16 10:39:46 - RdP: Trans. Sensibi:  0  1  0  0  0  1  
+
+286 > 10/11/16 10:39:46 - Hilo: Carro A
+287 > 10/11/16 10:39:46 - RdP: Resultado: Se ejecuto el disparo T1
+288 > 10/11/16 10:39:46 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+289 > 10/11/16 10:39:46 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+290 > 10/11/16 10:39:46 - Hilo: Carro B
+291 > 10/11/16 10:39:46 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1461 antes y estar sensibilizada T5
+292 > 10/11/16 10:39:46 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+293 > 10/11/16 10:39:46 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+294 > 10/11/16 10:39:46 - Hilo: Carro A
+295 > 10/11/16 10:39:46 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1467 antes y estar sensibilizada T2
+296 > 10/11/16 10:39:46 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+297 > 10/11/16 10:39:46 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+298 > 10/11/16 10:39:47 - Hilo: Carro B
+299 > 10/11/16 10:39:47 - RdP: Resultado: Se ejecuto el disparo T5
+300 > 10/11/16 10:39:47 - RdP: Marcado Actual:  1  0  1  0  0  0  0  1  
+301 > 10/11/16 10:39:47 - RdP: Trans. Sensibi:  0  0  1  0  0  0  
+
+302 > 10/11/16 10:39:47 - Hilo: Carro A
+303 > 10/11/16 10:39:47 - RdP: Resultado: Se ejecuto el disparo T2
+304 > 10/11/16 10:39:47 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+305 > 10/11/16 10:39:47 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+306 > 10/11/16 10:39:47 - Hilo: Carro B
+307 > 10/11/16 10:39:47 - RdP: Resultado: Se ejecuto el disparo T0
+308 > 10/11/16 10:39:47 - RdP: Marcado Actual:  0  1  0  1  0  0  0  1  
+309 > 10/11/16 10:39:47 - RdP: Trans. Sensibi:  0  1  0  1  0  0  
+
+310 > 10/11/16 10:39:47 - Hilo: Carro A
+311 > 10/11/16 10:39:47 - RdP: Resultado: Se ejecuto el disparo T3
+312 > 10/11/16 10:39:47 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+313 > 10/11/16 10:39:47 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+314 > 10/11/16 10:39:47 - Hilo: Carro B
+315 > 10/11/16 10:39:47 - RdP: Resultado: Se ejecuto el disparo T1
+316 > 10/11/16 10:39:47 - RdP: Marcado Actual:  0  0  1  0  1  0  0  0  
+317 > 10/11/16 10:39:47 - RdP: Trans. Sensibi:  0  0  1  0  1  0  
+
+318 > 10/11/16 10:39:47 - Hilo: Carro A
+319 > 10/11/16 10:39:47 - RdP: Resultado: Se ejecuto el disparo T4
+320 > 10/11/16 10:39:47 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+321 > 10/11/16 10:39:47 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+322 > 10/11/16 10:39:47 - Hilo: Carro B
+323 > 10/11/16 10:39:47 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1465 antes y estar sensibilizada T2
+324 > 10/11/16 10:39:47 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+325 > 10/11/16 10:39:47 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+326 > 10/11/16 10:39:47 - Hilo: Carro A
+327 > 10/11/16 10:39:47 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1464 antes y estar sensibilizada T5
+328 > 10/11/16 10:39:47 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+329 > 10/11/16 10:39:47 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+330 > 10/11/16 10:39:49 - Hilo: Carro B
+331 > 10/11/16 10:39:49 - RdP: Resultado: Se ejecuto el disparo T2
+332 > 10/11/16 10:39:49 - RdP: Marcado Actual:  0  0  0  1  0  1  1  0  
+333 > 10/11/16 10:39:49 - RdP: Trans. Sensibi:  0  0  0  0  0  1  
+
+334 > 10/11/16 10:39:49 - Hilo: Carro A
+335 > 10/11/16 10:39:49 - RdP: Resultado: Se ejecuto el disparo T5
+336 > 10/11/16 10:39:49 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+337 > 10/11/16 10:39:49 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+338 > 10/11/16 10:39:49 - Hilo: Carro B
+339 > 10/11/16 10:39:49 - RdP: Resultado: Se ejecuto el disparo T3
+340 > 10/11/16 10:39:49 - RdP: Marcado Actual:  1  0  0  0  1  0  1  0  
+341 > 10/11/16 10:39:49 - RdP: Trans. Sensibi:  1  0  0  0  1  0  
+
+342 > 10/11/16 10:39:49 - Hilo: Carro A
+343 > 10/11/16 10:39:49 - RdP: Resultado: Se ejecuto el disparo T0
+344 > 10/11/16 10:39:49 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+345 > 10/11/16 10:39:49 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+346 > 10/11/16 10:39:49 - Hilo: Carro B
+347 > 10/11/16 10:39:49 - RdP: Resultado: Se ejecuto el disparo T4
+348 > 10/11/16 10:39:49 - RdP: Marcado Actual:  0  1  0  0  0  1  0  0  
+349 > 10/11/16 10:39:49 - RdP: Trans. Sensibi:  0  1  0  0  0  1  
+
+350 > 10/11/16 10:39:49 - Hilo: Carro A
+351 > 10/11/16 10:39:49 - RdP: Resultado: Se ejecuto el disparo T1
+352 > 10/11/16 10:39:49 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+353 > 10/11/16 10:39:49 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+354 > 10/11/16 10:39:49 - Hilo: Carro B
+355 > 10/11/16 10:39:49 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1463 antes y estar sensibilizada T5
+356 > 10/11/16 10:39:49 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+357 > 10/11/16 10:39:49 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+358 > 10/11/16 10:39:49 - Hilo: Carro A
+359 > 10/11/16 10:39:49 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1466 antes y estar sensibilizada T2
+360 > 10/11/16 10:39:49 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+361 > 10/11/16 10:39:49 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+362 > 10/11/16 10:39:50 - Hilo: Carro B
+363 > 10/11/16 10:39:50 - RdP: Resultado: Se ejecuto el disparo T5
+364 > 10/11/16 10:39:50 - RdP: Marcado Actual:  1  0  1  0  0  0  0  1  
+365 > 10/11/16 10:39:50 - RdP: Trans. Sensibi:  0  0  1  0  0  0  
+
+366 > 10/11/16 10:39:50 - Hilo: Carro A
+367 > 10/11/16 10:39:50 - RdP: Resultado: Se ejecuto el disparo T2
+368 > 10/11/16 10:39:50 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+369 > 10/11/16 10:39:50 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+370 > 10/11/16 10:39:50 - Hilo: Carro B
+371 > 10/11/16 10:39:51 - RdP: Resultado: Se ejecuto el disparo T0
+372 > 10/11/16 10:39:51 - RdP: Marcado Actual:  0  1  0  1  0  0  0  1  
+373 > 10/11/16 10:39:51 - RdP: Trans. Sensibi:  0  1  0  1  0  0  
+
+374 > 10/11/16 10:39:51 - Hilo: Carro A
+375 > 10/11/16 10:39:51 - RdP: Resultado: Se ejecuto el disparo T3
+376 > 10/11/16 10:39:51 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+377 > 10/11/16 10:39:51 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+378 > 10/11/16 10:39:51 - Hilo: Carro B
+379 > 10/11/16 10:39:51 - RdP: Resultado: Se ejecuto el disparo T1
+380 > 10/11/16 10:39:51 - RdP: Marcado Actual:  0  0  1  0  1  0  0  0  
+381 > 10/11/16 10:39:51 - RdP: Trans. Sensibi:  0  0  1  0  1  0  
+
+382 > 10/11/16 10:39:51 - Hilo: Carro A
+383 > 10/11/16 10:39:51 - RdP: Resultado: Se ejecuto el disparo T4
+384 > 10/11/16 10:39:51 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+385 > 10/11/16 10:39:51 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+386 > 10/11/16 10:39:51 - Hilo: Carro B
+387 > 10/11/16 10:39:51 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1464 antes y estar sensibilizada T2
+388 > 10/11/16 10:39:51 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+389 > 10/11/16 10:39:51 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+390 > 10/11/16 10:39:51 - Hilo: Carro A
+391 > 10/11/16 10:39:51 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1465 antes y estar sensibilizada T5
+392 > 10/11/16 10:39:51 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+393 > 10/11/16 10:39:51 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+394 > 10/11/16 10:39:52 - Hilo: Carro B
+395 > 10/11/16 10:39:52 - RdP: Resultado: Se ejecuto el disparo T2
+396 > 10/11/16 10:39:52 - RdP: Marcado Actual:  0  0  0  1  0  1  1  0  
+397 > 10/11/16 10:39:52 - RdP: Trans. Sensibi:  0  0  0  0  0  1  
+
+398 > 10/11/16 10:39:52 - Hilo: Carro A
+399 > 10/11/16 10:39:52 - RdP: Resultado: Se ejecuto el disparo T5
+400 > 10/11/16 10:39:52 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+401 > 10/11/16 10:39:52 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+402 > 10/11/16 10:39:52 - Hilo: Carro B
+403 > 10/11/16 10:39:52 - RdP: Resultado: Se ejecuto el disparo T3
+404 > 10/11/16 10:39:52 - RdP: Marcado Actual:  1  0  0  0  1  0  1  0  
+405 > 10/11/16 10:39:52 - RdP: Trans. Sensibi:  1  0  0  0  1  0  
+
+406 > 10/11/16 10:39:52 - Hilo: Carro A
+407 > 10/11/16 10:39:52 - RdP: Resultado: Se ejecuto el disparo T0
+408 > 10/11/16 10:39:52 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+409 > 10/11/16 10:39:52 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+410 > 10/11/16 10:39:52 - Hilo: Carro B
+411 > 10/11/16 10:39:52 - RdP: Resultado: Se ejecuto el disparo T4
+412 > 10/11/16 10:39:52 - RdP: Marcado Actual:  0  1  0  0  0  1  0  0  
+413 > 10/11/16 10:39:52 - RdP: Trans. Sensibi:  0  1  0  0  0  1  
+
+414 > 10/11/16 10:39:52 - Hilo: Carro A
+415 > 10/11/16 10:39:52 - RdP: Resultado: Se ejecuto el disparo T1
+416 > 10/11/16 10:39:52 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+417 > 10/11/16 10:39:52 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+418 > 10/11/16 10:39:52 - Hilo: Carro B
+419 > 10/11/16 10:39:52 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1458 antes y estar sensibilizada T5
+420 > 10/11/16 10:39:52 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+421 > 10/11/16 10:39:52 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+422 > 10/11/16 10:39:52 - Hilo: Carro A
+423 > 10/11/16 10:39:52 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1462 antes y estar sensibilizada T2
+424 > 10/11/16 10:39:52 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+425 > 10/11/16 10:39:52 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+426 > 10/11/16 10:39:54 - Hilo: Carro B
+427 > 10/11/16 10:39:54 - RdP: Resultado: Se ejecuto el disparo T5
+428 > 10/11/16 10:39:54 - RdP: Marcado Actual:  1  0  1  0  0  0  0  1  
+429 > 10/11/16 10:39:54 - RdP: Trans. Sensibi:  0  0  1  0  0  0  
+
+430 > 10/11/16 10:39:54 - Hilo: Carro A
+431 > 10/11/16 10:39:54 - RdP: Resultado: Se ejecuto el disparo T2
+432 > 10/11/16 10:39:54 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+433 > 10/11/16 10:39:54 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+434 > 10/11/16 10:39:54 - Hilo: Carro B
+435 > 10/11/16 10:39:54 - RdP: Resultado: Se ejecuto el disparo T0
+436 > 10/11/16 10:39:54 - RdP: Marcado Actual:  0  1  0  1  0  0  0  1  
+437 > 10/11/16 10:39:54 - RdP: Trans. Sensibi:  0  1  0  1  0  0  
+
+438 > 10/11/16 10:39:54 - Hilo: Carro A
+439 > 10/11/16 10:39:54 - RdP: Resultado: Se ejecuto el disparo T3
+440 > 10/11/16 10:39:54 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+441 > 10/11/16 10:39:54 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+442 > 10/11/16 10:39:54 - Hilo: Carro B
+443 > 10/11/16 10:39:54 - RdP: Resultado: Se ejecuto el disparo T1
+444 > 10/11/16 10:39:54 - RdP: Marcado Actual:  0  0  1  0  1  0  0  0  
+445 > 10/11/16 10:39:54 - RdP: Trans. Sensibi:  0  0  1  0  1  0  
+
+446 > 10/11/16 10:39:54 - Hilo: Carro A
+447 > 10/11/16 10:39:54 - RdP: Resultado: Se ejecuto el disparo T4
+448 > 10/11/16 10:39:54 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+449 > 10/11/16 10:39:54 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+450 > 10/11/16 10:39:54 - Hilo: Carro B
+451 > 10/11/16 10:39:54 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1459 antes y estar sensibilizada T2
+452 > 10/11/16 10:39:54 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+453 > 10/11/16 10:39:54 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+454 > 10/11/16 10:39:54 - Hilo: Carro A
+455 > 10/11/16 10:39:54 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1465 antes y estar sensibilizada T5
+456 > 10/11/16 10:39:54 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+457 > 10/11/16 10:39:54 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+458 > 10/11/16 10:39:55 - Hilo: Carro B
+459 > 10/11/16 10:39:55 - RdP: Resultado: Se ejecuto el disparo T2
+460 > 10/11/16 10:39:55 - RdP: Marcado Actual:  0  0  0  1  0  1  1  0  
+461 > 10/11/16 10:39:55 - RdP: Trans. Sensibi:  0  0  0  0  0  1  
+
+462 > 10/11/16 10:39:55 - Hilo: Carro A
+463 > 10/11/16 10:39:55 - RdP: Resultado: Se ejecuto el disparo T5
+464 > 10/11/16 10:39:55 - RdP: Marcado Actual:  1  0  0  1  0  0  1  1  
+465 > 10/11/16 10:39:55 - RdP: Trans. Sensibi:  1  0  0  1  0  0  
+
+466 > 10/11/16 10:39:55 - Hilo: Carro B
+467 > 10/11/16 10:39:55 - RdP: Resultado: Se ejecuto el disparo T3
+468 > 10/11/16 10:39:55 - RdP: Marcado Actual:  1  0  0  0  1  0  1  0  
+469 > 10/11/16 10:39:55 - RdP: Trans. Sensibi:  1  0  0  0  1  0  
+
+470 > 10/11/16 10:39:55 - Hilo: Carro A
+471 > 10/11/16 10:39:55 - RdP: Resultado: Se ejecuto el disparo T0
+472 > 10/11/16 10:39:55 - RdP: Marcado Actual:  0  1  0  0  1  0  0  0  
+473 > 10/11/16 10:39:55 - RdP: Trans. Sensibi:  0  1  0  0  1  0  
+
+474 > 10/11/16 10:39:55 - Hilo: Carro B
+475 > 10/11/16 10:39:55 - RdP: Resultado: Se ejecuto el disparo T4
+476 > 10/11/16 10:39:55 - RdP: Marcado Actual:  0  1  0  0  0  1  0  0  
+477 > 10/11/16 10:39:55 - RdP: Trans. Sensibi:  0  1  0  0  0  1  
+
+478 > 10/11/16 10:39:55 - Hilo: Carro A
+479 > 10/11/16 10:39:55 - RdP: Resultado: Se ejecuto el disparo T1
+480 > 10/11/16 10:39:55 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+481 > 10/11/16 10:39:55 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+482 > 10/11/16 10:39:55 - Hilo: Carro B
+483 > 10/11/16 10:39:55 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1460 antes y estar sensibilizada T5
+484 > 10/11/16 10:39:55 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+485 > 10/11/16 10:39:55 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+486 > 10/11/16 10:39:55 - Hilo: Carro A
+487 > 10/11/16 10:39:55 - RdP: Resultado: No se puede ejecutar el disparo, por llegar 1461 antes y estar sensibilizada T2
+488 > 10/11/16 10:39:55 - RdP: Marcado Actual:  0  0  1  0  0  1  0  0  
+489 > 10/11/16 10:39:55 - RdP: Trans. Sensibi:  0  0  1  0  0  1  
+
+490 > 10/11/16 10:39:57 - Hilo: Carro B
+491 > 10/11/16 10:39:57 - RdP: Resultado: Se ejecuto el disparo T5
+492 > 10/11/16 10:39:57 - RdP: Marcado Actual:  1  0  1  0  0  0  0  1  

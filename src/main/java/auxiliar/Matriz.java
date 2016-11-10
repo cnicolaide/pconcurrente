@@ -112,7 +112,7 @@ public class Matriz {
 		return oMand;
 	}
 
-	// Sumo en una variable aux el contenido de la operacion
+	// SUMA EN UNA VARIABLE AUX EL CONTENIDO DE LA OPERACION
 	public boolean esCero() {
 		int aux = 0;
 
@@ -136,7 +136,8 @@ public class Matriz {
 		}
 		return mVectorVi;
 	}
-
+	
+	// DEVUELVE LA NEGACION DE LA MATRIZ ORIGINAL
 	public Matriz negar() {
 		Matriz Negacion = new Matriz(this.getFilCount(), this.getColCount());
 		for (int i = 0; i < this.getFilCount(); i++) {
@@ -148,6 +149,6 @@ public class Matriz {
 				}
 			}
 		}
-		return Negacion;// devuelvo la negacion de la matriz original
+		return Negacion;
 	}
 }

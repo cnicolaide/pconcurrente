@@ -3,6 +3,7 @@ package procesadorPetri;
 import auxiliar.Matriz;
 
 public class Politicas {
+
 	private RdP oRed;
 	private Matriz oPolitica;
 

@@ -13,6 +13,7 @@ import auxiliar.Matriz;
 import procesadorPetri.RdP;
 
 public class RdpConTiempoTest {
+
 	private Lector miLector = new Lector("carros.html", "chicaConTiempos.xls");
 	private HashMap<String, Matriz> datos = miLector.read();
 	private RdP oRed;

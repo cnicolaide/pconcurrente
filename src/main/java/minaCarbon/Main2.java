@@ -9,7 +9,7 @@ import procesadorPetri.GestorDeMonitor;
 import procesadorPetri.RdP;
 
 public class Main2 {
-	private static Lector miLector = new Lector("redCompleta.html", "completaConTiempos.xls");
+	private static Lector miLector = new Lector("bombaYSensorycarro.html", "medianaSinTiempos.xls");
 	private static HashMap<String, Matriz> datos = miLector.read();
 	private static RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
 			datos.get("tiempos"));
@@ -38,5 +38,4 @@ public class Main2 {
 		new Hilo(miMonitor, "Carro B", secuenciaF);
 
 	}
-
 }

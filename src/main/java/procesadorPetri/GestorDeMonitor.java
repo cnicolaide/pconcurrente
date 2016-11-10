@@ -5,6 +5,7 @@ import java.util.concurrent.Semaphore;
 import auxiliar.Matriz;
 
 public class GestorDeMonitor {
+
 	private RdP oRed;
 	private Colas oCola;
 	private Politicas oPolitica;
