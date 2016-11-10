@@ -3,6 +3,7 @@ package auxiliar;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -198,5 +199,38 @@ public class Lector {
 			}
 		}
 		ldatos.put("tiempos", tiempo);
+	}
+
+	@SuppressWarnings("resource")
+	public Matriz leerLog(String filename) throws Exception {
+		Matriz matrix;
+
+		File inFile = new File(System.getProperty("user.dir") + "//log//" + filename);
+		Scanner in = new Scanner(inFile);
+
+		int intLength = 0;
+		String[] length = in.nextLine().trim().split("\\s+");
+		for (int i = 0; i < length.length; i++) {
+			intLength++;
+		}
+		int filas = 1;
+		while (in.hasNextLine()) {
+			in.nextLine();
+			filas++;
+		}
+		in.close();
+
+		matrix = new Matriz(filas, intLength);
+		in = new Scanner(inFile);
+
+		int lineCount = 0;
+		while (in.hasNextLine()) {
+			String[] currentLine = in.nextLine().trim().split("\\s+");
+			for (int i = 0; i < currentLine.length; i++) {
+				matrix.setDato(lineCount, i, Integer.parseInt(currentLine[i]));
+			}
+			lineCount++;
+		}
+		return matrix;
 	}
 }

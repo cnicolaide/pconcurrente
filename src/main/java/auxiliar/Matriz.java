@@ -58,7 +58,7 @@ public class Matriz {
 		String texto = "";
 		for (int i = 0; i < this.getFilCount(); i++) {
 			for (int j = 0; j < this.getColCount(); j++) {
-				texto += " " + this.dato[i][j] + " ";
+				texto += " " + this.dato[i][j];
 			}
 			texto += " ";
 		}
@@ -136,7 +136,7 @@ public class Matriz {
 		}
 		return mVectorVi;
 	}
-	
+
 	// DEVUELVE LA NEGACION DE LA MATRIZ ORIGINAL
 	public Matriz negar() {
 		Matriz Negacion = new Matriz(this.getFilCount(), this.getColCount());

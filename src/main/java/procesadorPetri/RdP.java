@@ -185,6 +185,8 @@ public class RdP {
 			Log.getInstance().escribir("RdP", "Resultado: " + resultado + posicion, false);
 			Log.getInstance().escribir("RdP", "Marcado Actual: " + mMarcadoActual, false);
 			Log.getInstance().escribir("RdP", "Trans. Sensibi: " + mSensibilizadas + "\n", false);
+			Log.getInstance().escribirMarcado(mMarcadoActual.toString());
+			Log.getInstance().escribirTransiciones(mSensibilizadas.toString());
 		}
 	}
 }

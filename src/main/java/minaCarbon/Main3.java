@@ -14,6 +14,11 @@ public class Main3 {
 	private static RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
 			datos.get("tiempos"));
 
+	public Main3() {
+		String[] args = new String[0];
+		Main3.main(args);
+	}
+
 	public static void main(String[] args) {
 
 		// Crea la cola y el monitor
