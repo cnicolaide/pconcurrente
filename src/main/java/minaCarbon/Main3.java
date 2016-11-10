@@ -9,14 +9,12 @@ import procesadorPetri.GestorDeMonitor;
 import procesadorPetri.RdP;
 
 public class Main3 {
+	private static Lector miLector = new Lector("redCompleta.html", "completaConTiempos.xls");
+	private static HashMap<String, Matriz> datos = miLector.read();
+	private static RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
+			datos.get("tiempos"));
+
 	public static void main(String[] args) {
-		// Lee las matrices de marcado, inicidencia e inhibicion desde el
-		// archivo
-		// HTML exportado en PIPE
-		Lector miLector = new Lector("redCompleta.html", "completaConTiempos.xls");
-		HashMap<String, Matriz> datos = miLector.read();
-		RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
-				datos.get("tiempos"));
 
 		// Crea la cola y el monitor
 		Colas miCola = new Colas(datos.get("incidencia").getColCount());
@@ -37,54 +35,23 @@ public class Main3 {
 		int secuenciaL[] = { 18 }; // RESTRICCION CH4
 		int secuenciaM[] = { 21 }; // RESET
 		int secuenciaN[] = { 14 }; // MEDICION CH4
+
 		// Crea los hilos, les pasa el monitor, una descripcion, y la secuencia
-		// de
-		// disparo de cada uno
-		Hilo A = new Hilo(miMonitor, "Clock Agua", secuenciaA);
-		Hilo B = new Hilo(miMonitor, "Restriccion Agua", secuenciaB);
-		Hilo C = new Hilo(miMonitor, "Tanque Vacio", secuenciaC);
-		Hilo D = new Hilo(miMonitor, "Tanque Lleno", secuenciaD);
-		Hilo E = new Hilo(miMonitor, "Carro A", secuenciaE);
-		Hilo F = new Hilo(miMonitor, "Carro B", secuenciaF);
-		Hilo G = new Hilo(miMonitor, "Clock CH4", secuenciaG);
-		Hilo H = new Hilo(miMonitor, "Lector CH4", secuenciaH);
-		Hilo I = new Hilo(miMonitor, "Timeout", secuenciaI);
-		Hilo J = new Hilo(miMonitor, "No hay gas", secuenciaJ);
-		Hilo K = new Hilo(miMonitor, "Hay gas", secuenciaK);
-		Hilo L = new Hilo(miMonitor, "Restriccion CH4", secuenciaL);
-		Hilo M = new Hilo(miMonitor, "Reset", secuenciaM);
-		Hilo N = new Hilo(miMonitor, "Medicion CH4", secuenciaN);
+		// de disparo de cada uno
+		new Hilo(miMonitor, "Clock Agua", secuenciaA);
+		new Hilo(miMonitor, "Restriccion Agua", secuenciaB);
+		new Hilo(miMonitor, "Tanque Vacio", secuenciaC);
+		new Hilo(miMonitor, "Tanque Lleno", secuenciaD);
+		new Hilo(miMonitor, "Carro A", secuenciaE);
+		new Hilo(miMonitor, "Carro B", secuenciaF);
+		new Hilo(miMonitor, "Clock CH4", secuenciaG);
+		new Hilo(miMonitor, "Lector CH4", secuenciaH);
+		new Hilo(miMonitor, "Timeout", secuenciaI);
+		new Hilo(miMonitor, "No hay gas", secuenciaJ);
+		new Hilo(miMonitor, "Hay gas", secuenciaK);
+		new Hilo(miMonitor, "Restriccion CH4", secuenciaL);
+		new Hilo(miMonitor, "Reset", secuenciaM);
+		new Hilo(miMonitor, "Medicion CH4", secuenciaN);
 
-		// Instancia los hilos
-		Thread hiloA = new Thread(A);
-		Thread hiloB = new Thread(B);
-		Thread hiloC = new Thread(C);
-		Thread hiloD = new Thread(D);
-		Thread hiloE = new Thread(E);
-		Thread hiloF = new Thread(F);
-		Thread hiloG = new Thread(G);
-		Thread hiloH = new Thread(H);
-		Thread hiloI = new Thread(I);
-		Thread hiloJ = new Thread(J);
-		Thread hiloK = new Thread(K);
-		Thread hiloL = new Thread(L);
-		Thread hiloM = new Thread(M);
-		Thread hiloN = new Thread(N);
-
-		// Pone las instancias a correr
-		hiloA.start();
-		hiloB.start();
-		hiloC.start();
-		hiloD.start();
-		hiloE.start();
-		hiloF.start();
-		hiloG.start();
-		hiloH.start();
-		hiloI.start();
-		hiloJ.start();
-		hiloK.start();
-		hiloL.start();
-		hiloM.start();
-		hiloN.start();
 	}
 }

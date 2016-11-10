@@ -4,7 +4,6 @@ import auxiliar.Log;
 import auxiliar.Matriz;
 
 public class RdP {
-
 	private Matriz mMarcadoInicial, mMarcadoActual, mIncidencia, mInhibicion, mSensibilizadas, mTiempo;
 	private long tiempoSensibilizada;
 	private long[] timestamp;

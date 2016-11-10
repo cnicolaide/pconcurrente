@@ -9,13 +9,12 @@ import procesadorPetri.GestorDeMonitor;
 import procesadorPetri.RdP;
 
 public class Main {
+	private static Lector miLector = new Lector("redCompleta.html", "completaConTiempos.xls");
+	private static HashMap<String, Matriz> datos = miLector.read();
+	private static RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
+			datos.get("tiempos"));
+
 	public static void main(String[] args) {
-		// Lee las matrices de marcado, inicidencia e inhibicion desde el
-		// archivo HTML exportado en PIPE
-		Lector miLector = new Lector("carros.html", "chicaConTiempos.xls");
-		HashMap<String, Matriz> datos = miLector.read();
-		RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
-				datos.get("tiempos"));
 
 		// Crea la cola y el monitor
 		Colas miCola = new Colas(datos.get("incidencia").getColCount());
@@ -27,16 +26,8 @@ public class Main {
 
 		// Crea los hilos, les pasa el monitor, una descripcion, y la secuencia
 		// de disparo de cada uno
-		Hilo A = new Hilo(miMonitor, "Carro A", secuenciaA);
-		Hilo B = new Hilo(miMonitor, "Carro B", secuenciaB);
-
-		// Instancia los hilos
-		Thread hiloA = new Thread(A);
-		Thread hiloB = new Thread(B);
-
-		// Pone las instancias a correr
-		hiloA.start();
-		hiloB.start();
+		new Hilo(miMonitor, "Carro A", secuenciaA);
+		new Hilo(miMonitor, "Carro B", secuenciaB);
 
 	}
 }

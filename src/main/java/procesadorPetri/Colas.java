@@ -5,7 +5,6 @@ import java.util.concurrent.Semaphore;
 import auxiliar.Matriz;
 
 public class Colas {
-
 	private Semaphore[] arregloSemaphores;
 
 	public Colas(int tamano) {

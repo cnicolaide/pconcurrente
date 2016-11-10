@@ -3,8 +3,8 @@ package procesadorPetri;
 import auxiliar.Matriz;
 
 public class Politicas {
-	RdP oRed;
-	Matriz oPolitica;
+	private RdP oRed;
+	private Matriz oPolitica;
 
 	public Politicas(RdP oRed) {
 		this.oRed = oRed;
