@@ -30,7 +30,7 @@ public class RdpSinTiempoTest {
 	@Test
 	public void testTransicionesSensibilizadas() {
 
-		Log.getInstance().escribir("TestProcesador", " ***** EJECUTANDO TEST: GETSENSIBILIZADAS *****");
+		Log.getInstance().escribir("TestProcesador", " ***** EJECUTANDO TEST: GETSENSIBILIZADAS *****", true);
 		int[][] iEsperada = { { 0, 0, 1, 0, 0, 1 } };
 		Matriz mEsperada = oRed.getSesibilizadas();
 		Matriz mReal = new Matriz(iEsperada);
@@ -42,7 +42,7 @@ public class RdpSinTiempoTest {
 	public void testDispararNoSensibilizada() {
 
 		Log.getInstance().escribir("TestProcesador",
-				" ***** EJECUTANDO TEST: DISPARAR TRANSICION NO SENSIBILIZADA *****");
+				" ***** EJECUTANDO TEST: DISPARAR TRANSICION NO SENSIBILIZADA *****", true);
 		int[][] iEsperada = { { 0, 0, 1, 0, 0, 1, 0, 0 } };
 		Matriz mEsperada = new Matriz(iEsperada);
 
@@ -56,7 +56,8 @@ public class RdpSinTiempoTest {
 	@Test
 	public void testDispararSensibilizada() {
 
-		Log.getInstance().escribir("TestProcesador", " ***** EJECUTANDO TEST: DISPARAR TRANSICION SENSIBILIZADA *****");
+		Log.getInstance().escribir("TestProcesador", " ***** EJECUTANDO TEST: DISPARAR TRANSICION SENSIBILIZADA *****",
+				true);
 		int[][] iEsperada = { { 0, 0, 0, 1, 0, 1, 1, 0 } };
 		Matriz mEsperada = new Matriz(iEsperada);
 
@@ -71,7 +72,7 @@ public class RdpSinTiempoTest {
 	public void testDispararSecuenciaCorrecta() {
 
 		Log.getInstance().escribir("TestProcesador",
-				" ***** EJECUTANDO TEST: DISPARAR SECUENCIA CORRECTA DE TRANSICIONES *****");
+				" ***** EJECUTANDO TEST: DISPARAR SECUENCIA CORRECTA DE TRANSICIONES *****", true);
 		int[][] iEsperada = { { 0, 1, 0, 1, 0, 0, 0, 1 } };
 		Matriz mEsperada = new Matriz(iEsperada);
 
@@ -88,7 +89,7 @@ public class RdpSinTiempoTest {
 	public void testDispararSecuenciaIncorrecta() {
 
 		Log.getInstance().escribir("TestProcesador",
-				" ***** EJECUTANDO TEST: DISPARAR SECUENCIA INCORRECTA DE TRANSICIONES *****");
+				" ***** EJECUTANDO TEST: DISPARAR SECUENCIA INCORRECTA DE TRANSICIONES *****", true);
 		int[][] iEsperada = { { 1, 0, 1, 0, 0, 0, 0, 1 } };
 		Matriz mEsperada = new Matriz(iEsperada);
 		oRed.disparar(5);

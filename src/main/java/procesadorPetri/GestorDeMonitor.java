@@ -33,7 +33,7 @@ public class GestorDeMonitor {
 		while (!oRed.disparar(transicion)) {
 			mutex.release();
 			// Verifica si es una transicion con tiempo
-			if (oRed.getVentana() > 0 && oRed.estaSensibilizada(transicion)) {
+			if (oRed.getVentana() > 0 && oRed.getSesibilizadas().getVal(0, transicion) == 1) {
 				Thread.sleep(oRed.getVentana());
 				mutex.acquire();
 				// En caso contrario
@@ -45,7 +45,7 @@ public class GestorDeMonitor {
 
 		Matriz vs = oRed.getSesibilizadas();
 		Matriz vc = oCola.quienesEstan();
-		Matriz m = vs.AND(vc);
+		Matriz m = vs.and(vc);
 
 		mutex.release();
 

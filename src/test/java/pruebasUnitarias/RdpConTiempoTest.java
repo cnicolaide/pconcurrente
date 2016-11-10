@@ -30,7 +30,7 @@ public class RdpConTiempoTest {
 	public void testDispararSensibilizadaAntes() {
 
 		Log.getInstance().escribir("TestProcesador",
-				" ***** EJECUTANDO TEST: DISPARAR TRANSICION SENSIBILIZADA ANTES *****");
+				" ***** EJECUTANDO TEST: DISPARAR TRANSICION SENSIBILIZADA ANTES *****", true);
 		int[][] iEsperada = { { 0, 0, 1, 0, 0, 1, 0, 0 } };
 		Matriz mEsperada = new Matriz(iEsperada);
 

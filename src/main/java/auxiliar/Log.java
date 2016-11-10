@@ -34,10 +34,14 @@ public class Log {
 	}
 
 	// IMPRIME EL LOG POR CONSOLA Y TAMBIEN LO GUARDA EN UN ARCHIVO DE TEXTO
-	public void escribir(String sTitulo, String sTexto) {
+	public void escribir(String sTitulo, String sTexto, boolean color) {
 		contador++;
 		String sTextoFinal = contador + " > " + sd.format(new Date()) + " - " + sTitulo + ": " + sTexto;
-		System.out.println(sTextoFinal);
+		if (color)
+			System.err.println(sTextoFinal);
+		else
+			System.out.println(sTextoFinal);
+
 		File fichero = new File(System.getProperty("user.dir") + "\\log\\" + sArchivo);
 		BufferedWriter bw = null;
 		try {

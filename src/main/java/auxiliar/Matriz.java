@@ -12,20 +12,12 @@ public class Matriz {
 		this.dato = dato;
 	}
 
-	public Matriz(int size) {
-		dato = new int[size][size];
-	}
-
 	public int[][] getDato() {
 		return dato;
 	}
 
 	public int getVal(int fil, int col) {
 		return dato[fil][col];
-	}
-
-	public void setMatriz(int[][] dato) {
-		this.dato = dato;
 	}
 
 	public void setDato(int fil, int col, int dato) {
@@ -40,14 +32,6 @@ public class Matriz {
 		return dato[0].length;
 	}
 
-	public Matriz getCol(int col) {
-		Matriz columna = new Matriz(this.getFilCount(), 1);
-		for (int i = 0; i < this.getFilCount(); i++) {
-			columna.setDato(i, 0, this.dato[i][col]);
-		}
-		return columna;
-	}
-
 	// COLOCA CEROS EN TODOS LOS ELEMENTOS DE LA PATRIZ
 	public void clear() {
 		for (int i = 0; i < this.getFilCount(); i++) {
@@ -55,18 +39,6 @@ public class Matriz {
 				this.setDato(i, j, 0);
 			}
 		}
-	}
-
-	// VERIFICA SI ES POSIBLE
-	public boolean isPos() {
-		for (int i = 0; i < this.getFilCount(); i++) {
-			for (int j = 0; j < this.getColCount(); j++) {
-				if (this.dato[i][j] < 0) {
-					return false;
-				}
-			}
-		}
-		return true;
 	}
 
 	// CREA Y DEVUELVE LA MATRIZ TRANSPUESTA DE LA MATRIZ QUE LO INVOCA
@@ -109,21 +81,6 @@ public class Matriz {
 		return C;
 	}
 
-	// RESTA DOS MATRICES C = A - B
-	public Matriz minus(Matriz B) {
-		Matriz A = this;
-		if (B.getFilCount() != A.getFilCount() || B.getColCount() != A.getColCount()) {
-			throw new RuntimeException("Dimensiones no compatibles.");
-		}
-		Matriz C = new Matriz(getFilCount(), getColCount());
-		for (int i = 0; i < getFilCount(); i++) {
-			for (int j = 0; j < getColCount(); j++) {
-				C.setDato(i, j, A.getDato()[i][j] - B.getDato()[i][j]);
-			}
-		}
-		return C;
-	}
-
 	// MULTIPLICA DOS MATRICES C = A * B
 	public Matriz mult(Matriz B) {
 		Matriz A = this;
@@ -139,34 +96,7 @@ public class Matriz {
 		return C;
 	}
 
-	// SETEA LA IDENTIDAD DE UNA MATRIZ
-	public void setIdentity() {
-		for (int i = 0; i < dato.length; i++) {
-			dato[i][i] = 1;
-		}
-	}
-
-	public static int transActive(int[][] disparo) {
-		int c = 0;
-		for (int i = 0; i < disparo.length; i++) {
-			for (int j = 0; j < disparo[i].length; j++) {
-				if (disparo[i][j] != 0) {
-					c++;
-				}
-			}
-		}
-		return c;
-	}
-
-	public Matriz getFila(int i) {
-		Matriz oFila = new Matriz(1, this.getColCount());
-		for (int j = 0; j < this.getColCount(); j++) {
-			oFila.setDato(0, j, this.getVal(i, j));
-		}
-		return oFila;
-	}
-
-	public Matriz AND(Matriz B) {
+	public Matriz and(Matriz B) {
 		Matriz A = this;
 		Matriz oMand = new Matriz(B.getFilCount(), B.getColCount());
 

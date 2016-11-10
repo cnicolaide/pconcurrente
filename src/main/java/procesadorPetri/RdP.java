@@ -19,8 +19,7 @@ public class RdP {
 		timestamp = new long[mIncidencia.getColCount()];
 		mSensibilizadas = new Matriz(1, mIncidencia.getColCount());
 		mSensibilizadas = calcularSensibilizadas();
-		Log.getInstance().escribir("RdP", " ***** SE INSTANCIO LA RED DE PETRI *****");
-		// printEstados();
+		Log.getInstance().escribir("RdP", " ***** SE INSTANCIO LA RED DE PETRI *****", true);
 	}
 
 	// DISPARA UNA TRANSICION DE LA RED DE PETRI UTILIZANDO LA FORMULA: Mi+1 =
@@ -28,7 +27,7 @@ public class RdP {
 	public boolean disparar(int posicion) {
 
 		// Se fija si la transicion tiene tiene o no tiempo
-		ventana = testVentanaTiempo(posicion);
+		ventana = calcularVentanaTiempo(posicion);
 		sensibilizada = mSensibilizadas.getVal(0, posicion);
 
 		// Transforma la posicion que recibe en un vector de disparo
@@ -124,7 +123,7 @@ public class RdP {
 		return mSensibilizadas;
 	}
 
-	private int testVentanaTiempo(int disparo) {
+	private int calcularVentanaTiempo(int disparo) {
 
 		long tiempoActual = System.currentTimeMillis();
 
@@ -152,11 +151,6 @@ public class RdP {
 		return mSensibilizadas;
 	}
 
-	// DEVUELVE MATRIZ CON EL MARCADO INICIAL
-	public Matriz getMarcadoInicial() {
-		return mMarcadoInicial;
-	}
-
 	// DEVUELVE MATRIZ CON EL NUEVO MARCADO
 	public Matriz getMarcadoActual() {
 		return mMarcadoActual;
@@ -170,9 +164,10 @@ public class RdP {
 	// IMPRIME LOS ESTADOS DE LA RED EN CIERTO MOMENTO
 	private void printEstados(int ventana, int sensibilizada, int posicion) {
 		String resultado = " ---- Este caso no fue tenido en cuenta, verificar ---- ";
-		
+
 		synchronized (this) {
-			System.err.println(Thread.currentThread().getName());
+			Log.getInstance().escribir("Hilo", Thread.currentThread().getName(), true);
+			// System.err.println(Thread.currentThread().getName());
 
 			if (ventana == 0 && sensibilizada == 1)
 				resultado = "Se ejecuto el disparo T";
@@ -188,13 +183,9 @@ public class RdP {
 			if (ventana > 0 && sensibilizada == 1)
 				resultado = "No se puede ejecutar el disparo, por llegar " + ventana + " antes y estar sensibilizada T";
 
-			Log.getInstance().escribir("RdP", "Resultado: " + resultado + posicion);
-			Log.getInstance().escribir("RdP", "Marcado Actual: " + mMarcadoActual);
-			Log.getInstance().escribir("RdP", "Trans. Sensibi: " + mSensibilizadas + "\n");
+			Log.getInstance().escribir("RdP", "Resultado: " + resultado + posicion, false);
+			Log.getInstance().escribir("RdP", "Marcado Actual: " + mMarcadoActual, false);
+			Log.getInstance().escribir("RdP", "Trans. Sensibi: " + mSensibilizadas + "\n", false);
 		}
-	}
-
-	public boolean estaSensibilizada(int transicion) {
-		return mSensibilizadas.getVal(0, transicion) == 1;
 	}
 }
