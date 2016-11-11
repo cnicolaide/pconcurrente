@@ -1,198 +1,234 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.10" icons="true" automaticImage="PNG" always-add-relationships="false" 
-  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
-  router="FAN">  
-  <class id="1" language="java" name="auxiliar.Lector" project="tpConcurrente" 
-    file="/tpConcurrente/src/main/java/auxiliar/Lector.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="676" y="609"/>    
+<class-diagram version="1.1.9" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="auxiliar.Lector" project="pconcurrente" 
+    file="/pconcurrente/src/main/java/auxiliar/Lector.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="687" y="729"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="auxiliar.Log" project="tpConcurrente" 
-    file="/tpConcurrente/src/main/java/auxiliar/Log.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="193" x="41" y="37"/>    
+  <class id="2" language="java" name="auxiliar.Log" project="pconcurrente" 
+    file="/pconcurrente/src/main/java/auxiliar/Log.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="232" width="278" x="42" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="auxiliar.Matriz" project="tpConcurrente" 
-    file="/tpConcurrente/src/main/java/auxiliar/Matriz.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="148" y="605"/>    
+  <class id="3" language="java" name="auxiliar.Matriz" project="pconcurrente" 
+    file="/pconcurrente/src/main/java/auxiliar/Matriz.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="194" y="918"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="minaCarbon.Hilo" project="tpConcurrente" 
-    file="/tpConcurrente/src/main/java/minaCarbon/Hilo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="182" x="284" y="37"/>    
+  <class id="4" language="java" name="minaCarbon.Hilo" project="pconcurrente" 
+    file="/pconcurrente/src/main/java/minaCarbon/Hilo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="561" y="128"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="procesadorPetri.Colas" project="tpConcurrente" 
-    file="/tpConcurrente/src/main/java/procesadorPetri/Colas.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="645" y="327"/>    
+  <class id="5" language="java" name="procesadorPetri.Colas" project="pconcurrente" 
+    file="/pconcurrente/src/main/java/procesadorPetri/Colas.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="214" y="392"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="procesadorPetri.GestorDeMonitor" project="tpConcurrente" 
-    file="/tpConcurrente/src/main/java/procesadorPetri/GestorDeMonitor.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="644" y="121"/>    
+  <class id="6" language="java" name="procesadorPetri.GestorDeMonitor" project="pconcurrente" 
+    file="/pconcurrente/src/main/java/procesadorPetri/GestorDeMonitor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="565" y="387"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="procesadorPetri.Politicas" project="tpConcurrente" 
-    file="/tpConcurrente/src/main/java/procesadorPetri/Politicas.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="456" y="329"/>    
+  <class id="7" language="java" name="procesadorPetri.Politicas" project="pconcurrente" 
+    file="/pconcurrente/src/main/java/procesadorPetri/Politicas.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="202" y="599"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="procesadorPetri.RdP" project="tpConcurrente" 
-    file="/tpConcurrente/src/main/java/procesadorPetri/RdP.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="458" y="681"/>    
+  <class id="8" language="java" name="procesadorPetri.RdP" project="pconcurrente" 
+    file="/pconcurrente/src/main/java/procesadorPetri/RdP.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="422" y="753"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="9">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="10" name="oMonitor"/>      
-      <multiplicity id="11" minimum="0" maximum="1"/>    
+  <class id="9" language="java" name="minaCarbon.SistemaCompleto" project="pconcurrente" 
+    file="/pconcurrente/src/main/java/minaCarbon/SistemaCompleto.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="677" y="1049"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="10">    
+    <bendpoint x="388" y="1083"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="11" name="datos"/>      
+      <multiplicity id="12" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="13">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="14" name="ldatos"/>      
+      <multiplicity id="15" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="16">    
+    <bendpoint x="311" y="783"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="17" name="oPolitica"/>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="19">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="20" name="instance"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="12">    
+  <association id="22">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="23" name="miLector"/>      
+      <multiplicity id="24" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="25">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="26" name="mMarcadoActual"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="28">    
+    <bendpoint x="292" y="779"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="29" name="mMarcadoInicial"/>      
+      <multiplicity id="30" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="31">    
+    <bendpoint x="324" y="488"/>    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="13" name="oPolitica"/>      
-      <multiplicity id="14" minimum="0" maximum="1"/>    
+      <attribute id="32" name="oPolitica"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="15">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="16" name="oFicheros"/>      
-      <multiplicity id="17" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="18">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="19" name="ldatos"/>      
-      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="21">    
+  <association id="34">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="22" name="mIncidencia"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
+      <attribute id="35" name="mInhibicion"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="24">    
+  <association id="37">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="25" name="mMarcadoInicial"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
+      <attribute id="38" name="mSensibilizadas"/>      
+      <multiplicity id="39" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="27">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="28" name="oPolitica"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="30">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="31" name="mTiempo"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="33">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="34" name="mMarcadoActual"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="36">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="37" name="instance"/>      
-      <multiplicity id="38" minimum="0" maximum="1"/>    
+  <association id="40">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="41" name="oMonitor"/>      
+      <multiplicity id="42" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="39">    
+  <association id="43">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="44" name="miRed"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="46">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="40" name="oCola"/>      
-      <multiplicity id="41" minimum="0" maximum="1"/>    
+      <attribute id="47" name="oCola"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="42">    
-    <bendpoint x="709" y="279"/>    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="43" name="oRed"/>      
-      <multiplicity id="44" minimum="0" maximum="1"/>    
+  <association id="49">    
+    <bendpoint x="303" y="746"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="50" name="mIncidencia"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="45">    
+  <association id="52">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="46" name="oRed"/>      
-      <multiplicity id="47" minimum="0" maximum="1"/>    
+      <attribute id="53" name="oRed"/>      
+      <multiplicity id="54" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="48">    
+  <association id="55">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="49" name="mInhibicion"/>      
-      <multiplicity id="50" minimum="0" maximum="1"/>    
+      <attribute id="56" name="mTiempo"/>      
+      <multiplicity id="57" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="51">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="52" name="mSensibilizadas"/>      
-      <multiplicity id="53" minimum="0" maximum="1"/>    
+  <association id="58">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="59" name="oFicheros"/>      
+      <multiplicity id="60" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="61">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="62" name="oRed"/>      
+      <multiplicity id="63" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
