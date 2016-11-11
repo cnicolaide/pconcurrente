@@ -18,6 +18,7 @@ public class PInvariantesTest {
 		SistemaCompleto.main(args);
 		Thread.sleep(5000);
 		test = oLector.leerLog("Marcado.txt");
+		Thread.sleep(1000);
 	}
 
 	// M(P0) = 1

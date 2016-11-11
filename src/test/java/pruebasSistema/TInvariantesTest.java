@@ -21,8 +21,13 @@ public class TInvariantesTest {
 
 	@Before
 	public void setUp() {
+		System.out.println("\n");
 		oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), datos.get("tiempos"));
+	}
 
+	// t12*11 t13*11 t14*11 t15 t16*10 t17 t18*10 t21
+	@Test
+	public void secuenciaT1() {
 		// primera secuencias de disparos que vuelven al estado incial
 		disparos.setDato(0, 0, 12);
 		disparos.setDato(0, 1, 11);
@@ -41,6 +46,24 @@ public class TInvariantesTest {
 		disparos.setDato(7, 0, 21);
 		disparos.setDato(7, 1, 1);
 
+		marcadoIncial = datos.get("marcado");
+		int cont = 56;// cantidad total de disparos
+		while (cont != 0) {
+
+			for (int fil = 0; fil < 8; fil++) {
+				if (oRed.getSesibilizadas().getVal(0, disparos.getVal(fil, 0)) == 1 && disparos.getVal(fil, 1) != 0) {
+					oRed.disparar(disparos.getVal(fil, 0));
+					disparos.setDato(fil, 1, (disparos.getVal(fil, 1) - 1));
+					cont--;
+				}
+			}
+		}
+		comparar(marcadoIncial, oRed.getMarcadoActual());
+	}
+
+	// t0*11 t1 t10 t11 t2*10 t3*10 t4 t5*10 t6 t7 t8 t9
+	@Test
+	public void secuenciaT2() {
 		disparos2.setDato(0, 0, 0);
 		disparos2.setDato(0, 1, 11);
 		disparos2.setDato(1, 0, 1);
@@ -65,29 +88,7 @@ public class TInvariantesTest {
 		disparos2.setDato(10, 1, 1);
 		disparos2.setDato(11, 0, 9);
 		disparos2.setDato(11, 1, 1);
-	}
 
-	// t12*11 t13*11 t14*11 t15 t16*10 t17 t18*10 t21
-	@Test
-	public void secuenciaT1() {
-		marcadoIncial = datos.get("marcado");
-		int cont = 56;// cantidad total de disparos
-		while (cont != 0) {
-
-			for (int fil = 0; fil < 8; fil++) {
-				if (oRed.getSesibilizadas().getVal(0, disparos.getVal(fil, 0)) == 1 && disparos.getVal(fil, 1) != 0) {
-					oRed.disparar(disparos.getVal(fil, 0));
-					disparos.setDato(fil, 1, (disparos.getVal(fil, 1) - 1));
-					cont--;
-				}
-			}
-		}
-		comparar(marcadoIncial, oRed.getMarcadoActual());
-	}
-
-	// t0*11 t1 t10 t11 t2*10 t3*10 t4 t5*10 t6 t7 t8 t9
-	@Test
-	public void secuenciaT2() {
 		marcadoIncial = datos.get("marcado");
 		int cont = 49;// cantidad total de disparos
 		while (cont != 0) {

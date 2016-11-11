@@ -19,6 +19,7 @@ public class EstadosyDisparosTest {
 		Thread.sleep(5000);
 		marcado = oLector.leerLog("Marcado.txt");
 		transiciones = oLector.leerLog("Transiciones.txt");
+		Thread.sleep(1000);
 	}
 
 	@Test
