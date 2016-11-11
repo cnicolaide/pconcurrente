@@ -56,8 +56,8 @@ public class RdpSinTiempoTest {
 	@Test
 	public void testDispararSensibilizada() {
 
-		Log.getInstance().escribirEimprimir("TestProcesador", " ***** EJECUTANDO TEST: DISPARAR TRANSICION SENSIBILIZADA *****",
-				true);
+		Log.getInstance().escribirEimprimir("TestProcesador",
+				" ***** EJECUTANDO TEST: DISPARAR TRANSICION SENSIBILIZADA *****", true);
 		int[][] iEsperada = { { 0, 0, 0, 1, 0, 1, 1, 0 } };
 		Matriz mEsperada = new Matriz(iEsperada);
 

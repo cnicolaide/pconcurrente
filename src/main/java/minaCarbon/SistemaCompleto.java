@@ -8,16 +8,11 @@ import procesadorPetri.Colas;
 import procesadorPetri.GestorDeMonitor;
 import procesadorPetri.RdP;
 
-public class Main3 {
+public class SistemaCompleto {
 	private static Lector miLector = new Lector("redCompleta.html", "completaConTiempos.xls");
 	private static HashMap<String, Matriz> datos = miLector.leerRed();
 	private static RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
 			datos.get("tiempos"));
-
-	public Main3() {
-		String[] args = {};
-		Main3.main(args);
-	}
 
 	public static void main(String[] args) {
 

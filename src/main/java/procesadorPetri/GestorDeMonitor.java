@@ -18,7 +18,7 @@ public class GestorDeMonitor {
 		this.oCola = oCola;
 		oPolitica = new Politicas(oRed);
 		mutex = new Semaphore(1, true);
-		
+
 	}
 
 	// METODO PARA IMPLEMENTAR PATRON SINGLETON

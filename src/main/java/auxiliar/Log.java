@@ -16,7 +16,7 @@ public class Log {
 	private static Log oFicheros = null;
 	private SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 	private String sArchivo = "System.txt";
-	private String sUbicacion = System.getProperty("user.dir") + "\\log\\";
+	private String sUbicacion = System.getProperty("user.dir") + "//log//";
 	private int contador = 0;
 
 	private Log() {
@@ -45,7 +45,7 @@ public class Log {
 		else
 			System.out.println(sTextoFinal);
 
-		File fichero = new File(System.getProperty("user.dir") + "\\log\\" + sArchivo);
+		File fichero = new File(sUbicacion + sArchivo);
 		BufferedWriter bw = null;
 		try {
 			bw = new BufferedWriter(new FileWriter(fichero, true));
@@ -58,6 +58,7 @@ public class Log {
 		}
 	}
 
+	// GUARDA EN UN ARCHIVO CON EL NOMBRE QUE SE LE PASA EL TEXTO QUE SE DESEE
 	public void escribir(String sArchivo, String sTexto) {
 		File fichero = new File(sUbicacion + sArchivo + ".txt");
 		BufferedWriter bw = null;

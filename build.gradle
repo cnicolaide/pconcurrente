@@ -1,6 +1,5 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 apply plugin: "de.aaschmid.cpd"
 apply plugin: 'findbugs'
@@ -20,18 +19,27 @@ buildscript {
 
 task compilarMain(type: Jar) {
 	manifest {
-        attributes 'Main-Class': 'minaCarbon.Main'
+        attributes 'Main-Class': 'minaCarbon.SistemaCarros'
     }
-    baseName = 'Main'
+    baseName = 'SistemaCarros'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
 
 task compilarMain2(type: Jar) {
 	manifest {
-        attributes 'Main-Class': 'minaCarbon.Main2'
+        attributes 'Main-Class': 'minaCarbon.SistemaCarrosSensores'
     }
-    baseName = 'Main2'
+    baseName = 'SistemaCarrosSensores'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+task compilarMain3(type: Jar) {
+	manifest {
+        attributes 'Main-Class': 'minaCarbon.SistemaCompleto'
+    }
+    baseName = 'SistemaCompleto'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
@@ -45,18 +53,7 @@ dependencies {
 	compile group: 'org.jsoup', name: 'jsoup', version: '1.8.3'
 	compile group: 'net.sourceforge.jexcelapi', name: 'jxl', version: '2.6.10'
 	compile group: 'org.hamcrest', name: 'hamcrest-core', version: '1.3'
-}
-
-checkstyle {
-    ignoreFailures = true
-    toolVersion = '6.4.1'
-    sourceSets = [sourceSets.main]
-    configFile = rootProject.file("config/checkstyle/checkstyle.xml");
-    showViolations = true
-}
-
-checkstyleTest {
-    enabled = false
+	compile group: 'commons-io', name: 'commons-io', version: '2.5'
 }
 
 pmd {
@@ -110,4 +107,5 @@ test.finalizedBy(project.tasks.jacocoTestReport)
 task compilarTodo() {
 compilarTodo.dependsOn(compilarMain)
 compilarTodo.dependsOn(compilarMain2)
+compilarTodo.dependsOn(compilarMain3)
 }

@@ -33,6 +33,9 @@ public class Lector {
 	private HashMap<String, Matriz> ldatos = new HashMap<>();
 	private String sRed = null, sTiempos = null;
 
+	public Lector() {
+	}
+
 	public Lector(String sRed, String sTiempos) {
 		this.sRed = sRed;
 		this.sTiempos = sTiempos;

@@ -21,7 +21,7 @@ public class Politicas {
 		}
 	}
 
-	public int cual(Matriz m) {
+	protected int cual(Matriz m) {
 
 		int mayor = 0;
 		int pos = 0;

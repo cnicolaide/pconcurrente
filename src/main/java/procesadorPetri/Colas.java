@@ -16,7 +16,7 @@ public class Colas {
 		}
 	}
 
-	public boolean desencolar(int i) throws InterruptedException {
+	protected boolean desencolar(int i) throws InterruptedException {
 		if (arregloSemaphores[i] != null) {
 			arregloSemaphores[i].release();
 			return true;
@@ -24,7 +24,7 @@ public class Colas {
 		return false;
 	}
 
-	public Matriz quienesEstan() {
+	protected Matriz quienesEstan() {
 		Matriz vc = new Matriz(1, arregloSemaphores.length);
 		vc.clear();
 
@@ -37,7 +37,7 @@ public class Colas {
 		return vc;
 	}
 
-	public void encolar(int transicion) throws InterruptedException {
+	protected void encolar(int transicion) throws InterruptedException {
 		if (arregloSemaphores[transicion] != null) {
 			arregloSemaphores[transicion].acquire();
 		}

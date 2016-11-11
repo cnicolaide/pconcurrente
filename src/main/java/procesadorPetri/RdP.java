@@ -133,8 +133,8 @@ public class RdP {
 		}
 
 		// Pregunta si el tiempo transcurrido esta entre alfa y beta
-		else if ((mTiempo.getVal(disparo, 0) < (tiempoActual - timestamp[disparo]))
-				&& (mTiempo.getVal(disparo, 1) > (tiempoActual - timestamp[disparo]))) {
+		else if (mTiempo.getVal(disparo, 0) < (tiempoActual - timestamp[disparo])
+				&& mTiempo.getVal(disparo, 1) > (tiempoActual - timestamp[disparo])) {
 			return 0;
 		}
 
