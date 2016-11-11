@@ -15,7 +15,7 @@ import procesadorPetri.RdP;
 public class RdpConTiempoTest {
 
 	private Lector miLector = new Lector("carros.html", "chicaConTiempos.xls");
-	private HashMap<String, Matriz> datos = miLector.read();
+	private HashMap<String, Matriz> datos = miLector.leerRed();
 	private RdP oRed;
 
 	@Before
@@ -30,7 +30,7 @@ public class RdpConTiempoTest {
 	@Test
 	public void testDispararSensibilizadaAntes() {
 
-		Log.getInstance().escribir("TestProcesador",
+		Log.getInstance().escribirEimprimir("TestProcesador",
 				" ***** EJECUTANDO TEST: DISPARAR TRANSICION SENSIBILIZADA ANTES *****", true);
 		int[][] iEsperada = { { 0, 0, 1, 0, 0, 1, 0, 0 } };
 		Matriz mEsperada = new Matriz(iEsperada);

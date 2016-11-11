@@ -1,18 +1,21 @@
 package pruebasSistema;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import auxiliar.Lector;
 import auxiliar.Matriz;
+import minaCarbon.Main3;
 
 public class PInvariantesTest {
 	private static Lector miLector = new Lector("redCompleta.html", "completaConTiempos.xls");
 	static Matriz test;
 
-	@Before
-	public void setUp() throws Exception {
+	@BeforeClass
+	public static void test() throws Exception {
+		new Main3();
+		Thread.sleep(5000);
 		test = miLector.leerLog("Marcado.txt");
 	}
 

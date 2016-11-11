@@ -20,7 +20,7 @@ public class RdP {
 		timestamp = new long[mIncidencia.getColCount()];
 		mSensibilizadas = new Matriz(1, mIncidencia.getColCount());
 		mSensibilizadas = calcularSensibilizadas();
-		Log.getInstance().escribir("RdP", " ***** SE INSTANCIO LA RED DE PETRI *****", true);
+		Log.getInstance().escribirEimprimir("RdP", " ***** SE INSTANCIO LA RED DE PETRI *****", true);
 	}
 
 	// DISPARA UNA TRANSICION DE LA RED DE PETRI UTILIZANDO LA FORMULA: Mi+1 =
@@ -181,12 +181,12 @@ public class RdP {
 			if (ventana > 0 && sensibilizada == 1)
 				resultado = "No se puede ejecutar el disparo, por llegar " + ventana + " antes y estar sensibilizada T";
 
-			Log.getInstance().escribir("Hilo", Thread.currentThread().getName(), true);
-			Log.getInstance().escribir("RdP", "Resultado: " + resultado + posicion, false);
-			Log.getInstance().escribir("RdP", "Marcado Actual: " + mMarcadoActual, false);
-			Log.getInstance().escribir("RdP", "Trans. Sensibi: " + mSensibilizadas + "\n", false);
-			Log.getInstance().escribirMarcado(mMarcadoActual.toString());
-			Log.getInstance().escribirTransiciones(mSensibilizadas.toString());
+			Log.getInstance().escribirEimprimir("Hilo", Thread.currentThread().getName(), true);
+			Log.getInstance().escribirEimprimir("RdP", "Resultado: " + resultado + posicion, false);
+			Log.getInstance().escribirEimprimir("RdP", "Marcado Actual: " + mMarcadoActual, false);
+			Log.getInstance().escribirEimprimir("RdP", "Trans. Sensibi: " + mSensibilizadas + "\n", false);
+			Log.getInstance().escribir("Marcado", mMarcadoActual.toString());
+			Log.getInstance().escribir("Transiciones", mSensibilizadas.toString());
 		}
 	}
 }

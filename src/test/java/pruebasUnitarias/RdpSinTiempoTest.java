@@ -15,7 +15,7 @@ import procesadorPetri.RdP;
 public class RdpSinTiempoTest {
 
 	private Lector miLector = new Lector("carros.html", "chicaSinTiempos.xls");
-	private HashMap<String, Matriz> datos = miLector.read();
+	private HashMap<String, Matriz> datos = miLector.leerRed();
 	private RdP oRed;
 
 	@Before
@@ -30,7 +30,7 @@ public class RdpSinTiempoTest {
 	@Test
 	public void testTransicionesSensibilizadas() {
 
-		Log.getInstance().escribir("TestProcesador", " ***** EJECUTANDO TEST: GETSENSIBILIZADAS *****", true);
+		Log.getInstance().escribirEimprimir("TestProcesador", " ***** EJECUTANDO TEST: GETSENSIBILIZADAS *****", true);
 		int[][] iEsperada = { { 0, 0, 1, 0, 0, 1 } };
 		Matriz mEsperada = oRed.getSesibilizadas();
 		Matriz mReal = new Matriz(iEsperada);
@@ -41,7 +41,7 @@ public class RdpSinTiempoTest {
 	@Test
 	public void testDispararNoSensibilizada() {
 
-		Log.getInstance().escribir("TestProcesador",
+		Log.getInstance().escribirEimprimir("TestProcesador",
 				" ***** EJECUTANDO TEST: DISPARAR TRANSICION NO SENSIBILIZADA *****", true);
 		int[][] iEsperada = { { 0, 0, 1, 0, 0, 1, 0, 0 } };
 		Matriz mEsperada = new Matriz(iEsperada);
@@ -56,7 +56,7 @@ public class RdpSinTiempoTest {
 	@Test
 	public void testDispararSensibilizada() {
 
-		Log.getInstance().escribir("TestProcesador", " ***** EJECUTANDO TEST: DISPARAR TRANSICION SENSIBILIZADA *****",
+		Log.getInstance().escribirEimprimir("TestProcesador", " ***** EJECUTANDO TEST: DISPARAR TRANSICION SENSIBILIZADA *****",
 				true);
 		int[][] iEsperada = { { 0, 0, 0, 1, 0, 1, 1, 0 } };
 		Matriz mEsperada = new Matriz(iEsperada);
@@ -71,7 +71,7 @@ public class RdpSinTiempoTest {
 	@Test
 	public void testDispararSecuenciaCorrecta() {
 
-		Log.getInstance().escribir("TestProcesador",
+		Log.getInstance().escribirEimprimir("TestProcesador",
 				" ***** EJECUTANDO TEST: DISPARAR SECUENCIA CORRECTA DE TRANSICIONES *****", true);
 		int[][] iEsperada = { { 0, 1, 0, 1, 0, 0, 0, 1 } };
 		Matriz mEsperada = new Matriz(iEsperada);
@@ -88,7 +88,7 @@ public class RdpSinTiempoTest {
 	@Test
 	public void testDispararSecuenciaIncorrecta() {
 
-		Log.getInstance().escribir("TestProcesador",
+		Log.getInstance().escribirEimprimir("TestProcesador",
 				" ***** EJECUTANDO TEST: DISPARAR SECUENCIA INCORRECTA DE TRANSICIONES *****", true);
 		int[][] iEsperada = { { 1, 0, 1, 0, 0, 0, 0, 1 } };
 		Matriz mEsperada = new Matriz(iEsperada);

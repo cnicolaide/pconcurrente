@@ -18,7 +18,7 @@ public class MonitorTest extends TestCase {
 	private GestorDeMonitor sone = null, stwo = null;
 	private static Logger logger = Logger.getAnonymousLogger();
 	private Lector miLector = new Lector("carros.html", "chicaSinTiempos.xls");
-	private HashMap<String, Matriz> datos = miLector.read();
+	private HashMap<String, Matriz> datos = miLector.leerRed();
 	private RdP oRed;
 	private Colas miCola;
 

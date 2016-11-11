@@ -23,6 +23,9 @@ import jxl.read.biff.BiffException;
 
 public class Lector {
 
+	private String logPath = System.getProperty("user.dir") + "//log//",
+			redPath = System.getProperty("user.dir") + "//docs//redes//",
+			tablaPath = System.getProperty("user.dir") + "//docs//tablas//";
 	private int iIncidencia, iInhibicion;
 	private int[] iMarcado = new int[2];
 	private Document html;
@@ -35,7 +38,7 @@ public class Lector {
 		this.sTiempos = sTiempos;
 	}
 
-	public HashMap<String, Matriz> read() {
+	public HashMap<String, Matriz> leerRed() {
 		File oFile = null;
 		if (sRed == null) {
 			JFileChooser fileChooser = new JFileChooser();
@@ -44,7 +47,7 @@ public class Lector {
 				oFile = fileChooser.getSelectedFile();
 			}
 		} else {
-			oFile = new File(System.getProperty("user.dir") + "//docs//redes//" + sRed);
+			oFile = new File(redPath + sRed);
 		}
 		try {
 			html = Jsoup.parse(oFile, "UTF-8", "http://example.com/");
@@ -176,7 +179,7 @@ public class Lector {
 			if (seleccion == JFileChooser.APPROVE_OPTION)
 				file = fileChooser.getSelectedFile();
 		}
-		file = new File(System.getProperty("user.dir") + "//docs//tablas//" + sTiempos);
+		file = new File(tablaPath + sTiempos);
 		Workbook wbook = null;
 		try {
 			wbook = Workbook.getWorkbook(file);
@@ -203,9 +206,9 @@ public class Lector {
 
 	@SuppressWarnings("resource")
 	public Matriz leerLog(String filename) throws Exception {
-		Matriz matrix;
+		Matriz matriz;
 
-		File inFile = new File(System.getProperty("user.dir") + "//log//" + filename);
+		File inFile = new File(logPath + filename);
 		Scanner in = new Scanner(inFile);
 
 		int intLength = 0;
@@ -213,6 +216,7 @@ public class Lector {
 		for (int i = 0; i < length.length; i++) {
 			intLength++;
 		}
+
 		int filas = 1;
 		while (in.hasNextLine()) {
 			in.nextLine();
@@ -220,17 +224,17 @@ public class Lector {
 		}
 		in.close();
 
-		matrix = new Matriz(filas, intLength);
+		matriz = new Matriz(filas, intLength);
 		in = new Scanner(inFile);
 
 		int lineCount = 0;
 		while (in.hasNextLine()) {
 			String[] currentLine = in.nextLine().trim().split("\\s+");
 			for (int i = 0; i < currentLine.length; i++) {
-				matrix.setDato(lineCount, i, Integer.parseInt(currentLine[i]));
+				matriz.setDato(lineCount, i, Integer.parseInt(currentLine[i]));
 			}
 			lineCount++;
 		}
-		return matrix;
+		return matriz;
 	}
 }

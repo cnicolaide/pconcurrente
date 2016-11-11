@@ -10,7 +10,7 @@ import procesadorPetri.RdP;
 
 public class Main {
 	private static Lector miLector = new Lector("carros.html", "chicaConTiempos.xls");
-	private static HashMap<String, Matriz> datos = miLector.read();
+	private static HashMap<String, Matriz> datos = miLector.leerRed();
 	private static RdP miRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
 			datos.get("tiempos"));
 
