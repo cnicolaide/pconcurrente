@@ -12,8 +12,8 @@ import auxiliar.Matriz;
 import procesadorPetri.RdP;
 
 public class TInvariantesTest {
-	private static Lector miLector = new Lector("redCompleta.html", "completaSinTiempos.xls");
-	private static HashMap<String, Matriz> datos = miLector.leerRed();
+	private Lector miLector = new Lector("redCompleta.html", "completaSinTiempos.xls");
+	private HashMap<String, Matriz> datos = miLector.leerRed();
 	private RdP oRed;
 	private Matriz disparos = new Matriz(8, 2);
 	private Matriz disparos2 = new Matriz(12, 2);
