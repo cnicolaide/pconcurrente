@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import auxiliar.Lector;
@@ -12,18 +11,14 @@ import auxiliar.Matriz;
 import procesadorPetri.RdP;
 
 public class TInvariantesTest {
-	private Lector miLector = new Lector("redCompleta.html", "completaSinTiempos.xls");
-	private HashMap<String, Matriz> datos = miLector.leerRed();
-	private RdP oRed;
+
+	private Lector oLector = new Lector("redCompleta.html", "completaSinTiempos.xls");
+	private HashMap<String, Matriz> datos = oLector.leerRed();
+	private RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
+			datos.get("tiempos"));;
 	private Matriz disparos = new Matriz(8, 2);
 	private Matriz disparos2 = new Matriz(12, 2);
 	private Matriz marcadoIncial;
-
-	@Before
-	public void setUp() {
-		System.out.println("\n");
-		oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"), datos.get("tiempos"));
-	}
 
 	// t12*11 t13*11 t14*11 t15 t16*10 t17 t18*10 t21
 	@Test
