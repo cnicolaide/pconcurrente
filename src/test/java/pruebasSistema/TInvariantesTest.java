@@ -18,7 +18,7 @@ public class TInvariantesTest {
 			datos.get("tiempos"));
 	private Matriz disparos = new Matriz(8, 2);
 	private Matriz disparos2 = new Matriz(12, 2);
-	private Matriz marcadoIncial;
+	private Matriz marcadoIncial = datos.get("marcado");
 
 	// t12*11 t13*11 t14*11 t15 t16*10 t17 t18*10 t21
 	@Test
@@ -41,7 +41,6 @@ public class TInvariantesTest {
 		disparos.setDato(7, 0, 21);
 		disparos.setDato(7, 1, 1);
 
-		marcadoIncial = oRed.getMarcadoActual();
 		int cont = 56;// cantidad total de disparos
 		while (cont != 0) {
 
@@ -84,7 +83,6 @@ public class TInvariantesTest {
 		disparos2.setDato(11, 0, 9);
 		disparos2.setDato(11, 1, 1);
 
-		marcadoIncial = oRed.getMarcadoActual();
 		int cont = 49;// cantidad total de disparos
 		while (cont != 0) {
 
