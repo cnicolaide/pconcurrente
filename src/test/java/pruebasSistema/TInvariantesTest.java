@@ -15,7 +15,7 @@ public class TInvariantesTest {
 	private Lector oLector = new Lector("redCompleta.html", "completaSinTiempos.xls");
 	private HashMap<String, Matriz> datos = oLector.leerRed();
 	private RdP oRed = new RdP(datos.get("marcado"), datos.get("incidencia"), datos.get("inhibicion"),
-			datos.get("tiempos"));;
+			datos.get("tiempos"));
 	private Matriz disparos = new Matriz(8, 2);
 	private Matriz disparos2 = new Matriz(12, 2);
 	private Matriz marcadoIncial;
@@ -41,7 +41,7 @@ public class TInvariantesTest {
 		disparos.setDato(7, 0, 21);
 		disparos.setDato(7, 1, 1);
 
-		marcadoIncial = datos.get("marcado");
+		marcadoIncial = oRed.getMarcadoActual();
 		int cont = 56;// cantidad total de disparos
 		while (cont != 0) {
 
@@ -84,7 +84,7 @@ public class TInvariantesTest {
 		disparos2.setDato(11, 0, 9);
 		disparos2.setDato(11, 1, 1);
 
-		marcadoIncial = datos.get("marcado");
+		marcadoIncial = oRed.getMarcadoActual();
 		int cont = 49;// cantidad total de disparos
 		while (cont != 0) {
 
